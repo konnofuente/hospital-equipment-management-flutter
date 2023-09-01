@@ -60,7 +60,7 @@ class OptionBloc extends Bloc<OptionEvent, OptionState> {
               .map((json) => Option.fromJson(jsonEncode(json)))
               .toList()));
     } else {
-      throw Exception('Failed to load classrooms');
+      throw Exception('Failed to load equipment_categoriess');
     }
   }
 }

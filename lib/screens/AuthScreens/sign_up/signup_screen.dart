@@ -7,7 +7,6 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
-import '../../../bloc/ClassroomBloc/Classroom_state.dart';
 import '../../../bloc/OptionBloc/Option_state.dart';
 import '../../../bloc/UserBloc/user_state.dart';
 import '../../../bloc/bloc_export.dart';
@@ -175,15 +174,16 @@ class _SignUpState extends State<SignUp> {
                                   AppColors.primaryblue,
                                   null, () {
                                 if (_formKey.currentState!.validate()) {
-                                      AuthService.localregisterUser(
-                                        context: context,
-                                        firstName: firstNameController.text,
-                                        lastName: lastNameController.text,
-                                        phoneNumber: phno,
-                                        email: emailController.text,
-                                        password: passwordController.text,
-                                      );
-                                      NavigationScreen.navigate(context, CodeVerification());
+                                  AuthService.localregisterUser(
+                                    context: context,
+                                    firstName: firstNameController.text,
+                                    lastName: lastNameController.text,
+                                    phoneNumber: phno,
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
+                                  NavigationScreen.navigate(
+                                      context, CodeVerification());
                                 }
                               }),
                               SizedBox(

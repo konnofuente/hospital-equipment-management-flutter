@@ -1,3 +1,6 @@
+import 'package:evaltech_mobile/screens/Home/DashBaord/DashBoard.dart';
+import 'package:evaltech_mobile/screens/Home/HomeScreen.dart';
+import 'package:evaltech_mobile/screens/Home/home.dart';
 import 'package:evaltech_mobile/screens/TestQuestions/Tmain.dart';
 import 'package:evaltech_mobile/services/localisationService/t_key.dart';
 import 'package:evaltech_mobile/utils/navigate_screen.dart';
@@ -90,7 +93,8 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                             .toggleLanguage('en');
                                         print(_inProgress);
                                         NavigationScreen.navigate(
-                                            context, OnBoardingScreen());
+                                            // context, OnBoardingScreen());
+                                            context, Home());
                                       },
                                       icon: Image.asset(
                                           'assets/Images/enflag.png'),

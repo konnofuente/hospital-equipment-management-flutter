@@ -1,61 +1,48 @@
 import 'package:flutter/material.dart';
 
-import '../models/ClassRoom.dart';
-import '../models/ClassRoom.dart';
 import '../models/Document.dart';
+import '../models/EquipementCategories.dart';
 import '../widget/chat_widget/widget_chat_item.dart';
 
 class DB {
   // ignore: non_constant_identifier_names
-  final List<Classroom> ClassroomList = [
-    Classroom(
+  final List<EquipmentCategories> EquipmentCategoriesList = [
+    EquipmentCategories(
         id: 3,
         name: 'ICT',
-        category: 'Plus de 550 QCM ',
         desc: 'Thor is imprisoned on the planet Sakaar, and must '
             'and ruthless villain Hela.',
-        rating: 7.9,
         directors: 'Teacher: Taika Waititi',
-        releaseDate: '3 November 2017',
         releaseDateDesc: 'USA (2017), 2h 10min',
-        runtime: '2h 10min',
         bannerUrl: 'assets/Images/ict_back.png',
         imageUrl: 'assets/Images/ic_preview_4.png',
         trailerImg1: 'assets/Images/ict.png',
-        quizImg: 'assets/Images/quiz.png',
-        quizText: ''),
-    Classroom(
+        secondImg: 'assets/Images/quiz.png',
+        secondText: ''),
+    EquipmentCategories(
         id: 4,
         name: 'Geography ',
-        category: 'Plus de 550 QCM ',
         desc: 'Thor is imprisoned on the planet Sakaar, and must '
             'and ruthless villain Hela.',
-        rating: 7.9,
         directors: 'Teacher: Taika Waititi',
-        releaseDate: '3 November 2017',
         releaseDateDesc: 'USA (2017), 2h 10min',
-        runtime: '2h 10min',
         bannerUrl: 'assets/Images/geography_back.png',
         imageUrl: 'assets/Images/ic_preview_4.png',
         trailerImg1: 'assets/Images/ict.png',
-        quizImg: 'assets/Images/quiz.png',
-        quizText: ''),
-    Classroom(
+        secondImg: 'assets/Images/quiz.png',
+        secondText: ''),
+    EquipmentCategories(
         id: 5,
         name: 'Physics ',
-        category: 'Plus de 550 QCM ',
         desc: 'Thor is imprisoned on the planet Sakaar, and must '
             'and ruthless villain Hela.',
-        rating: 7.9,
         directors: 'Teacher: Taika Waititi',
-        releaseDate: '3 November 2017',
         releaseDateDesc: 'USA (2017), 2h 10min',
-        runtime: '2h 10min',
         bannerUrl: 'assets/Images/physics_back.png',
         imageUrl: 'assets/Images/ic_preview_4.png',
         trailerImg1: 'assets/Images/ict.png',
-        quizImg: 'assets/Images/quiz.png',
-        quizText: ''),
+        secondImg: 'assets/Images/quiz.png',
+        secondText: ''),
   ];
 
   List<Document> documents = [
@@ -96,12 +83,8 @@ class DB {
     //     1,
     //     "15 min",
     //     true),
-    ChatItems(
-        "Chemistry Class",
-        "Have you guys finish all assignment",
-        0,
-        "32 min",
-        false),
+    ChatItems("Chemistry Class", "Have you guys finish all assignment", 0,
+        "32 min", false),
     ChatItems("Physics class", "this is ", 10, "49 min", true),
     ChatItems(
         "Mathematic Class ",
@@ -115,7 +98,5 @@ class DB {
         0,
         "Mon",
         false),
-  
   ];
-
 }

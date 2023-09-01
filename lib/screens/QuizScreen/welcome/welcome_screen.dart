@@ -1,7 +1,5 @@
 import 'package:evaltech_mobile/Theme/app_theme.dart';
 import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/models/ClassRoom.dart';
-import 'package:evaltech_mobile/screens/Classroom/ClassroomScreen.dart';
 import 'package:evaltech_mobile/screens/QuizScreen/MainQuizScreen.dart';
 import 'package:evaltech_mobile/screens/QuizScreen/quiz/quiz_body.dart';
 import 'package:evaltech_mobile/screens/TestQuestions/TQuiz.dart';
@@ -56,7 +54,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 WidgetButton.largeButton(
                     'Cancel', AppTextTheme.buttonwhite, AppColors.black, null,
                     () {
-                  // NavigationScreen.replaceNavigate(context, ClassroomScreen());
+                  // NavigationScreen.replaceNavigate(context, EquipmentCategoriesScreen());
                   Navigator.pop(context);
                 })
               ],

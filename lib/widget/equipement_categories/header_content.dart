@@ -1,10 +1,11 @@
-import 'package:evaltech_mobile/models/ClassRoom.dart';
 import 'package:flutter/material.dart';
 
-class HeaderContent extends StatelessWidget {
-  final Classroom classroom;
+import '../../models/EquipementCategories.dart';
 
-  HeaderContent(this.classroom);
+class HeaderContent extends StatelessWidget {
+  final EquipmentCategories equipment_categories;
+
+  HeaderContent(this.equipment_categories);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class HeaderContent extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.only(bottom: 1.0),
                         child: Text(
-                          classroom.name,
+                          equipment_categories.name,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: TextStyle(
@@ -41,7 +42,7 @@ class HeaderContent extends StatelessWidget {
                         padding:
                             const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 5.0),
                         child: Text(
-                          classroom.desc!,
+                          equipment_categories.desc!,
                           style: TextStyle(
                             fontSize: 13.0,
                             color: Colors.white,
@@ -51,7 +52,7 @@ class HeaderContent extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                         child: Text(
-                          classroom.directors!,
+                          equipment_categories.directors!,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15.0,

@@ -1,33 +1,34 @@
 import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/models/ClassRoom.dart';
 import 'package:evaltech_mobile/screens/Classroom/ClassroomScreen.dart';
 import 'package:evaltech_mobile/screens/Home/GetRatings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../models/EquipementCategories.dart';
 import '../../provider/provider.dart';
 import '../../models/Item.dart';
 
-class ClassroomList extends StatefulWidget {
-  final Classroom classroom;
+class EquipmentCategoriesList extends StatefulWidget {
+  final EquipmentCategories equipment_categories;
 
-  const ClassroomList({required this.classroom});
+  const EquipmentCategoriesList({required this.equipment_categories});
 
   @override
-  State<ClassroomList> createState() => _ClassroomListState();
+  State<EquipmentCategoriesList> createState() =>
+      _EquipmentCategoriesListState();
 }
 
-class _ClassroomListState extends State<ClassroomList> {
+class _EquipmentCategoriesListState extends State<EquipmentCategoriesList> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Provider.of<ClassroomState>(context, listen: false)
-            .setGlobalClassroom(widget.classroom);
+        Provider.of<EquipmentCategoriesState>(context, listen: false)
+            .setGlobalEquipmentCategories(widget.equipment_categories);
 
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ClassroomScreen(),
+            builder: (context) => EquipmentCategoriesScreen(),
           ),
         );
       },
@@ -42,7 +43,7 @@ class _ClassroomListState extends State<ClassroomList> {
             AspectRatio(
               aspectRatio: 18.0 / 12.0,
               child: Image.asset(
-                widget.classroom.trailerImg1!,
+                widget.equipment_categories.trailerImg1!,
                 fit: BoxFit.fill,
               ),
             ),
@@ -56,7 +57,7 @@ class _ClassroomListState extends State<ClassroomList> {
                     height: 5,
                   ),
                   Center(
-                    child: Text(widget.classroom.name,
+                    child: Text(widget.equipment_categories.name,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -65,7 +66,8 @@ class _ClassroomListState extends State<ClassroomList> {
                   SizedBox(
                     height: 5,
                   ),
-                  Text(widget.classroom.category!, style: AppTextTheme.caption),
+                  Text(widget.equipment_categories.directors!,
+                      style: AppTextTheme.caption),
                   SizedBox(height: 2.0),
                   Center(child: GetRatings()),
                 ],
@@ -79,9 +81,9 @@ class _ClassroomListState extends State<ClassroomList> {
 }
 
 class HeaderContent extends StatelessWidget {
-  final Item classroom;
+  final Item equipment_categories;
 
-  HeaderContent(this.classroom);
+  HeaderContent(this.equipment_categories);
 
   @override
   Widget build(BuildContext context) {
@@ -97,18 +99,18 @@ class HeaderContent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(classroom.name,
+                  Text(equipment_categories.name,
                       textAlign: TextAlign.center,
                       style: AppTextTheme.gridlisttitle),
                   Text(
-                    classroom.category,
+                    equipment_categories.category,
                     style: TextStyle(
                       color: Colors.black54,
                       fontSize: 9.0,
                     ),
                   ),
                   GetRatings(),
-                  MovieDesc(this.classroom),
+                  MovieDesc(this.equipment_categories),
                 ],
               ),
             ),
@@ -120,9 +122,9 @@ class HeaderContent extends StatelessWidget {
 }
 
 class MovieDesc extends StatelessWidget {
-  final Item classroom;
+  final Item equipment_categories;
 
-  MovieDesc(this.classroom);
+  MovieDesc(this.equipment_categories);
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +145,7 @@ class MovieDesc extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  classroom.releaseDate,
+                  equipment_categories.releaseDate,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 9.0,
@@ -166,7 +168,7 @@ class MovieDesc extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  classroom.runtime,
+                  equipment_categories.runtime,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 9.0,

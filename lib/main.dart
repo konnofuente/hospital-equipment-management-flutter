@@ -1,7 +1,5 @@
-import 'package:evaltech_mobile/bloc/ClassroomBloc/classroom_bloc.dart';
 import 'package:evaltech_mobile/evaltech.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/GroupList/group_list.dart';
-import 'package:evaltech_mobile/screens/Classroom/ClassroomScreen.dart';
 import 'package:evaltech_mobile/screens/QuizScreen/MainQuizScreen.dart';
 import 'package:evaltech_mobile/provider/provider.dart';
 import 'package:evaltech_mobile/test.dart';
@@ -10,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+import 'bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import 'bloc/MCQBloc/mcq_bloc.dart';
 import 'bloc/OptionBloc/option_bloc.dart';
 import 'bloc/UserBloc/user_bloc.dart';
@@ -19,7 +18,8 @@ void main() {
     () => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => AppLang(appLang: 'fr')),
       ChangeNotifierProvider(create: (_) => UserCreation()),
-      ChangeNotifierProvider(create: (_) => ClassroomState(classroom: null)),
+      ChangeNotifierProvider(
+          create: (_) => EquipmentCategoriesState(equipment_categories: null)),
       ChangeNotifierProvider(
           create: (_) => AppStatus(
               isConnected: true,
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           create: (context) => MCQBloc(),
         ),
         BlocProvider(
-          create: (context) => ClassroomBloc(),
+          create: (context) => EquipmentCategoriesBloc(),
         ),
         BlocProvider(
           create: (context) => OptionBloc(),

@@ -8,7 +8,6 @@ import '../../Constant/constants.dart';
 import '../../bloc/MCQBloc/mcq_state.dart';
 import '../../models/Exercise.dart';
 import '../../models/MCQ.dart';
-import '../Classroom/ClassroomScreen.dart';
 
 class TQuiz extends StatefulWidget {
   final MCQ mcq;

@@ -10,19 +10,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/ClassRoom.dart';
+import '../../models/EquipementCategories.dart';
 import '../../models/Item.dart';
 import '../../models/Document.dart';
 import '../../provider/provider.dart';
-import '../../widget/classroom/get_tags.dart';
-import '../../widget/classroom/get_trailer.dart';
-import '../../widget/classroom/header_content.dart';
-import '../../widget/classroom/header_image.dart';
+import '../../widget/equipement_categories/header_content.dart';
+import '../../widget/equipement_categories/header_image.dart';
 
 class MainQuizScreen extends StatefulWidget {
-  // final Item classroom;
+  // final Item equipment_categories;
 
-  // MainQuizScreen(this.classroom);
+  // MainQuizScreen(this.equipment_categories);
   MainQuizScreen();
 
   @override
@@ -33,8 +31,9 @@ class _MainQuizScreenState extends State<MainQuizScreen> {
   bool isMCQAvailable = false; // Set this to true if MCQ is available
   @override
   Widget build(BuildContext context) {
-    Classroom globalItem =
-        Provider.of<ClassroomState>(context).classroom! as Classroom;
+    EquipmentCategories globalItem =
+        Provider.of<EquipmentCategoriesState>(context).equipment_categories!
+            as EquipmentCategories;
     return Scaffold(
       primary: true,
       backgroundColor: Color.fromRGBO(245, 244, 244, 1),
@@ -138,9 +137,9 @@ class GetDocumentList extends StatelessWidget {
 }
 
 class HeaderBanner extends StatelessWidget {
-  final Classroom classroom;
+  final EquipmentCategories equipment_categories;
 
-  HeaderBanner(this.classroom);
+  HeaderBanner(this.equipment_categories);
 
   @override
   Widget build(BuildContext context) {
@@ -152,8 +151,8 @@ class HeaderBanner extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              HeaderImage(this.classroom.quizImg!),
-              HeaderContent(this.classroom),
+              HeaderImage(this.equipment_categories.secondImg!),
+              HeaderContent(this.equipment_categories),
             ],
           ),
         ),

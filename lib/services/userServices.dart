@@ -17,7 +17,7 @@ class UserService {
       String lName,
       String pNumber,
       String? system,
-      int? classroomId,
+      int? equipment_categoriesId,
       int? option,
       String? role) async {
     var headers = {'Content-Type': 'application/json'};
@@ -31,7 +31,7 @@ class UserService {
       "lastName": lName,
       "phoneNumber": pNumber,
       "system": system,
-      "classroomId": classroomId,
+      "equipment_categoriesId": equipment_categoriesId,
       "optionId": option,
       "role": role
     });

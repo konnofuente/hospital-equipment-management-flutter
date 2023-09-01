@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:evaltech_mobile/models/ClassRoom.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/ChatgroupScreen.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
 import 'package:evaltech_mobile/screens/PastQuestions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Theme/app_theme.dart';
+import '../../models/EquipementCategories.dart';
 import '../../models/Item.dart';
 import '../../provider/provider.dart';
 import '../../services/localisationService/t_key.dart';
@@ -14,17 +14,18 @@ import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import '../QuizScreen/MainQuizScreen.dart';
 import '../StatisticScreen/StatisticScreen.dart';
 
-class ClassroomScreen extends StatefulWidget {
+class EquipmentCategoriesScreen extends StatefulWidget {
   // final Item item;
-  // ClassroomScreen(this.item);
-  ClassroomScreen();
+  // EquipmentCategoriesScreen(this.item);
+  EquipmentCategoriesScreen();
 
   @override
-  State<ClassroomScreen> createState() => _ClassroomScreenState();
+  State<EquipmentCategoriesScreen> createState() =>
+      _EquipmentCategoriesScreenState();
 }
 
-class _ClassroomScreenState extends State<ClassroomScreen> {
-  //  ClassroomScreen({Key? key, required this.item}) : super(key: key);
+class _EquipmentCategoriesScreenState extends State<EquipmentCategoriesScreen> {
+  //  EquipmentCategoriesScreen({Key? key, required this.item}) : super(key: key);
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
 
@@ -40,8 +41,9 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Classroom globalItem =
-        Provider.of<ClassroomState>(context).classroom as Classroom;
+    EquipmentCategories globalItem =
+        Provider.of<EquipmentCategoriesState>(context).equipment_categories
+            as EquipmentCategories;
 
     Widget getFragment() {
       if (selectedIndex == 0) {

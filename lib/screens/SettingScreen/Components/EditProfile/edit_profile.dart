@@ -86,7 +86,7 @@ class _EditProfileState extends State<EditProfile> {
                   //     lastNameController.text,
                   //     phoneNumberController.text,
                   //     state.appUser!.system,
-                  //     state.appUser!.classroomId,
+                  //     state.appUser!.equipment_categoriesId,
                   //     1,
                   //     state.appUser!.role);
 

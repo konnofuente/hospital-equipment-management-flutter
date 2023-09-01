@@ -16,7 +16,7 @@ class ChoseUserMode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<GridInfo> _list = FakeData().categoriesList;
+    List<GridInfo> _list = FakeData().equipment_categoriesList;
     Role? role = Provider.of<AppStatus>(context).role;
 
     return Scaffold(

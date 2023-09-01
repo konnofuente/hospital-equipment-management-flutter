@@ -2,7 +2,7 @@
 
 import 'localization_service.dart';
 
-enum TKeys{
+enum TKeys {
   // ignore: constant_identifier_names
   chose_lang,
   en,
@@ -35,7 +35,7 @@ enum TKeys{
   hey,
   get_srt,
   welcome_text,
-  classroom,
+  equipment_categories,
   app_tip,
   home,
   group,

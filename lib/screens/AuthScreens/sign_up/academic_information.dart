@@ -35,13 +35,13 @@ class _AcademicInformationState extends State<AcademicInformation> {
   String message = "check your connection";
   late List<String> seriesList;
   late List<String> systemList;
-  late List<String> classroomList;
+  late List<String> equipment_categoriesList;
   late List<String> optionList;
   late String serie;
   late String system;
-  late String classroom;
+  late String equipment_categories;
   late String option;
-  late int classroomId;
+  late int equipment_categoriesId;
   bool serieFocus = false;
 
   @override
@@ -51,8 +51,8 @@ class _AcademicInformationState extends State<AcademicInformation> {
       "FRANCOPHONE",
       "ANGLOPHONE",
     ];
-    classroomList = [
-      "Select Your Classroom",
+    equipment_categoriesList = [
+      "Select Your EquipmentCategories",
       "Form 1",
       "Form 2",
       "Form 3",
@@ -66,9 +66,9 @@ class _AcademicInformationState extends State<AcademicInformation> {
     ];
     serie = "A";
     system = systemList[0];
-    classroom = classroomList[0];
+    equipment_categories = equipment_categoriesList[0];
     option = optionList[0];
-    classroomId = 2;
+    equipment_categoriesId = 2;
   }
 
   @override
@@ -168,8 +168,8 @@ class _AcademicInformationState extends State<AcademicInformation> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: DropdownButton<String>(
-                          hint: Text("Select Your Classroom"),
-                          value: classroom,
+                          hint: Text("Select Your EquipmentCategories"),
+                          value: equipment_categories,
                           icon: Icon(
                             Icons.keyboard_arrow_down_outlined,
                             color: Colors.blue,
@@ -193,11 +193,11 @@ class _AcademicInformationState extends State<AcademicInformation> {
                               if (newValue!.isEmpty) {
                                 // addError(error: kEmptySerie);
                               } else {
-                                classroom = newValue;
+                                equipment_categories = newValue;
                               }
                             });
                           },
-                          items: classroomList
+                          items: equipment_categoriesList
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,

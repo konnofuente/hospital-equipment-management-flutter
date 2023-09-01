@@ -16,8 +16,7 @@ import 'callApi.dart';
 class AuthService {
   final _storage = const FlutterSecureStorage();
 
-
-static Future<void> localregisterUser({
+  static Future<void> localregisterUser({
     required BuildContext context,
     required String firstName,
     required String lastName,
@@ -37,34 +36,35 @@ static Future<void> localregisterUser({
     userBloc.add(AddUsers(users: newUser));
   }
 
-Future<void> localloginUser({
-  required BuildContext context,
-  required String email,
-  required String password,
-}) async {
-  UserBloc userBloc = BlocProvider.of<UserBloc>(context);
-  
-  // Dispatch the LoginUser event to the UserBloc
-  userBloc.add(LoginUser(email: email, password: password));
+  Future<void> localloginUser({
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
+    UserBloc userBloc = BlocProvider.of<UserBloc>(context);
 
-  // Listen for login status
-  await for (bool status in userBloc.loginStatusController.stream.asBroadcastStream()) {
-    if (status) {
-      // Navigate to the GetStartedScreen if login is successful
-      
-      await _storage.write(key: "evaltech_KEY_EMAIL", value: email);
-      await _storage.write(key: "evaltech_KEY_PASSWORD", value: password);
-      
-      NavigationScreen.navigate(context, GetStartedScreen());
-      break;  // Break out of the loop once navigation is done
-    } else {
-      // Show an alert box if login fails
-      AlertBox.alertbox(context, "Registration", "Invalid Password or email", () {});
-      break;  // Break out of the loop once the alert box is shown
+    // Dispatch the LoginUser event to the UserBloc
+    userBloc.add(LoginUser(email: email, password: password));
+
+    // Listen for login status
+    await for (bool status
+        in userBloc.loginStatusController.stream.asBroadcastStream()) {
+      if (status) {
+        // Navigate to the GetStartedScreen if login is successful
+
+        await _storage.write(key: "evaltech_KEY_EMAIL", value: email);
+        await _storage.write(key: "evaltech_KEY_PASSWORD", value: password);
+
+        NavigationScreen.navigate(context, GetStartedScreen());
+        break; // Break out of the loop once navigation is done
+      } else {
+        // Show an alert box if login fails
+        AlertBox.alertbox(
+            context, "Registration", "Invalid Password or email", () {});
+        break; // Break out of the loop once the alert box is shown
+      }
     }
   }
-}
-
 
   Future<void> register(
       BuildContext context,
@@ -74,7 +74,7 @@ Future<void> localloginUser({
       String email,
       String password,
       String system,
-      int classroomId,
+      int equipment_categoriesId,
       String option,
       String role) async {
     var headers = {'Content-Type': 'application/json'};
@@ -88,7 +88,7 @@ Future<void> localloginUser({
       "email": email,
       "password": password,
       "system": "FRANCOPHONE",
-      "classroomId": 1,
+      "equipment_categoriesId": 1,
       "optionId": 1,
       "role": "STUDENT"
     });

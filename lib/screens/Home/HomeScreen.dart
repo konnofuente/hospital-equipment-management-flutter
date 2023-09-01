@@ -1,10 +1,10 @@
 import 'package:evaltech_mobile/db/db.dart';
-import 'package:evaltech_mobile/screens/Home/ClassroomList.dart';
+import 'package:evaltech_mobile/models/EquipementCategories.dart';
+import 'package:evaltech_mobile/screens/Home/classroomList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Constant/constants.dart';
-import '../../models/ClassRoom.dart';
 import '../../models/Item.dart';
 import '../../provider/provider.dart';
 
@@ -14,12 +14,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late List<Classroom> classList;
+  late List<EquipmentCategories> classList;
 
   @override
   void initState() {
     super.initState();
-    classList = DB().ClassroomList;
+    classList = DB().EquipmentCategoriesList;
   }
 
   @override
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       childAspectRatio: 8.0 / 9.0,
       children: classList
           .map(
-            (Item) => ClassroomList(classroom: Item),
+            (Item) => EquipmentCategoriesList(equipment_categories: Item),
           )
           .toList(),
     );

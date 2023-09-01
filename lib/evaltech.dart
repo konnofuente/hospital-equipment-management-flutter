@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/bloc/ClassroomBloc/classroom_event.dart';
 import 'package:evaltech_mobile/bloc/OptionBloc/option_event.dart';
 import 'package:evaltech_mobile/provider/provider.dart';
 import 'package:evaltech_mobile/screens/AuthScreens/sign_up/signup_screen.dart';
@@ -20,6 +19,8 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'Theme/app_theme.dart';
+import 'bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
+import 'bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
 import 'bloc/MCQBloc/mcq_bloc.dart';
 import 'bloc/MCQBloc/mcq_event.dart';
 import 'bloc/bloc_export.dart';
@@ -51,11 +52,11 @@ class _evaltechState extends State<evaltech> {
   Future<void> _loadingProcess() async {
     await _FetchevaltechData();
     checkUserLoggedIn();
-    //  context.read<ClassroomBloc>().add(FetchClassrooms());
+    //  context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
   }
 
   Future<void> _FetchevaltechData() async {
-    context.read<ClassroomBloc>().add(FetchClassrooms());
+    context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
     context.read<OptionBloc>().add(FetchOptions());
     context.read<MCQBloc>().add(FetchMCQs());
     InternetConnection().CheckInternetConnectivity(context);

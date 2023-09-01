@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:evaltech_mobile/Theme/app_theme.dart';
 import 'package:evaltech_mobile/Theme/text_theme.dart';
 import 'package:evaltech_mobile/db/db.dart';
-import 'package:evaltech_mobile/models/ClassRoom.dart';
 import 'package:evaltech_mobile/models/Document.dart';
 import 'package:evaltech_mobile/screens/DocumentViewer/PDFViewerScreen.dart';
 import 'package:evaltech_mobile/utils/navigate_screen.dart';
@@ -13,15 +12,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../models/EquipementCategories.dart';
 import '../../models/Item.dart';
 import '../../models/Document.dart';
-import '../../widget/classroom/header_content.dart';
-import '../../widget/classroom/header_image.dart';
+import '../../widget/equipement_categories/header_content.dart';
+import '../../widget/equipement_categories/header_image.dart';
 
 class GridItemDetails extends StatelessWidget {
-  final Classroom classroom;
+  final EquipmentCategories equipment_categories;
 
-  GridItemDetails(this.classroom);
+  GridItemDetails(this.equipment_categories);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class GridItemDetails extends StatelessWidget {
       backgroundColor: Color.fromRGBO(245, 244, 244, 1),
       body: Column(
         children: <Widget>[
-          Expanded(flex: 1, child: HeaderBanner(this.classroom)),
+          Expanded(flex: 1, child: HeaderBanner(this.equipment_categories)),
           // Container(child: ListViewHome()),
           Expanded(flex: 2, child: GetDocumentList()),
         ],
@@ -108,9 +108,9 @@ class GetDocumentList extends StatelessWidget {
 }
 
 class HeaderBanner extends StatelessWidget {
-  final Classroom classroom;
+  final EquipmentCategories equipment_categories;
 
-  HeaderBanner(this.classroom);
+  HeaderBanner(this.equipment_categories);
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +122,8 @@ class HeaderBanner extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              HeaderImage(this.classroom.bannerUrl!),
-              HeaderContent(this.classroom),
+              HeaderImage(this.equipment_categories.bannerUrl!),
+              HeaderContent(this.equipment_categories),
             ],
           ),
         ),

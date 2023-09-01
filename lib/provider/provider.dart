@@ -5,7 +5,7 @@ import 'package:evaltech_mobile/models/MCQ.dart';
 import 'package:evaltech_mobile/models/Role.dart';
 import 'package:flutter/material.dart';
 
-import '../models/ClassRoom.dart';
+import '../models/EquipementCategories.dart';
 import '../models/User.dart';
 
 class UserCreation with ChangeNotifier {
@@ -95,15 +95,15 @@ class AppStatus with ChangeNotifier {
   }
 }
 
-class ClassroomState with ChangeNotifier {
-  ClassroomState({
-    required this.classroom,
+class EquipmentCategoriesState with ChangeNotifier {
+  EquipmentCategoriesState({
+    required this.equipment_categories,
   });
 
-  Classroom? classroom;
+  EquipmentCategories? equipment_categories;
 
-  setGlobalClassroom(Classroom val) {
-    classroom = val;
+  setGlobalEquipmentCategories(EquipmentCategories val) {
+    equipment_categories = val;
     notifyListeners();
   }
 }
@@ -115,7 +115,7 @@ class ClassroomState with ChangeNotifier {
 
 //   List<MCQ>? allmcq;
 
-//   setGlobalClassroom(List<MCQ> val) {
+//   setGlobalEquipmentCategories(List<MCQ> val) {
 //     allmcq = val;
 //     notifyListeners();
 //   }

@@ -18,8 +18,8 @@ class Item {
   String trailerImg1;
   String trailerImg2;
   String trailerImg3;
-  String quizImg;
-  String quizText;
+  String secondImg;
+  String secondText;
 
   Item({
     required this.id,
@@ -36,8 +36,8 @@ class Item {
     required this.trailerImg1,
     required this.trailerImg2,
     required this.trailerImg3,
-    required this.quizImg,
-    required this.quizText,
+    required this.secondImg,
+    required this.secondText,
   });
 
   Item copyWith({
@@ -55,8 +55,8 @@ class Item {
     String? trailerImg1,
     String? trailerImg2,
     String? trailerImg3,
-    String? quizImg,
-    String? quizText,
+    String? secondImg,
+    String? secondText,
   }) {
     return Item(
       id: id ?? this.id,
@@ -73,8 +73,8 @@ class Item {
       trailerImg1: trailerImg1 ?? this.trailerImg1,
       trailerImg2: trailerImg2 ?? this.trailerImg2,
       trailerImg3: trailerImg3 ?? this.trailerImg3,
-      quizImg: quizImg ?? this.quizImg,
-      quizText: quizText ?? this.quizText,
+      secondImg: secondImg ?? this.secondImg,
+      secondText: secondText ?? this.secondText,
     );
   }
 
@@ -94,8 +94,8 @@ class Item {
       'trailerImg1': trailerImg1,
       'trailerImg2': trailerImg2,
       'trailerImg3': trailerImg3,
-      'quizImg': quizImg,
-      'quizText': quizText,
+      'secondImg': secondImg,
+      'secondText': secondText,
     };
   }
 
@@ -115,8 +115,8 @@ class Item {
       trailerImg1: map['trailerImg1'] as String,
       trailerImg2: map['trailerImg2'] as String,
       trailerImg3: map['trailerImg3'] as String,
-      quizImg: map['quizImg'] as String,
-      quizText: map['quizText'] as String,
+      secondImg: map['secondImg'] as String,
+      secondText: map['secondText'] as String,
     );
   }
 
@@ -127,51 +127,48 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, name: $name, category: $category, releaseDate: $releaseDate, releaseDateDesc: $releaseDateDesc, directors: $directors, runtime: $runtime, desc: $desc, rating: $rating, imageUrl: $imageUrl, bannerUrl: $bannerUrl, trailerImg1: $trailerImg1, trailerImg2: $trailerImg2, trailerImg3: $trailerImg3, quizImg: $quizImg, quizText: $quizText)';
+    return 'Item(id: $id, name: $name, category: $category, releaseDate: $releaseDate, releaseDateDesc: $releaseDateDesc, directors: $directors, runtime: $runtime, desc: $desc, rating: $rating, imageUrl: $imageUrl, bannerUrl: $bannerUrl, trailerImg1: $trailerImg1, trailerImg2: $trailerImg2, trailerImg3: $trailerImg3, secondImg: $secondImg, secondText: $secondText)';
   }
 
   @override
   bool operator ==(covariant Item other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.category == category &&
-      other.releaseDate == releaseDate &&
-      other.releaseDateDesc == releaseDateDesc &&
-      other.directors == directors &&
-      other.runtime == runtime &&
-      other.desc == desc &&
-      other.rating == rating &&
-      other.imageUrl == imageUrl &&
-      other.bannerUrl == bannerUrl &&
-      other.trailerImg1 == trailerImg1 &&
-      other.trailerImg2 == trailerImg2 &&
-      other.trailerImg3 == trailerImg3 &&
-      other.quizImg == quizImg &&
-      other.quizText == quizText;
+
+    return other.id == id &&
+        other.name == name &&
+        other.category == category &&
+        other.releaseDate == releaseDate &&
+        other.releaseDateDesc == releaseDateDesc &&
+        other.directors == directors &&
+        other.runtime == runtime &&
+        other.desc == desc &&
+        other.rating == rating &&
+        other.imageUrl == imageUrl &&
+        other.bannerUrl == bannerUrl &&
+        other.trailerImg1 == trailerImg1 &&
+        other.trailerImg2 == trailerImg2 &&
+        other.trailerImg3 == trailerImg3 &&
+        other.secondImg == secondImg &&
+        other.secondText == secondText;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      category.hashCode ^
-      releaseDate.hashCode ^
-      releaseDateDesc.hashCode ^
-      directors.hashCode ^
-      runtime.hashCode ^
-      desc.hashCode ^
-      rating.hashCode ^
-      imageUrl.hashCode ^
-      bannerUrl.hashCode ^
-      trailerImg1.hashCode ^
-      trailerImg2.hashCode ^
-      trailerImg3.hashCode ^
-      quizImg.hashCode ^
-      quizText.hashCode;
+        name.hashCode ^
+        category.hashCode ^
+        releaseDate.hashCode ^
+        releaseDateDesc.hashCode ^
+        directors.hashCode ^
+        runtime.hashCode ^
+        desc.hashCode ^
+        rating.hashCode ^
+        imageUrl.hashCode ^
+        bannerUrl.hashCode ^
+        trailerImg1.hashCode ^
+        trailerImg2.hashCode ^
+        trailerImg3.hashCode ^
+        secondImg.hashCode ^
+        secondText.hashCode;
   }
-
-
 }
