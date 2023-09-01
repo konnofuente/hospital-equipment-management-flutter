@@ -5,6 +5,7 @@ import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categor
 import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
 import 'package:evaltech_mobile/models/EquipementCategories.dart';
 import 'package:evaltech_mobile/models/EquipementCategories.dart';
+import 'package:evaltech_mobile/models/function.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/EquipementCategories.dart';
@@ -20,19 +21,26 @@ class EquipmentCategoriesBloc
     // on<FetchEquipmentCategories>(_onFetchEquipmentCategories);
   }
 
-  Future<FutureOr<void>> _onAddEquipmentCategories(
-      AddEquipmentCategories event,
+  Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
       Emitter<EquipmentCategoriesState> emit) async {
-    final state = this.state;
-    emit(EquipmentCategoriesState(
-        allEquipmentCategories: event.EquipmentCategory));
+    // final state = this.state;
+    final state = EquipmentCategoriesState(); // Initialize or fetch your state
 
-    // final item = EquipmentCategories(
-    //     // id: event.EquipmentCategorys.id,
-    //     // firstName: event.EquipmentCategorys.firstName,
-    //     id:event.EquipmentCategorys.id,
-    //     name: event.EquipmentCategorys.name,
-    //     );
+    // Generate unique ID for new EquipmentCategory
+    int Id = AppFunction().generateUserId(event.EquipmentCategory.name);
+
+    // Create a new EquipmentCategories object with generated ID
+    EquipmentCategories newEquipmentCategory = event.EquipmentCategory.copyWith(id: Id);
+
+  // Create a new list that includes all previous elements and the new one
+  List<EquipmentCategories> updatedEquipmentCategories = List.from(state.allEquipmentCategories)
+    ..add(newEquipmentCategory);
+  
+  // Emit the new state
+  emit(EquipmentCategoriesState(
+    allEquipmentCategories: updatedEquipmentCategories,
+  ));
+  
 
     try {
       print(

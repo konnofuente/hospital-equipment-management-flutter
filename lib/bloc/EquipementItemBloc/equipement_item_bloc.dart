@@ -1,9 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:evaltech_mobile/bloc/EquipementItemBloc%20copy/equipement_item_event.dart';
-import 'package:evaltech_mobile/bloc/EquipementItemBloc%20copy/equipement_item_state.dart';
+
+import 'package:evaltech_mobile/bloc/EquipementItemBloc/equipement_Item_event.dart';
+import 'package:evaltech_mobile/bloc/EquipementItemBloc/equipement_Item_state.dart';
 import 'package:evaltech_mobile/models/EquipementItem.dart';
+import 'package:evaltech_mobile/models/EquipementItem.dart';
+import 'package:evaltech_mobile/models/function.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../models/EquipementItem.dart';
 import '../../services/callApi.dart';
 import 'package:http/http.dart' as http;
@@ -17,19 +21,24 @@ class EquipmentItemBloc
     // on<FetchEquipmentItem>(_onFetchEquipmentItem);
   }
 
-  Future<FutureOr<void>> _onAddEquipmentItem(
-      AddEquipmentItem event,
+  Future<FutureOr<void>> _onAddEquipmentItem(AddEquipmentItem event,
       Emitter<EquipmentItemState> emit) async {
-    final state = this.state;
-    emit(EquipmentItemState(
-        allEquipmentItem: event.Item));
+    // final state = this.state;
+    final state = EquipmentItemState(); // Initialize or fetch your state
 
-    // final item = EquipmentItem(
-    //     // id: event.Items.id,
-    //     // firstName: event.Items.firstName,
-    //     id:event.Items.id,
-    //     name: event.Items.name,
-    //     );
+    // Generate unique ID for new Item
+    int Id = AppFunction().generateUserId(event.Item.name);
+
+    // Create a new EquipmentItem object with generated ID
+    EquipmentItem newItem = event.Item.copyWith(id: Id);
+
+    // Add the new Item to the existing list
+    state.allEquipmentItem.add(newItem);
+
+    // Emit the new state
+    emit(EquipmentItemState(
+      allEquipmentItem: state.allEquipmentItem,
+    ));
 
     try {
       print(

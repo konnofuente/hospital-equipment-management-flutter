@@ -12,7 +12,7 @@ abstract class EquipmentCategoriesEvent extends Equatable {
 }
 
 class AddEquipmentCategories extends EquipmentCategoriesEvent {
-  final List<EquipmentCategories> EquipmentCategory;
+  final EquipmentCategories EquipmentCategory;
   const AddEquipmentCategories({
     required this.EquipmentCategory,
   });

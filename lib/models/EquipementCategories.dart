@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 import 'EquipementItem.dart';
 
 class EquipmentCategories {
-  final int id;
+  int? id;
   final String name;
   List<EquipmentItem> items;
   String? releaseDateDesc;

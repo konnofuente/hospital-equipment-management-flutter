@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:equatable/equatable.dart';
+import 'package:evaltech_mobile/models/function.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/User.dart';
 import '../../services/callApi.dart';
@@ -33,10 +34,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 
-  int generateUserId(String email) {
-    return email.hashCode;
-  }
-
   bool doesUserExist(String email, List<User> usersList) {
     return usersList.any((user) => user.email == email);
   }
@@ -49,7 +46,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       // Emit error state or handle accordingly
     } else {
       // generate the user ID using email
-      int userId = generateUserId(event.users.email!);
+      int userId = AppFunction().generateUserId(event.users.email!);
 
       User newUser = event.users.copyWith(id: userId);
       // Create a new list containing all previous users + the new user

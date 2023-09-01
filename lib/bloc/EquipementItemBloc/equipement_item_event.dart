@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../models/EquipementItem.dart';
 
 
@@ -11,7 +12,7 @@ abstract class EquipmentItemEvent extends Equatable {
 }
 
 class AddEquipmentItem extends EquipmentItemEvent {
-  final List<EquipmentItem> Item;
+  final EquipmentItem Item;
   const AddEquipmentItem({
     required this.Item,
   });

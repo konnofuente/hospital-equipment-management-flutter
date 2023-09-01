@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class EquipmentItem {
-  final String id;
+  final int id;
   final String name;
   final String description;
   final int quantity;
@@ -16,8 +16,10 @@ class EquipmentItem {
 
  
 
+  
+
   EquipmentItem copyWith({
-    String? id,
+    int? id,
     String? name,
     String? description,
     int? quantity,
@@ -41,7 +43,7 @@ class EquipmentItem {
 
   factory EquipmentItem.fromMap(Map<String, dynamic> map) {
     return EquipmentItem(
-      id: map['id'] as String,
+      id: map['id'] as int,
       name: map['name'] as String,
       description: map['description'] as String,
       quantity: map['quantity'] as int,

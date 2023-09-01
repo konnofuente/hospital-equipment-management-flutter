@@ -1,38 +1,45 @@
+import 'dart:io';
+
+import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
 import 'package:evaltech_mobile/models/EquipementCategories.dart';
 import 'package:evaltech_mobile/models/EquipementItem.dart';
 import 'package:evaltech_mobile/screens/AuthScreens/verifie_email.dart';
 import 'package:evaltech_mobile/screens/Home/GetStarted/getStarted_screen.dart';
 import 'package:evaltech_mobile/utils/is_loading_indicator.dart';
+import 'package:evaltech_mobile/widget/widget_alertbox.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
+import '../../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
+import '../../../bloc/bloc_export.dart';
 import '../../../models/Role.dart';
 import '../../../services/auth.dart';
 import '../../../services/internet_connection.dart';
 import '../../../services/localisationService/t_key.dart';
 import '../../../provider/provider.dart';
-import '../../../utils/navigate_screen.dart';
-import '../../../widget/widget_alertbox.dart';
+import '../../../widget/imagePicker/image_oval_picker.dart';
 import '../../../widget/widget_button.dart';
 import '../../../widget/widget_icon.dart';
 import '../../../widget/widget_textformfield.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddFormEquipementCategory extends StatefulWidget {
   const AddFormEquipementCategory({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _AddFormEquipementCategoryState createState() => _AddFormEquipementCategoryState();
+  _AddFormEquipementCategoryState createState() =>
+      _AddFormEquipementCategoryState();
 }
 
 class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
   final _formKey = GlobalKey<FormState>();
   late bool alert;
   TextEditingController emailController = TextEditingController();
-    final TextEditingController nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController releaseDateController = TextEditingController();
   final TextEditingController directorsController = TextEditingController();
   final TextEditingController descController = TextEditingController();
@@ -45,8 +52,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
   TextInputType emailKeytype = TextInputType.emailAddress;
   TextEditingController passwordController = TextEditingController();
   bool isPasswordVisible = false;
-
-
+  File? _image;
 
   @override
   void initState() {
@@ -58,6 +64,60 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
     await InternetConnection().CheckInternetConnectivity(context);
   }
 
+  // Function to pick an image from gallery
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+      // For demonstration, we're setting the imageUrl to the picked image path
+      // You can upload the image to your server and set the URL here
+      imageUrl = pickedFile.path;
+    }
+  }
+
+  void emptyField() {
+    nameController.clear();
+    releaseDateController.clear();
+    directorsController.clear();
+    descController.clear();
+    imageUrl = null;
+    bannerUrl = null;
+    trailerImg1 = null;
+    secondImg = null;
+  }
+
+  void SaveEquipementCategory(BuildContext context) {
+    if (nameController.text.isNotEmpty || directorsController.text.isNotEmpty) {
+      EquipmentCategories newEquipmentCategory = EquipmentCategories(
+        id: 1, // Generate ID here
+        name: nameController.text,
+        items: [],
+        releaseDateDesc: releaseDateController.text,
+        directors: directorsController.text,
+        desc: descController.text,
+        imageUrl: imageUrl,
+        bannerUrl: bannerUrl,
+      );
+
+      print(newEquipmentCategory);
+      EquipmentCategoriesBloc equipmentCategoriesBloc =
+          BlocProvider.of<EquipmentCategoriesBloc>(context);
+
+      equipmentCategoriesBloc
+          .add(AddEquipmentCategories(EquipmentCategory: newEquipmentCategory));
+      emptyField();
+    } else {
+      AlertBox.awesomeAlertBox(
+          context,
+          "Equipement",
+          "Assure vous que vous avec entre le nom et directeur dans le champ d'information",
+          () {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,14 +133,32 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
           child: Column(
             children: [
               WidgetTextForm.getTextField(
-                  "Name", nameController, TextInputType.text, "Enter name", WidgetIcon.userAccount(false)),
-                  SizedBox(height: 15,),
-              WidgetTextForm.getTextField("Directors", directorsController,
-                  TextInputType.text, "Enter directors", WidgetIcon.userAccount(false)),
-                  SizedBox(height: 15,),
-              WidgetTextForm.getTextField("Description", descController,
-                  TextInputType.text, "Enter description", WidgetIcon.userAccount(false)),
-                  SizedBox(height: 15,),
+                  "Name",
+                  nameController,
+                  TextInputType.text,
+                  "Enter name",
+                  WidgetIcon.userAccount(false)),
+              SizedBox(
+                height: 15,
+              ),
+              WidgetTextForm.getTextField(
+                  "Directors",
+                  directorsController,
+                  TextInputType.text,
+                  "Enter directors",
+                  WidgetIcon.userAccount(false)),
+              SizedBox(
+                height: 15,
+              ),
+              WidgetTextForm.getTextField(
+                  "Description",
+                  descController,
+                  TextInputType.text,
+                  "Enter description",
+                  WidgetIcon.userAccount(false)),
+              SizedBox(
+                height: 15,
+              ),
               // Date Picker
               TextFormField(
                 controller: releaseDateController,
@@ -101,47 +179,92 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
                 ),
               ),
               // Image upload placeholders
-                  SizedBox(height: 15,),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement your image upload logic here
-                },
-                child: Text("Upload Image"),
+              SizedBox(
+                height: 15,
               ),
-                  SizedBox(height: 15,),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement your banner upload logic here
+
+              ImageOvalPickerWidget(
+                label: "télécharger le logo d'equipement",
+                onImagePicked: (image) {
+                  // Do something with the picked image, like updating the Equipment variable
+                  imageUrl = image.path;
                 },
-                child: Text("Upload Banner"),
               ),
-                  SizedBox(height: 15,),
-              // ... (add more upload buttons for other images)
-              ElevatedButton(
-                onPressed: () {
-                  // Create EquipmentCategories object
-                  // EquipmentCategories newEquipmentCategory = EquipmentCategories(
-                  //   id: 1, // Generate ID here
-                  //   name: nameController.text,
-                  //   items: EquipmentItem[],
-                  //   releaseDateDesc: releaseDateController.text,
-                  //   directors: directorsController.text,
-                  //   desc: descController.text,
-                  //   imageUrl: imageUrl,
-                  //   bannerUrl: bannerUrl,
-                  //   trailerImg1: trailerImg1,
-                  //   secondImg: secondImg,
-                  // );
-                  // // Implement logic to add newEquipmentCategory to your data source
-                  // // For now, let's print it.
-                  // print(newEquipmentCategory);
+              SizedBox(
+                height: 15,
+              ),
+
+              ImageOvalPickerWidget(
+                label: "télécharger la photo banner ",
+                onImagePicked: (image) {
+                  bannerUrl = image.path;
+                  // Do something with the picked image, like updating the Equipment variable
                 },
-                child: Text("Save"),
               ),
+              SizedBox(
+                height: 15,
+              ),
+
+              WidgetButton.largeButton(
+                  TKeys.create_cat.translate(context),
+                  AppTextTheme.buttonwhite,
+                  AppColors.primaryblue,
+                  null, () async {
+                SaveEquipementCategory(context);
+              }),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column OvalImagePicker() {
+    return Column(
+      children: [
+        Text(
+          "Upload Equipment Image",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+        SizedBox(height: 10),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            _image == null
+                ? Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Icon(Icons.image, size: 40, color: Colors.grey[800]),
+                  )
+                : ClipOval(
+                    child: Image.file(
+                      _image!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+            Positioned(
+              right: 5,
+              bottom: 5,
+              child: InkWell(
+                onTap: _pickImage,
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
