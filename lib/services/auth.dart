@@ -37,8 +37,7 @@ static Future<void> localregisterUser({
     userBloc.add(AddUsers(users: newUser));
   }
 
-
-static Future<void> localloginUser({
+Future<void> localloginUser({
   required BuildContext context,
   required String email,
   required String password,
@@ -52,6 +51,10 @@ static Future<void> localloginUser({
   await for (bool status in userBloc.loginStatusController.stream.asBroadcastStream()) {
     if (status) {
       // Navigate to the GetStartedScreen if login is successful
+      
+      await _storage.write(key: "evaltech_KEY_EMAIL", value: email);
+      await _storage.write(key: "evaltech_KEY_PASSWORD", value: password);
+      
       NavigationScreen.navigate(context, GetStartedScreen());
       break;  // Break out of the loop once navigation is done
     } else {

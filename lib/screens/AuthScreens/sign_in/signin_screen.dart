@@ -65,11 +65,16 @@ class _SignInState extends State<SignIn> {
     if (_formKey.currentState!.validate()) {
       // await AuthService()
       //     .login(context, emailController.text, passwordController.text);
-        await AuthService.localloginUser(
-        context: context,
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      
+    AuthService authService = AuthService();
+    
+    // your other code here...
+    
+    await authService.localloginUser(
+      context: context,
+      email: emailController.text, password: passwordController.text,
+    );
+    
 
     
     }
