@@ -51,6 +51,8 @@ enum TKeys {
   request_acct,
   changeLanguage,
   category,
+  add_category,
+  create_cat,
 }
 
 //TKeys.hello

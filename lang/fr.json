@@ -45,5 +45,9 @@
   "contact": "Contactez-nous",
   "request_acct": "Demander un compte",
   "changeLanguage": "Change de langue",
-  "category": "Categorie"
+  "category": "Categorie",
+  "add_category": "Ajouter un category d'equipement",
+  "create_cat": "Cree une categorie"
+
+
 }

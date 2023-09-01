@@ -45,6 +45,9 @@
   "contact": "Contact Us",
   "request_acct": "Request account",
   "changeLanguage": "Change Language",
-  "category": "Category"
+  "category": "Category",
+  "add_category": "Add a category",
+  "create_cat": "Create Category"
+
 
 }

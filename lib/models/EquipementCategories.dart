@@ -8,7 +8,7 @@ import 'EquipementItem.dart';
 class EquipmentCategories {
   final int id;
   final String name;
-  final List<EquipmentItem> items;
+  List<EquipmentItem> items;
   String? releaseDateDesc;
   String? directors;
   String? desc;

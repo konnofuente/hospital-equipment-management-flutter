@@ -1,3 +1,5 @@
+import 'package:evaltech_mobile/screens/AllEquipementCategories/components/add_form_equipement_category.dart';
+import 'package:evaltech_mobile/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../Theme/theme_export.dart';
@@ -16,8 +18,8 @@ class AllEquipementCategoryScreen extends StatefulWidget {
       _AllEquipementCategoryScreenState();
 }
 
-class _AllEquipementCategoryScreenState extends State<AllEquipementCategoryScreen>
-    with TickerProviderStateMixin {
+class _AllEquipementCategoryScreenState
+    extends State<AllEquipementCategoryScreen> with TickerProviderStateMixin {
   late List<EquipmentCategories> equipementCategoriesList;
 
   late AnimationController _controller;
@@ -53,12 +55,9 @@ class _AllEquipementCategoryScreenState extends State<AllEquipementCategoryScree
             SizedBox(
               height: 10,
             ),
-            WidgetButton.largeButton(
-                TKeys.sign_in.translate(context),
-                AppTextTheme.buttonwhite,
-                AppColors.primaryblue,
-                null, () async {
-              // loginVerification();
+            WidgetButton.largeButton(TKeys.add_category.translate(context),
+                AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
+              NavigationScreen.navigate(context, AddFormEquipementCategory());
             }),
             SizedBox(
               height: 10,
