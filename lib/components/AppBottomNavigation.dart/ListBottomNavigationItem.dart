@@ -4,56 +4,46 @@ import '../../Theme/theme_export.dart';
 import '../../services/localisationService/t_key.dart';
 
 class ListBottomNavigationItem {
-  
-   List<BottomNavigationBarItem> dashboardListItem(BuildContext context) {
+  List<BottomNavigationBarItem> dashboardListItem(BuildContext context) {
     return [
       BottomNavigationBarItem(
-        icon: Image.asset(
-          'assets/Icons/icon_group.png',
-          height: 24.66,
-          width: 24.66,
-          fit: BoxFit.cover,
+        icon: Icon(
+          Icons.group,
           color: Color.fromRGBO(78, 86, 107, 1),
+          size: 24.66,
         ),
         label: TKeys.group.translate(context),
-        activeIcon: Image.asset(
-          'assets/Icons/icon_group.png',
-          height: 24.66,
-          width: 24.66,
-          fit: BoxFit.cover,
+        activeIcon: Icon(
+          Icons.group,
           color: AppColors.primarydark,
+          size: 24.66,
         ),
       ),
       BottomNavigationBarItem(
-        icon: Image.asset(
-          'assets/Icons/icon_home.png',
-          height: 24.66,
-          width: 24.66,
-          fit: BoxFit.cover,
+        icon: Icon(
+          Icons.home,
           color: Color.fromRGBO(78, 86, 107, 1),
+          size: 24.66,
         ),
         label: TKeys.home.translate(context),
-        activeIcon: Image.asset(
-          'assets/Icons/icon_home_fill.png',
-          height: 24.66,
-          width: 24.66,
-          fit: BoxFit.cover,
+        activeIcon: Icon(
+          Icons.home,
+          color: AppColors.primarydark,
+          size: 24.66,
         ),
       ),
       BottomNavigationBarItem(
-        icon: Image.asset(
-          'assets/Icons/icon_downloads.png',
-          height: 24.66,
-          width: 24.66,
-          fit: BoxFit.cover,
+        icon: Icon(
+          Icons.category,
           color: Color.fromRGBO(78, 86, 107, 1),
+          size: 24.66,
         ),
-        label: TKeys.download.translate(context),
-        activeIcon: Image.asset(
-          'assets/Icons/icon_downloads_fill.png',
-          height: 23.00,
-          width: 23.00,
-          fit: BoxFit.cover,
+        label: TKeys.category.translate(context),
+        activeIcon: Icon(
+          Icons.category,
+          color: AppColors.primarydark,
+          size:
+              23.00, // Adjusted the size for the active icon, as in your original code
         ),
       ),
     ];

@@ -14,18 +14,18 @@ import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import '../QuizScreen/MainQuizScreen.dart';
 import '../StatisticScreen/StatisticScreen.dart';
 
-class EquipmentCategoriesScreen extends StatefulWidget {
+class EquipementCategoryScreen extends StatefulWidget {
   // final Item item;
-  // EquipmentCategoriesScreen(this.item);
-  EquipmentCategoriesScreen();
+  // EquipementCategoryScreen(this.item);
+  EquipementCategoryScreen();
 
   @override
-  State<EquipmentCategoriesScreen> createState() =>
-      _EquipmentCategoriesScreenState();
+  State<EquipementCategoryScreen> createState() =>
+      _EquipementCategoryScreenState();
 }
 
-class _EquipmentCategoriesScreenState extends State<EquipmentCategoriesScreen> {
-  //  EquipmentCategoriesScreen({Key? key, required this.item}) : super(key: key);
+class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
+  //  EquipementCategoryScreen({Key? key, required this.item}) : super(key: key);
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
 

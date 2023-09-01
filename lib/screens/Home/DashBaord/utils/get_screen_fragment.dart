@@ -7,6 +7,7 @@ import 'package:evaltech_mobile/screens/Home/HomeScreen.dart';
 import 'package:evaltech_mobile/screens/SettingScreen/Settings.dart';
 import 'package:flutter/material.dart';
 import '../../../DownloadScreen.dart';
+import '../../../EquipementCategory/EquipementCategoryScreen.dart';
 import '../../../PastQuestions.dart';
 import '../../home.dart';
 
@@ -19,7 +20,7 @@ Widget getDashboardFragment(int selectedIndex) {
   } else if (selectedIndex == 1) {
     return HomeScreen();
   } else if (selectedIndex == 2) {
-    return DownloadScreen();
+    return EquipementCategoryScreen();
   }
   return HomeScreen();
 }

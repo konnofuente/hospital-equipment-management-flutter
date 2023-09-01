@@ -49,7 +49,8 @@ enum TKeys {
   logout,
   contact,
   request_acct,
-  changeLanguage
+  changeLanguage,
+  category,
 }
 
 //TKeys.hello

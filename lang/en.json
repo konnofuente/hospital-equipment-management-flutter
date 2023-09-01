@@ -44,5 +44,7 @@
   "logout": "Logout",
   "contact": "Contact Us",
   "request_acct": "Request account",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "category": "Category"
+
 }

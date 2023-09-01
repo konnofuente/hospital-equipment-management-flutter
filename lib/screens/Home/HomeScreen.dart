@@ -1,6 +1,6 @@
 import 'package:evaltech_mobile/db/db.dart';
 import 'package:evaltech_mobile/models/EquipementCategories.dart';
-import 'package:evaltech_mobile/screens/Home/classroomList.dart';
+import 'package:evaltech_mobile/screens/AllEquipementCategories/components/all_equipement_categoriesList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       childAspectRatio: 8.0 / 9.0,
       children: classList
           .map(
-            (Item) => EquipmentCategoriesList(equipment_categories: Item),
+            (Item) => AllEquipmentCategoriesList(equipment_categories: Item),
           )
           .toList(),
     );

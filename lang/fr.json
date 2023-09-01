@@ -44,5 +44,6 @@
   "logout": "Déconnexion",
   "contact": "Contactez-nous",
   "request_acct": "Demander un compte",
-  "changeLanguage": "Change de langue"
+  "changeLanguage": "Change de langue",
+  "category": "Categorie"
 }

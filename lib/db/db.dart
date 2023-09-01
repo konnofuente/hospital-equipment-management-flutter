@@ -18,7 +18,8 @@ class DB {
         imageUrl: 'assets/Images/ic_preview_4.png',
         trailerImg1: 'assets/Images/ict.png',
         secondImg: 'assets/Images/quiz.png',
-        secondText: ''),
+        secondText: '', 
+        items: []),
     EquipmentCategories(
         id: 4,
         name: 'Geography ',
@@ -30,7 +31,8 @@ class DB {
         imageUrl: 'assets/Images/ic_preview_4.png',
         trailerImg1: 'assets/Images/ict.png',
         secondImg: 'assets/Images/quiz.png',
-        secondText: ''),
+        secondText: '', 
+        items: []),
     EquipmentCategories(
         id: 5,
         name: 'Physics ',
@@ -42,7 +44,8 @@ class DB {
         imageUrl: 'assets/Images/ic_preview_4.png',
         trailerImg1: 'assets/Images/ict.png',
         secondImg: 'assets/Images/quiz.png',
-        secondText: ''),
+        secondText: '', 
+        items: []),
   ];
 
   List<Document> documents = [
