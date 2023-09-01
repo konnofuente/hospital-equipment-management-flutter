@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:evaltech_mobile/Theme/text_theme.dart';
 import 'package:evaltech_mobile/screens/EquipementCategory/equipement_category.dart';
 import 'package:evaltech_mobile/screens/Home/GetRatings.dart';
@@ -42,10 +44,11 @@ class _AllEquipmentCategoriesListState extends State<AllEquipmentCategoriesList>
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18.0 / 12.0,
-              child: Image.asset(
-                widget.equipment_categories.trailerImg1!,
-                fit: BoxFit.fill,
-              ),
+              child:widget.equipment_categories.imageUrl != null
+    ? Image.file(File(widget.equipment_categories.imageUrl!),
+        fit: BoxFit.cover)
+    : SizedBox.shrink(),  // Replace with a placeholder widget if you like
+
             ),
             // ignore: unnecessary_new
             new Padding(

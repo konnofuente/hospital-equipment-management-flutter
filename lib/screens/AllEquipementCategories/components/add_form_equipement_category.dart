@@ -109,6 +109,12 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
 
       equipmentCategoriesBloc
           .add(AddEquipmentCategories(EquipmentCategory: newEquipmentCategory));
+      AlertBox.awesomeOkBox(
+          context,
+          "Equipement",
+          "La Categorie ${nameController.text} a ete cree avec success!!!",
+          () {});
+          
       emptyField();
     } else {
       AlertBox.awesomeAlertBox(

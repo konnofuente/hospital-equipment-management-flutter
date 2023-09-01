@@ -21,34 +21,35 @@ class EquipmentCategoriesBloc
     // on<FetchEquipmentCategories>(_onFetchEquipmentCategories);
   }
 
-  Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
-      Emitter<EquipmentCategoriesState> emit) async {
-    // final state = this.state;
-    final state = EquipmentCategoriesState(); // Initialize or fetch your state
+Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
+    Emitter<EquipmentCategoriesState> emit) async {
+  
+  // Use the current state
+  final currentState = this.state; 
 
-    // Generate unique ID for new EquipmentCategory
-    int Id = AppFunction().generateUserId(event.EquipmentCategory.name);
+  // Generate unique ID for new EquipmentCategory
+  int Id = AppFunction().generateUserId(event.EquipmentCategory.name);
 
-    // Create a new EquipmentCategories object with generated ID
-    EquipmentCategories newEquipmentCategory = event.EquipmentCategory.copyWith(id: Id);
+  // Create a new EquipmentCategories object with generated ID
+  EquipmentCategories newEquipmentCategory =
+      event.EquipmentCategory.copyWith(id: Id);
 
   // Create a new list that includes all previous elements and the new one
-  List<EquipmentCategories> updatedEquipmentCategories = List.from(state.allEquipmentCategories)
-    ..add(newEquipmentCategory);
-  
+  List<EquipmentCategories> updatedEquipmentCategories =
+      List.from(currentState.allEquipmentCategories)..add(newEquipmentCategory);
+
   // Emit the new state
   emit(EquipmentCategoriesState(
     allEquipmentCategories: updatedEquipmentCategories,
   ));
-  
 
-    try {
-      print(
-          'Succesfully save of EquipmentCategories!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-    } catch (e) {
-      print('OMline EquipmentCategories not created: $e !!!!!!!!!!!');
-    }
+  try {
+    print('Successfully saved EquipmentCategories as the ${updatedEquipmentCategories.length}th ' );
+  } catch (e) {
+    print('Online EquipmentCategories not created: $e');
   }
+}
+
 
   Future<void> _onUpdateEquipmentCategories(UpdateEquipmentCategories event,
       Emitter<EquipmentCategoriesState> emit) async {

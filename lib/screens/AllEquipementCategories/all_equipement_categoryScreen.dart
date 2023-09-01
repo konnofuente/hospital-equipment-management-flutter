@@ -3,6 +3,9 @@ import 'package:evaltech_mobile/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../Theme/theme_export.dart';
+import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
+import '../../bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
+import '../../bloc/bloc_export.dart';
 import '../../db/db.dart';
 import '../../models/EquipementCategories.dart';
 import '../../services/localisationService/t_key.dart';
@@ -47,33 +50,69 @@ class _AllEquipementCategoryScreenState
     super.dispose();
   }
 
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            WidgetButton.largeButton(TKeys.add_category.translate(context),
-                AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     body: Center(
+  //       child: Column(
+  //         children: [
+  //           SizedBox(
+  //             height: 10,
+  //           ),
+  //           WidgetButton.largeButton(TKeys.add_category.translate(context),
+  //               AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
+  //             NavigationScreen.navigate(context, AddFormEquipementCategory());
+  //           }),
+  //           SizedBox(
+  //             height: 10,
+  //           ),
+  //           Expanded(
+  //             child: _gridView(),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+ Widget build(BuildContext context) {
+    return BlocBuilder<EquipmentCategoriesBloc, EquipmentCategoriesState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Center(
+            child: Column(
+              children: [
+                SizedBox(height: 10),
+                // Flexible(
+                //   flex: 1,
+                  // child:
+                   WidgetButton.largeButton(
+                      "Ajoutez une Categorie d'equipement",
+                      AppTextTheme.buttonwhite,
+                      AppColors.primaryblue,
+                      null, () async {
               NavigationScreen.navigate(context, AddFormEquipementCategory());
-            }),
-            SizedBox(
-              height: 10,
+                    // Implement your action here
+                  }),
+                // ),
+                SizedBox(height: 10),
+                Expanded(
+                  child: state.allEquipmentCategories.isNotEmpty
+                      ? FadeTransition(
+                          opacity: _animation,
+                          child: _gridView(state.allEquipmentCategories),
+                        )
+                      : Center(child: Text("No category created yet")),
+                ),
+              ],
             ),
-            Expanded(
-              child: _gridView(),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _gridView() {
+  Widget _gridView(List<EquipmentCategories> allEquipmentCategories) {
     return GridView.builder(
-      itemCount: equipementCategoriesList.length,
+      itemCount: allEquipmentCategories.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 8.0 / 9.0,
@@ -85,7 +124,7 @@ class _AllEquipementCategoryScreenState
             return Transform.scale(
               scale: _animation.value,
               child: AllEquipmentCategoriesList(
-                equipment_categories: equipementCategoriesList[index],
+                equipment_categories: allEquipmentCategories[index],
               ),
             );
           },
