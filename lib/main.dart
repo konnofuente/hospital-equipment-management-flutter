@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:gestion_hopital/bloc/ReservationBloc/reservation_bloc.dart';
 import 'package:gestion_hopital/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => EquipmentItemBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ReservationBloc(),
         ),
       ],
       child: GetMaterialApp(

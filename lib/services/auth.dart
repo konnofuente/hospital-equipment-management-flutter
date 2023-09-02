@@ -43,38 +43,6 @@ class AuthService {
 
   }
 
-  // Future<void> localloginUser({
-  //   required BuildContext context,
-  //   required String email,
-  //   required String password,
-  // }) async {
-  //   UserBloc userBloc = BlocProvider.of<UserBloc>(context);
-
-  //   // Dispatch the LoginUser event to the UserBloc
-  //   userBloc.add(LoginUser(email: email, password: password));
-
-  //   // Listen for login status
-  //   await for (bool status
-  //       in userBloc.loginStatusController.stream.asBroadcastStream()) {
-  //     if (status) {
-  //       // Navigate to the GetStartedScreen if login is successful
-
-  //       await _storage.write(key: "evaltech_KEY_EMAIL", value: email);
-  //       await _storage.write(key: "evaltech_KEY_PASSWORD", value: password);
-
-  //       Provider.of<UserManagement>(context, listen: false)
-  //         .changeUser(userBloc.state.appUser!);
-
-  //       NavigationScreen.navigate(context, GetStartedScreen());
-  //       break; // Break out of the loop once navigation is done
-  //     } else {
-  //       // Show an alert box if login fails
-  //       AlertBox.alertbox(
-  //           context, "Registration", "Invalid Password or email", () {});
-  //       break; // Break out of the loop once the alert box is shown
-  //     }
-  //   }
-  // }
 
   Future<void> localloginUser({
   required BuildContext context,

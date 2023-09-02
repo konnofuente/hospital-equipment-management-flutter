@@ -54,28 +54,26 @@ class WidgetTextForm {
     );
   }
 
-  static TextFormField getDatePicker(
-      BuildContext context,
-      String text,
-      TextEditingController controller,
-      Widget? icon) {
-    return TextFormField(
-      controller: controller,
-      readOnly: true,
-      onTap: () async {
-        final DateTime? pickedDate = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2000),
-            lastDate: DateTime(2101));
-        if (pickedDate != null && pickedDate != DateTime.now())
-          controller.text =
-              "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
-      },
-      decoration: InputDecoration(
-        labelText: text,
-        hintText: "Pick a Date",
-      ),
-    );
-  }
+static TextFormField getDatePicker(BuildContext context, String text, TextEditingController controller, Widget? icon) {
+  return TextFormField(
+    controller: controller,
+    readOnly: true,
+    onTap: () async {
+      final DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2101)
+      );
+      if (pickedDate != null && pickedDate != DateTime.now())
+        controller.text =
+          "${pickedDate.year}-${pickedDate.month.toString().padLeft(2, '0')}-${pickedDate.day.toString().padLeft(2, '0')}";
+    },
+    decoration: InputDecoration(
+      labelText: text,
+      hintText: "Pick a Date",
+    ),
+  );
+}
+
 }

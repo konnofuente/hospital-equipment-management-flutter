@@ -2,12 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_hopital/Theme/app_theme.dart';
 import 'package:gestion_hopital/Theme/theme_export.dart';
+import 'package:gestion_hopital/models/ReservationDetails.dart';
+import 'package:gestion_hopital/models/function.dart';
+import 'package:gestion_hopital/provider/provider.dart';
+import 'package:gestion_hopital/services/reservationService.dart';
 import 'package:gestion_hopital/widget/widget_export.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/EquipementItem.dart';
+import '../../models/Reservation.dart';
+import '../../models/User.dart';
 
 class MakeReservation extends StatefulWidget {
- final EquipmentItem Item;
+  final EquipmentItem Item;
   const MakeReservation({
     Key? key,
     required this.Item,
@@ -21,12 +28,45 @@ class _MakeReservationState extends State<MakeReservation> {
   DateTime? loanDate;
   DateTime? returnDate;
   TextEditingController quantityController = TextEditingController();
-  final TextEditingController loanDateController = TextEditingController();
+  final TextEditingController reserveDateController = TextEditingController();
   final TextEditingController returnDateController = TextEditingController();
 
+  void formInformation(User actaulUser) {
+    try {
+      int reservedQuantity = int.parse(quantityController.text);
+      DateTime reserveDate = DateTime.parse(reserveDateController.text);
+      DateTime returnDate = DateTime.parse(returnDateController.text);
+
+      // Assuming generateReservationId() and generateReservationDetailsId()
+      // are methods that generate unique IDs.
+      int newReservationId = AppFunction().generateUserId(actaulUser!.email!);
+
+      ReservationDetails newReservationDetail = ReservationDetails(
+          id: AppFunction().generateUserId(actaulUser.id.toString()),
+          reservationId: newReservationId,
+          equipmentItemId: widget.Item.id,
+          reservedQuantity: reservedQuantity,
+          reserveDate: reserveDate,
+          returnDate: returnDate);
+
+      Reservation newReservation = Reservation(
+          id: newReservationId,
+          userId: actaulUser.id!,
+          reservationDetails: [newReservationDetail]);
+
+      ReservationServices.SaveRegistration(context, newReservation);
+
+      // print(newReservation);
+    } catch (e) {
+      // Handle your error here
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    User? actaulUser = Provider.of<UserManagement>(context).actaulUser;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Loan Item'),
@@ -52,30 +92,41 @@ class _MakeReservationState extends State<MakeReservation> {
                         style: AppTextTheme.title,
                       ),
                       SizedBox(height: 12),
-                      Text('Item Name: ${widget.Item.name}', style: AppTextTheme.body1),
-                      Text('Item Description: ${widget.Item.itemDetails}', style: AppTextTheme.body1),
-                      Text('Available Quantity: ${widget.Item.quantity}', style: TextStyle(fontSize: 16, color: AppColors.success)),
+                      Text('Item Name: ${widget.Item.name}',
+                          style: AppTextTheme.body1),
+                      Text('Item Description: ${widget.Item.itemDetails}',
+                          style: AppTextTheme.body1),
+                      Text('Available Quantity: ${widget.Item.quantity}',
+                          style: TextStyle(
+                              fontSize: 16, color: AppColors.success)),
                     ],
                   ),
                 ),
               ),
-              
+
               SizedBox(height: 20),
-              
+
               // Loan Date Picker
-             WidgetTextForm.getDatePicker(context, "Date de Reservation", loanDateController, null),
-              
+              WidgetTextForm.getDatePicker(
+                  context, "Date de reservation", reserveDateController, null),
+
               SizedBox(height: 10),
               // Return Date Picker
-             WidgetTextForm.getDatePicker(context, "Date de Reservation", returnDateController, null),
-              
+              WidgetTextForm.getDatePicker(
+                  context, "Date de retour", returnDateController, null),
+
               // Quantity TextField
               SizedBox(height: 10),
-        
-              WidgetTextForm.getTextField("Quantite", quantityController, TextInputType.text, "Entre une quantite", WidgetIcon.number(false)),
-              
+
+              WidgetTextForm.getTextField(
+                  "Quantite",
+                  quantityController,
+                  TextInputType.text,
+                  "Entre une quantite",
+                  WidgetIcon.number(false)),
+
               SizedBox(height: 20),
-              
+
               // Loan Button
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -83,7 +134,7 @@ class _MakeReservationState extends State<MakeReservation> {
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 onPressed: () {
-                  // Handle the loan logic here
+                  formInformation(actaulUser!);
                 },
                 child: Text('Loan', style: TextStyle(fontSize: 16)),
               ),
@@ -93,5 +144,4 @@ class _MakeReservationState extends State<MakeReservation> {
       ),
     );
   }
-
 }

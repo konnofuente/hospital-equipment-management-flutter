@@ -8,11 +8,11 @@ import 'ReservationDetails.dart';
 class Reservation {
   final int id;
   final int userId;
-  final List<ReservationDetails> reservationDetails;
+  late final List<ReservationDetails>? reservationDetails;
   Reservation({
     required this.id,
     required this.userId,
-    required this.reservationDetails,
+    this.reservationDetails,
   });
 
   Reservation copyWith({
@@ -31,7 +31,7 @@ class Reservation {
     return <String, dynamic>{
       'id': id,
       'userId': userId,
-      'reservationDetails': reservationDetails.map((x) => x.toMap()).toList(),
+      'reservationDetails': reservationDetails!.map((x) => x.toMap()).toList(),
     };
   }
 
