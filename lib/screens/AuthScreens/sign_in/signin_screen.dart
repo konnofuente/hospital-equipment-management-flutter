@@ -1,9 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gestion_hopital/utils/is_loading_indicator.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
+import '../../../bloc/bloc_export.dart';
 import '../../../models/Role.dart';
 import '../../../services/auth.dart';
 import '../../../services/internet_connection.dart';
@@ -42,8 +44,6 @@ class _SignInState extends State<SignIn> {
     emailController.text = (await _storage.read(key: "evaltech_KEY_EMAIL"))!;
     passwordController.text =
         (await _storage.read(key: "evaltech_KEY_PASSWORD"))!;
-    token = (await _storage.read(key: "evaltech_KEY_TOKEN"))!;
-    print("$emailController  $passwordController  $token");
   }
 
   @override
@@ -58,14 +58,8 @@ class _SignInState extends State<SignIn> {
   }
 
   Future<void> loginVerification() async {
-    // NavigationScreen.navigate(context, GetStartedScreen());
     if (_formKey.currentState!.validate()) {
-      // await AuthService()
-      //     .login(context, emailController.text, passwordController.text);
-
       AuthService authService = AuthService();
-
-      // your other code here...
 
       await authService.localloginUser(
         context: context,

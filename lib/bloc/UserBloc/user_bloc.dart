@@ -49,6 +49,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<FutureOr<void>> _onAddUser(
       AddUsers event, Emitter<UserState> emit) async {
     final state = this.state;
+
     if (doesUserExist(event.users.email!, state.usersList)) {
       AlertBox.alertbox(event.context, "Registration",
           "Cette utilisateur existe deja", () {});
@@ -80,33 +81,30 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 
-// In your UserBloc
   Future<void> _onLoginUser(LoginUser event, Emitter<UserState> emit) async {
-    final state = this.state;
+  final state = this.state;
 
-    // Find a user that matches the email and password
-    User? matchedUser;
-    for (var user in state.usersList) {
-      if (user.email == event.email && user.password == event.password) {
-        matchedUser = user;
-        break;
-      }
-    }
-
-    if (matchedUser != null) {
-      print("Successfully logged in!");
-      // Emit new state with logged-in user
-      emit(UserState(appUser: matchedUser));
-      loginStatusController.sink.add(true);
-      //update the actaulle user 
-      Provider.of<UserManagement>(event.context,listen:false).changeUser(matchedUser);
-    } else {
-      print("Invalid email or password");
-      // Emit error state or handle accordingly
-      print(state.usersList);
-      loginStatusController.sink.add(false);
+  // Find a user that matches the email and password
+  User? matchedUser;
+  for (var user in state.usersList) {
+    if (user.email == event.email && user.password == event.password) {
+      matchedUser = user;
+      break;
     }
   }
+
+ if (matchedUser != null) {
+  print("Successfully logged in!");
+  // print(state.usersList);
+  emit(UserLoggedIn(user: matchedUser));
+   emit(UserState(appUser: matchedUser, usersList: state.usersList));
+} else {
+  print("Invalid email or password");
+  emit(UserLoginFailed(error: 'Invalid email or password'));
+}
+
+}
+
 
   Future<void> _onUpdateUser(UpdateUsers event, Emitter<UserState> emit) async {
     // final state = this.state;

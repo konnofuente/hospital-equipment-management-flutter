@@ -1,7 +1,10 @@
-import 'dart:async';
-import 'package:gestion_hopital/bloc/bloc_export.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gestion_hopital/screens/Home/GetStarted/components/body.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../bloc/UserBloc/user_bloc.dart';
+import '../../../provider/provider.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
@@ -13,16 +16,17 @@ class GetStartedScreen extends StatefulWidget {
 class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   void initState() {
-    _FetchPersonalData();
     super.initState();
   }
 
-  Future<void> _FetchPersonalData() async {
-    context.read<UserBloc>().add(FetchUsersInfo());
-  }
+  
 
   @override
   Widget build(BuildContext context) {
+        UserBloc userBloc = BlocProvider.of<UserBloc>(context);
+          Provider.of<UserManagement>(context, listen: false)
+        .changeUser(userBloc.state.appUser!);
+
     return Scaffold(
       body: GetStartedBody(),
     );

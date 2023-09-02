@@ -41,14 +41,31 @@ class DeleteUsers extends UserEvent {
 class LoginUser extends UserEvent {
   final String email;
   final String password;
-  final BuildContext context;
 
   const LoginUser({
-    required this.context, 
     required this.email,
     required this.password,
   });
 
   @override
   List<Object> get props => [email, password];
+}
+
+
+class UserLoggedIn extends UserState {
+  final User user;
+
+  UserLoggedIn({required User this.user});
+
+  @override
+  List<Object?> get props => [user];
+}
+
+class UserLoginFailed extends UserState {
+  final String error;
+
+  UserLoginFailed({required this.error});
+
+  @override
+  List<Object> get props => [error];
 }

@@ -101,10 +101,6 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                     style: AppTextTheme.listtitle,
                                   ),
                                   onPressed: () async {
-                                    // DefaultData()
-                                    //     .defautlUSer(context, Role.ADMIN);
-                                    // DefaultData()
-                                    //     .initializeData(context);
 
                                     await localizationController
                                         .toggleLanguage('en');
@@ -132,9 +128,6 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                   ),
                                   child: TextButton.icon(
                                     onPressed: () async {
-                                      DefaultData().defautlUSer(
-                                          context, Role.RESPONSABLE);
-
                                       await localizationController
                                           .toggleLanguage('fr');
 
