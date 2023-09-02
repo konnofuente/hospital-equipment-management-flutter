@@ -4,6 +4,7 @@ import 'package:evaltech_mobile/screens/ChatgroupScreen/ChatgroupScreen.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
 import 'package:evaltech_mobile/screens/EquipementCategory/components/add_form_equipment_item.dart';
 import 'package:evaltech_mobile/screens/EquipementCategory/widgets/getBottomItem.dart';
+import 'package:evaltech_mobile/screens/ListEquipementItem/list_equipement_item.dart';
 import 'package:evaltech_mobile/screens/PastQuestions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,6 @@ import '../../models/EquipementCategories.dart';
 import '../../models/Item.dart';
 import '../../provider/provider.dart';
 import '../../services/localisationService/t_key.dart';
-import '../Home/GridItemDetails.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import '../QuizScreen/MainQuizScreen.dart';
 import '../StatisticScreen/StatisticScreen.dart';
@@ -50,11 +50,11 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
 
     Widget getFragment() {
       if (selectedIndex == 0) {
-        return GridItemDetails(globalItem);
+        return ListEquipementItem(globalItem);
       } else if (selectedIndex == 1) {
         return AddFormEquipementItem(equipmentCategory:globalItem ,);
       }
-      return GridItemDetails(globalItem);
+      return ListEquipementItem(globalItem);
     }
 
     return Scaffold(

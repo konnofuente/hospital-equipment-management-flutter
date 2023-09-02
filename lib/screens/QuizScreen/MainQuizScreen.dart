@@ -6,6 +6,7 @@ import 'package:evaltech_mobile/screens/Home/GetRatings.dart';
 import 'package:evaltech_mobile/screens/QuizScreen/quiz/quiz_body.dart';
 import 'package:evaltech_mobile/screens/QuizScreen/welcome/welcome_screen.dart';
 import 'package:evaltech_mobile/utils/navigate_screen.dart';
+import 'package:evaltech_mobile/widget/equipement_categories/header_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,6 @@ import '../../models/Document.dart';
 import '../../provider/provider.dart';
 import '../../widget/equipement_categories/header_content.dart';
 import '../../widget/equipement_categories/header_image.dart';
-import '../EquipementCategory/components/header_banner.dart';
 
 class MainQuizScreen extends StatefulWidget {
   // final Item equipment_categories;
