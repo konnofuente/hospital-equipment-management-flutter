@@ -52,7 +52,8 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
           EquipementCategoryID: widget.equipmentCategory.id!,
           name: nameController.text,
           description: descriptionController.text,
-          quantity: int.parse(quantityController.text),
+          quantity: int.parse(quantityController.text), 
+          itemDetails: [],
         );
 
         // Fetch the EquipmentItemBloc

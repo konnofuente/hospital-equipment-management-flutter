@@ -1,20 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
+import 'ItemDetails.dart';
+
 class EquipmentItem {
   final int id;
   final int EquipementCategoryID;
   final String name;
   final String description;
   final int quantity;
+  final List<ItemDetails> itemDetails;
   EquipmentItem({
     required this.id,
     required this.EquipementCategoryID,
     required this.name,
     required this.description,
     required this.quantity,
+    required this.itemDetails,
   });
-
+  
 
   EquipmentItem copyWith({
     int? id,
@@ -22,6 +28,7 @@ class EquipmentItem {
     String? name,
     String? description,
     int? quantity,
+    List<ItemDetails>? itemDetails,
   }) {
     return EquipmentItem(
       id: id ?? this.id,
@@ -29,6 +36,7 @@ class EquipmentItem {
       name: name ?? this.name,
       description: description ?? this.description,
       quantity: quantity ?? this.quantity,
+      itemDetails: itemDetails ?? this.itemDetails,
     );
   }
 
@@ -39,6 +47,7 @@ class EquipmentItem {
       'name': name,
       'description': description,
       'quantity': quantity,
+      'itemDetails': itemDetails.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -49,6 +58,7 @@ class EquipmentItem {
       name: map['name'] as String,
       description: map['description'] as String,
       quantity: map['quantity'] as int,
+      itemDetails: List<ItemDetails>.from((map['itemDetails'] as List<int>).map<ItemDetails>((x) => ItemDetails.fromMap(x as Map<String,dynamic>),),),
     );
   }
 
@@ -58,7 +68,7 @@ class EquipmentItem {
 
   @override
   String toString() {
-    return 'EquipmentItem(id: $id, EquipementCategoryID: $EquipementCategoryID, name: $name, description: $description, quantity: $quantity)';
+    return 'EquipmentItem(id: $id, EquipementCategoryID: $EquipementCategoryID, name: $name, description: $description, quantity: $quantity, itemDetails: $itemDetails)';
   }
 
   @override
@@ -70,7 +80,8 @@ class EquipmentItem {
       other.EquipementCategoryID == EquipementCategoryID &&
       other.name == name &&
       other.description == description &&
-      other.quantity == quantity;
+      other.quantity == quantity &&
+      listEquals(other.itemDetails, itemDetails);
   }
 
   @override
@@ -79,6 +90,7 @@ class EquipmentItem {
       EquipementCategoryID.hashCode ^
       name.hashCode ^
       description.hashCode ^
-      quantity.hashCode;
+      quantity.hashCode ^
+      itemDetails.hashCode;
   }
 }

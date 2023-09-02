@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import '../../bloc/bloc_export.dart';
 
-class StatisticScreen extends StatefulWidget {
-  StatisticScreen();
+class StatisticAdminScreen extends StatefulWidget {
+  StatisticAdminScreen();
 
   @override
-  State<StatisticScreen> createState() => _StatisticScreenState();
+  State<StatisticAdminScreen> createState() => _StatisticAdminScreenState();
 }
 
-class _StatisticScreenState extends State<StatisticScreen> {
+class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
   @override
   void dispose() {
     _getStatistics(context);

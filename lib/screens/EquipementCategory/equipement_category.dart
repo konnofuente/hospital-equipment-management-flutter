@@ -1,12 +1,15 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:gestion_hopital/models/Role.dart';
 import 'package:gestion_hopital/screens/EquipementCategory/components/add_form_equipment_item.dart';
 import 'package:gestion_hopital/screens/EquipementCategory/widgets/getBottomItem.dart';
+import 'package:gestion_hopital/screens/EquipementCategory/widgets/getFragment.dart';
 import 'package:gestion_hopital/screens/ItemReservation/item_reservation.dart';
 import 'package:gestion_hopital/screens/ListEquipementItem/list_equipement_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Theme/app_theme.dart';
 import '../../models/EquipementCategories.dart';
+import '../../models/User.dart';
 import '../../provider/provider.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
@@ -40,22 +43,10 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
     EquipmentCategories globalItem =
         Provider.of<EquipmentCategoriesState>(context).equipment_categories
             as EquipmentCategories;
-
-    Widget getFragment() {
-      if (selectedIndex == 0) {
-        return ListEquipementItem(globalItem);
-      } else if (selectedIndex == 1) {
-        return AddFormEquipementItem(
-          equipmentCategory: globalItem,
-        );
-      } else if (selectedIndex == 2) {
-        return ItemReservation();
-      }
-      return ListEquipementItem(globalItem);
-    }
+    User? actaulUser = Provider.of<UserManagement>(context).actaulUser;
 
     return Scaffold(
-      body: getFragment(),
+      body: actaulUser!.role == Role.RESPONSABLE.name ? responsibleGetFragment(selectedIndex, globalItem) : adminGetFragment(selectedIndex, globalItem),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(0),
         child: BottomNavigationBar(
@@ -63,7 +54,7 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppColors.bottomtap,
-          items: getBottomItem(context),
+          items:actaulUser!.role == Role.RESPONSABLE.name ? responsibleGetBottomItem(context) : adminGetBottomItem(context),
           onTap: (val) {
             // AppBarName();
             setState(() {

@@ -9,8 +9,9 @@ import 'package:provider/provider.dart';
 
 import '../models/User.dart';
 import '../provider/provider.dart';
-import '../screens/Statistics/statistics.dart';
 import '../screens/Home/AdminDashBaord/admin_dashBoard.dart';
+import '../screens/StatisticAdmin/statistics_admin.dart';
+import '../screens/StatisticsResponsible/statistics_responsible.dart';
 
 AppDrawerTitle screen = AppDrawerTitle.Home;
 
@@ -20,29 +21,29 @@ Widget getAdminDashboardFragment(int selectedIndex) {
   } else if (selectedIndex == 1) {
     return AllEquipementCategoryScreen();
   } else if (selectedIndex == 2) {
-    return StatisticScreen();
+    return StatisticAdminScreen();
   }
   return AllEquipementCategoryScreen();
 }
 
 Widget getResponsipleDashboardFragment(int selectedIndex) {
   if (selectedIndex == 0) {
-    return ProjetScreen();
-  } else if (selectedIndex == 1) {
     return AllEquipementCategoryScreen();
-  } else if (selectedIndex == 2) {
-    return StatisticScreen();
+  } else if (selectedIndex == 1) {
+    return StatisticResponsibleScreen();
   }
   return AllEquipementCategoryScreen();
 }
 
 Widget getHomeFragment(BuildContext context, AppDrawerTitle val) {
-
-    User? actaulUser = Provider.of<UserManagement>(context,listen:false).actaulUser;
+  User? actaulUser =
+      Provider.of<UserManagement>(context, listen: false).actaulUser;
 
   if (val == AppDrawerTitle.Setting) {
     return SettingScreen();
   } else {
-    return actaulUser!.role == Role.RESPONSABLE.name ? ResponsibleDashBoard(): AdminDashBoard();
+    return actaulUser!.role == Role.RESPONSABLE.name
+        ? ResponsibleDashBoard()
+        : AdminDashBoard();
   }
 }

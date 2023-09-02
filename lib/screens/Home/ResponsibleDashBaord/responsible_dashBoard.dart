@@ -18,7 +18,7 @@ class ResponsibleDashBoard extends StatefulWidget {
 class ResponsibleDashBoardState extends State<ResponsibleDashBoard> {
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
-  int selectedIndex = 1;
+  int selectedIndex = 0;
   String AppBarTitle = 'Gestion Hopital';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 

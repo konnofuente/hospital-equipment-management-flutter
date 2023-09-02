@@ -1,12 +1,16 @@
 import 'package:gestion_hopital/screens/AllEquipementCategories/components/add_form_equipement_category.dart';
 import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Theme/theme_export.dart';
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
 import '../../bloc/bloc_export.dart';
 import '../../models/EquipementCategories.dart';
+import '../../models/Role.dart';
+import '../../models/User.dart';
+import '../../provider/provider.dart' hide EquipmentCategoriesState;
 import '../../services/localisationService/t_key.dart';
 import '../../widget/widget_button.dart';
 import 'components/all_equipement_categoriesList.dart';
@@ -30,7 +34,7 @@ class _AllEquipementCategoryScreenState
   @override
   void initState() {
     super.initState();
-   // Initialize your list
+    // Initialize your list
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
@@ -49,6 +53,8 @@ class _AllEquipementCategoryScreenState
   }
 
   Widget build(BuildContext context) {
+    User? actaulUser = Provider.of<UserManagement>(context).actaulUser;
+
     return BlocBuilder<EquipmentCategoriesBloc, EquipmentCategoriesState>(
       builder: (context, state) {
         return Scaffold(
@@ -59,7 +65,7 @@ class _AllEquipementCategoryScreenState
                 // Flexible(
                 //   flex: 1,
                 // child:
-                WidgetButton.largeButton(
+               actaulUser!.role == Role.RESPONSABLE.name ? Container(): WidgetButton.largeButton(
                     "Ajoutez une Categorie d'equipement",
                     AppTextTheme.buttonwhite,
                     AppColors.primaryblue,

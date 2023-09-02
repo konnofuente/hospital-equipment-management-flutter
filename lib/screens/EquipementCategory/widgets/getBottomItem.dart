@@ -3,7 +3,7 @@
 import '../../../Theme/theme_export.dart';
 import '../../../services/localisationService/t_key.dart';
 
-List<BottomNavigationBarItem> getBottomItem(BuildContext context) {
+List<BottomNavigationBarItem> adminGetBottomItem(BuildContext context) {
     return [
             BottomNavigationBarItem(
         icon: Icon(
@@ -31,6 +31,36 @@ List<BottomNavigationBarItem> getBottomItem(BuildContext context) {
           size: 24.66,
         ),
       ),    
+      BottomNavigationBarItem(
+        icon: Icon(
+          Icons.manage_accounts,
+          color: Color.fromRGBO(78, 86, 107, 1),
+          size: 24.66,
+        ),
+        label: "Peronne",
+        activeIcon: Icon(
+          Icons.manage_accounts,
+          color: AppColors.primarydark,
+          size: 24.66,
+        ),
+      ),    
+      ];
+  }
+List<BottomNavigationBarItem> responsibleGetBottomItem(BuildContext context) {
+    return [
+            BottomNavigationBarItem(
+        icon: Icon(
+          Icons.list,
+          color: Color.fromRGBO(78, 86, 107, 1),
+          size: 24.66,
+        ),
+        label: "List",
+        activeIcon: Icon(
+          Icons.list,
+          color: AppColors.primarydark,
+          size: 24.66,
+        ),
+      ),  
       BottomNavigationBarItem(
         icon: Icon(
           Icons.manage_accounts,
