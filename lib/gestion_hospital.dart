@@ -36,13 +36,13 @@ class _GestionHopitalState extends State<GestionHopital> {
   final localizationController = Get.put(LocalizationController());
 
   Future<void> _loadingProcess() async {
-    await _FetchGestionHopitalData();
+    // await _FetchGestionHopitalData();
     checkUserLoggedIn();
     //  context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
   }
 
   Future<void> _FetchGestionHopitalData() async {
-    context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
+    // context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
     InternetConnection().CheckInternetConnectivity(context);
   }
 

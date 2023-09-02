@@ -1,0 +1,125 @@
+{
+    "users": [
+      {
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "phoneNumber": "1234567890",
+        "email": "admin",
+        "password": "1234",
+        "role": "ADMIN"
+      },
+      {
+        "firstName": "Responsible",
+        "lastName": "Person",
+        "phoneNumber": "9876543210",
+        "email": "resp",
+        "password": "1234",
+        "role": "RESPONSIBLE"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Chemistry",
+        "releaseDateDesc": "Lab equipment",
+        "directors": "Dr. Smith",
+        "desc": "Chemical apparatus",
+        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
+        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+      },
+      {
+        "name": "Physics",
+        "releaseDateDesc": "Measurement tools",
+        "directors": "Dr. Johnson",
+        "desc": "Physics lab",
+        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
+        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+      },
+      {
+        "name": "Biology",
+        "releaseDateDesc": "Organic study",
+        "directors": "Dr. Lee",
+        "desc": "Microscopes and more",
+        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
+        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+      },
+      {
+        "name": "Geology",
+        "releaseDateDesc": "Rock studies",
+        "directors": "Dr. Stone",
+        "desc": "Minerals and rocks",
+        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
+        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+      },
+      {
+        "name": "Mathematics",
+        "releaseDateDesc": "Calculative tools",
+        "directors": "Dr. Euler",
+        "desc": "Abacus, calculators",
+        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
+        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+      }
+    ],
+    "items": [
+      {
+        "EquipementCategoryID": "Chemistry",
+        "name": "Test Tube",
+        "description": "Glass test tube",
+        "quantity": 40
+      },
+      {
+        "EquipementCategoryID": "Chemistry",
+        "name": "Beaker",
+        "description": "Glass beaker",
+        "quantity": 30
+      },
+      {
+        "EquipementCategoryID": "Physics",
+        "name": "Ruler",
+        "description": "Measuring ruler",
+        "quantity": 20
+      },
+      {
+        "EquipementCategoryID": "Physics",
+        "name": "Stopwatch",
+        "description": "Time measurement",
+        "quantity": 25
+      },
+      {
+        "EquipementCategoryID": "Biology",
+        "name": "Microscope",
+        "description": "For micro observations",
+        "quantity": 10
+      },
+      {
+        "EquipementCategoryID": "Biology",
+        "name": "Petri Dish",
+        "description": "For culture",
+        "quantity": 35
+      },
+      {
+        "EquipementCategoryID": "Geology",
+        "name": "Rock Sample",
+        "description": "Sample of rocks",
+        "quantity": 50
+      },
+      {
+        "EquipementCategoryID": "Geology",
+        "name": "Mineral Sample",
+        "description": "Sample of minerals",
+        "quantity": 45
+      },
+      {
+        "EquipementCategoryID": "Mathematics",
+        "name": "Abacus",
+        "description": "Counting tool",
+        "quantity": 15
+      },
+      {
+        "EquipementCategoryID": "Mathematics",
+        "name": "Calculator",
+        "description": "Electronic calculator",
+        "quantity": 25
+      }
+    ]
+  }
+  

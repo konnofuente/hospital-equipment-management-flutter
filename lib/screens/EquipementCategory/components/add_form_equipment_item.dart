@@ -60,9 +60,10 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
 
         // Add the new EquipmentItem to the EquipmentItemBloc
         equipmentItemBloc.add(AddEquipmentItem(Item: newEquipmentItem));
+
         equipmentCategoriesBloc.add(AddItemEquipmentCategories(
             Item: newEquipmentItem,
-            EquipmentCategory: widget.equipmentCategory));
+            EquipmentCategoryId: widget.equipmentCategory.id!));
         // Clear the fields
         AlertBox.awesomeAlertBox(context, "Equipement Item",
             "Equipement cree avec sucess!!!", () {});

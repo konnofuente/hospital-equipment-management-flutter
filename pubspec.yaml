@@ -98,6 +98,7 @@ flutter:
   assets:
     - assets/Icons/
     - assets/Images/
+    - assets/data/data.json
     - assets/pdf/chemistry.pdf
     - assets/pdf/geography.pdf
     - assets/pdf/ict.pdf

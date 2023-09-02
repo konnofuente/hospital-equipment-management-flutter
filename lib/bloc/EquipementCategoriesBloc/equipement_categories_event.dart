@@ -20,14 +20,14 @@ class AddEquipmentCategories extends EquipmentCategoriesEvent {
 }
 
 class AddItemEquipmentCategories extends EquipmentCategoriesEvent {
-  final EquipmentCategories EquipmentCategory;
+  final int EquipmentCategoryId;
   final EquipmentItem Item;
   const AddItemEquipmentCategories({
     required this.Item,
-    required this.EquipmentCategory,
+    required this.EquipmentCategoryId,
   });
   @override
-  List<Object> get props => [EquipmentCategory];
+  List<Object> get props => [EquipmentCategoryId];
 }
 
 class UpdateEquipmentCategories extends EquipmentCategoriesEvent {

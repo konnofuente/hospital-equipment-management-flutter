@@ -26,10 +26,26 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
   final localizationController = Get.find<LocalizationController>();
   bool _inProgress = false;
 
+  bool _initialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // This check ensures initializeData is called only once
+    if (!_initialized) {
+      DefaultData().initializeData(context);
+      _initialized = true;
+    }
+  }
+
+  void initState() {
+    super.initState(); // Initialize your data here
+  }
+
   @override
   Widget build(BuildContext context) {
     String LangCode = Provider.of<AppLang>(context).appLang;
-//setting paramater for a default user
 
     return SafeArea(
       child: Scaffold(
@@ -85,8 +101,11 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                     style: AppTextTheme.listtitle,
                                   ),
                                   onPressed: () async {
-                                    DefaultData()
-                                        .defautlUSer(context, Role.ADMIN);
+                                    // DefaultData()
+                                    //     .defautlUSer(context, Role.ADMIN);
+                                    // DefaultData()
+                                    //     .initializeData(context);
+
                                     await localizationController
                                         .toggleLanguage('en');
                                     print(_inProgress);
@@ -113,9 +132,9 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                   ),
                                   child: TextButton.icon(
                                     onPressed: () async {
-                                      DefaultData()
-                                          .defautlUSer(context, Role.RESPONSABLE);
-                                          
+                                      DefaultData().defautlUSer(
+                                          context, Role.RESPONSABLE);
+
                                       await localizationController
                                           .toggleLanguage('fr');
 

@@ -63,7 +63,7 @@ class EquipmentCategoriesBloc
 
       // Find the target EquipmentCategory by ID or some other unique identifier
       final targetCategory = currentState.allEquipmentCategories.firstWhere(
-        (category) => category.id == event.EquipmentCategory.id,
+        (category) => category.id == event.EquipmentCategoryId,
       );
 
       // Add the new item to the target category
@@ -85,7 +85,7 @@ class EquipmentCategoriesBloc
       ));
 
       final newCategory = currentState.allEquipmentCategories.firstWhere(
-        (category) => category.id == event.EquipmentCategory.id,
+        (category) => category.id == event.EquipmentCategoryId,
       );
       print(
           'Successfully added item to EquipmentCategory ${newCategory.items} !');

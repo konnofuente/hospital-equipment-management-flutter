@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 
 import 'EquipementItem.dart';
 
@@ -14,11 +15,8 @@ class EquipmentCategories {
   String? desc;
   String? imageUrl;
   String? bannerUrl;
-  String? trailerImg1;
-  String? secondImg;
-  String? secondText;
   EquipmentCategories({
-    required this.id,
+    this.id,
     required this.name,
     required this.items,
     this.releaseDateDesc,
@@ -26,11 +24,8 @@ class EquipmentCategories {
     this.desc,
     this.imageUrl,
     this.bannerUrl,
-    this.trailerImg1,
-    this.secondImg,
-    this.secondText,
   });
-  
+
 
   EquipmentCategories copyWith({
     int? id,
@@ -41,9 +36,6 @@ class EquipmentCategories {
     String? desc,
     String? imageUrl,
     String? bannerUrl,
-    String? trailerImg1,
-    String? secondImg,
-    String? secondText,
   }) {
     return EquipmentCategories(
       id: id ?? this.id,
@@ -54,9 +46,6 @@ class EquipmentCategories {
       desc: desc ?? this.desc,
       imageUrl: imageUrl ?? this.imageUrl,
       bannerUrl: bannerUrl ?? this.bannerUrl,
-      trailerImg1: trailerImg1 ?? this.trailerImg1,
-      secondImg: secondImg ?? this.secondImg,
-      secondText: secondText ?? this.secondText,
     );
   }
 
@@ -70,15 +59,12 @@ class EquipmentCategories {
       'desc': desc,
       'imageUrl': imageUrl,
       'bannerUrl': bannerUrl,
-      'trailerImg1': trailerImg1,
-      'secondImg': secondImg,
-      'secondText': secondText,
     };
   }
 
   factory EquipmentCategories.fromMap(Map<String, dynamic> map) {
     return EquipmentCategories(
-      id: map['id'] as int,
+      id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
       items: List<EquipmentItem>.from((map['items'] as List<int>).map<EquipmentItem>((x) => EquipmentItem.fromMap(x as Map<String,dynamic>),),),
       releaseDateDesc: map['releaseDateDesc'] != null ? map['releaseDateDesc'] as String : null,
@@ -86,9 +72,6 @@ class EquipmentCategories {
       desc: map['desc'] != null ? map['desc'] as String : null,
       imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
       bannerUrl: map['bannerUrl'] != null ? map['bannerUrl'] as String : null,
-      trailerImg1: map['trailerImg1'] != null ? map['trailerImg1'] as String : null,
-      secondImg: map['secondImg'] != null ? map['secondImg'] as String : null,
-      secondText: map['secondText'] != null ? map['secondText'] as String : null,
     );
   }
 
@@ -98,13 +81,12 @@ class EquipmentCategories {
 
   @override
   String toString() {
-    return 'EquipmentCategories(id: $id, name: $name, items: $items, releaseDateDesc: $releaseDateDesc, directors: $directors, desc: $desc, imageUrl: $imageUrl, bannerUrl: $bannerUrl, trailerImg1: $trailerImg1, secondImg: $secondImg, secondText: $secondText)';
+    return 'EquipmentCategories(id: $id, name: $name, items: $items, releaseDateDesc: $releaseDateDesc, directors: $directors, desc: $desc, imageUrl: $imageUrl, bannerUrl: $bannerUrl)';
   }
 
   @override
   bool operator ==(covariant EquipmentCategories other) {
     if (identical(this, other)) return true;
-    final listEquals = const DeepCollectionEquality().equals;
   
     return 
       other.id == id &&
@@ -114,10 +96,7 @@ class EquipmentCategories {
       other.directors == directors &&
       other.desc == desc &&
       other.imageUrl == imageUrl &&
-      other.bannerUrl == bannerUrl &&
-      other.trailerImg1 == trailerImg1 &&
-      other.secondImg == secondImg &&
-      other.secondText == secondText;
+      other.bannerUrl == bannerUrl;
   }
 
   @override
@@ -129,9 +108,6 @@ class EquipmentCategories {
       directors.hashCode ^
       desc.hashCode ^
       imageUrl.hashCode ^
-      bannerUrl.hashCode ^
-      trailerImg1.hashCode ^
-      secondImg.hashCode ^
-      secondText.hashCode;
+      bannerUrl.hashCode;
   }
 }
