@@ -75,7 +75,7 @@ class _SignUpState extends State<SignUp> {
 
   @override
   void initState() {
-    Role role = Role.STUDENT;
+    Role role = Role.RESPONSABLE;
   }
 
   @override
@@ -161,13 +161,6 @@ class _SignUpState extends State<SignUp> {
                                   ' Enter ${TKeys.pwd.translate(context)}',
                                   WidgetIcon.passwordKey(false)),
                               SizedBox(height: 20),
-                              WidgetTextForm.getTextField(
-                                  TKeys.pwd.translate(context),
-                                  rePasswordController,
-                                  passwordKeytype,
-                                  ' Enter ${TKeys.pwd.translate(context)}',
-                                  WidgetIcon.passwordKey(false)),
-                              SizedBox(height: 20),
                               WidgetButton.largeButton(
                                   'Next',
                                   AppTextTheme.buttonwhite,
@@ -182,8 +175,8 @@ class _SignUpState extends State<SignUp> {
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );
-                                  NavigationScreen.navigate(
-                                      context, CodeVerification());
+                                  // NavigationScreen.navigate(
+                                  //     context, CodeVerification());
                                 }
                               }),
                               SizedBox(

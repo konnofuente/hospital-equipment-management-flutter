@@ -16,15 +16,16 @@ class ChoseUserMode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<GridInfo> _list = FakeData().equipment_categoriesList;
+    List<GridInfo> _list = FakeData().userList;
     Role? role = Provider.of<AppStatus>(context).role;
 
     return Scaffold(
       body: Container(
         child: Column(
           children: [
+            SizedBox(height: 10,),
             Image.asset(
-              'assets/Images/logoevaltech.png',
+              'assets/Images/logo.png',
               height: 150,
             ),
             Expanded(
@@ -75,18 +76,18 @@ class ChoseUserMode extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 150,
-              height: 150,
-              padding: EdgeInsets.all(8),
+              width: 100,
+              height: 100,
+              padding: EdgeInsets.all(0),
               child: Image.asset(GridInfo.image),
             ),
             SizedBox(
               height: 26,
             ),
             Text(
-              GridInfo.name == "teacher"
-                  ? TKeys.teacher.translate(context)
-                  : TKeys.student.translate(context),
+              GridInfo.name == "Admin"
+                  ? "Admin"
+                  : "Responsable de laboratoire",
               style: TextStyle(fontSize: 18),
             ),
             // SizedBox(height: 10,)

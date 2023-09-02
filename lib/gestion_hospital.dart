@@ -1,14 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/bloc/OptionBloc/option_event.dart';
 import 'package:evaltech_mobile/provider/provider.dart';
-import 'package:evaltech_mobile/screens/AuthScreens/sign_up/signup_screen.dart';
-import 'package:evaltech_mobile/screens/DocumentViewer/latexScreen.dart';
 import 'package:evaltech_mobile/screens/Launching/ChoseLangaugeScreen.dart';
-import 'package:evaltech_mobile/screens/Launching/IntroScreen.dart';
-import 'package:evaltech_mobile/services/callApi.dart';
 import 'package:evaltech_mobile/services/internet_connection.dart';
 import 'package:evaltech_mobile/services/localisationService/localization_service.dart';
 import 'package:flutter/material.dart';
@@ -19,25 +12,27 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'Theme/app_theme.dart';
+import 'Theme/theme_export.dart';
 import 'bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import 'bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
 import 'bloc/MCQBloc/mcq_bloc.dart';
 import 'bloc/MCQBloc/mcq_event.dart';
+import 'bloc/OptionBloc/option_event.dart';
 import 'bloc/bloc_export.dart';
 import 'models/MCQ.dart';
 
 void main() {
-  runApp(const evaltech());
+  runApp(const GestionHopital());
 }
 
-class evaltech extends StatefulWidget {
-  const evaltech({Key? key}) : super(key: key);
+class GestionHopital extends StatefulWidget {
+  const GestionHopital({Key? key}) : super(key: key);
 
   @override
-  State<evaltech> createState() => _evaltechState();
+  State<GestionHopital> createState() => _GestionHopitalState();
 }
 
-class _evaltechState extends State<evaltech> {
+class _GestionHopitalState extends State<GestionHopital> {
   // This widget is the root of your application.
   late List<MCQ> allMCQs;
   final _storage = const FlutterSecureStorage();
@@ -50,12 +45,12 @@ class _evaltechState extends State<evaltech> {
   final localizationController = Get.put(LocalizationController());
 
   Future<void> _loadingProcess() async {
-    await _FetchevaltechData();
+    await _FetchGestionHopitalData();
     checkUserLoggedIn();
     //  context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
   }
 
-  Future<void> _FetchevaltechData() async {
+  Future<void> _FetchGestionHopitalData() async {
     context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
     context.read<OptionBloc>().add(FetchOptions());
     context.read<MCQBloc>().add(FetchMCQs());
@@ -63,7 +58,7 @@ class _evaltechState extends State<evaltech> {
   }
 
   Future<void> checkUserLoggedIn() async {
-    final email = (await _storage.read(key: "evaltech_KEY_EMAIL"));
+    final email = (await _storage.read(key: "GestionHopital_KEY_EMAIL"));
     // Check if email exists in storage to determine login state
     // print(email.runtimeType);
     print(email);
@@ -83,7 +78,7 @@ class _evaltechState extends State<evaltech> {
         init: localizationController,
         builder: (LocalizationController controller) {
           return MaterialApp(
-              title: 'evaltech',
+              title: 'GestionHopital',
               debugShowCheckedModeBanner: false,
               themeMode: ThemeMode.light,
               theme: ThemeData(primarySwatch: Colors.blue),

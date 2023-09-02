@@ -1,9 +1,9 @@
 import 'package:evaltech_mobile/models/GridInfo.dart';
 
 class FakeData {
-  final List<GridInfo> _equipment_categoriesList = <GridInfo>[
-    GridInfo(name: "teacher", image: 'assets/Images/teacher.png'),
-    GridInfo(name: "student", image: 'assets/Images/student.png'),
+  final List<GridInfo> _userList = <GridInfo>[
+    GridInfo(name: "Admin", image: 'assets/Images/admin.png'),
+    GridInfo(name: "Responsable de laboratoire", image: 'assets/Images/doctor.png'),
   ];
-  List<GridInfo> get equipment_categoriesList => _equipment_categoriesList;
+  List<GridInfo> get userList => _userList;
 }

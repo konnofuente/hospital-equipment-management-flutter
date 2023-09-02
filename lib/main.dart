@@ -1,9 +1,6 @@
-import 'package:evaltech_mobile/evaltech.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/GroupList/group_list.dart';
-import 'package:evaltech_mobile/screens/QuizScreen/MainQuizScreen.dart';
-import 'package:evaltech_mobile/provider/provider.dart';
-import 'package:evaltech_mobile/test.dart';
+
 import 'dart:typed_data';
+import 'package:evaltech_mobile/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -12,6 +9,7 @@ import 'bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import 'bloc/MCQBloc/mcq_bloc.dart';
 import 'bloc/OptionBloc/option_bloc.dart';
 import 'bloc/UserBloc/user_bloc.dart';
+import 'gestion_hospital.dart';
 
 void main() {
   BlocOverrides.runZoned(
@@ -57,7 +55,7 @@ class MyApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: evaltech(),
+        home: GestionHopital(),
       ),
     );
   }

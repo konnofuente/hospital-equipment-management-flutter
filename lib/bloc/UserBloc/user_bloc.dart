@@ -2,9 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:evaltech_mobile/models/function.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/User.dart';
+import '../../screens/Home/GetStarted/getStarted_screen.dart';
 import '../../services/callApi.dart';
+import '../../utils/navigate_screen.dart';
+import '../../widget/widget_alertbox.dart';
 import 'user_state.dart';
 part 'user_event.dart';
 
@@ -42,7 +46,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       AddUsers event, Emitter<UserState> emit) async {
     final state = this.state;
     if (doesUserExist(event.users.email!, state.usersList)) {
-      print("User already exists!");
+      AlertBox.alertbox(event.context, "Registration",
+          "Cette utilisateur existe deja", () {});
       // Emit error state or handle accordingly
     } else {
       // generate the user ID using email
@@ -55,12 +60,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
       // Emit the new state
       emit(UserState(appUser: event.users, usersList: updatedUsersList));
+      AlertBox.awesomeOkBox(
+          event.context, "Registration", "Successfully saved user", () {});
+      NavigationScreen.navigate(event.context, GetStartedScreen());
     }
     try {
-      print('Successfully saved user!');
-       print(state.usersList);
+      print(state.usersList);
     } catch (e) {
-      print('Online user not created: $e');
+      AlertBox.awesomeOkBox(
+          event.context, "Registration", "Online user not created", () {});
     }
   }
 

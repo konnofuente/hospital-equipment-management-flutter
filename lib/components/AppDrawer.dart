@@ -31,7 +31,7 @@ class _AppDrawerState extends State<AppDrawer> {
       child: ListView(padding: const EdgeInsets.all(0.0), children: <Widget>[
         UserAccountsDrawerHeader(
           accountName: const Text(
-            'evaltech user',
+            'User',
             style: AppTextTheme.body1,
           ),
           accountEmail: const Text(

@@ -57,7 +57,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
         onDone: () {
           Provider.of<AppStatus>(context, listen: false).isLoggedIn == false
-              ? NavigationScreen.navigate(context, SignIn())
+              ? NavigationScreen.navigate(context, ChoseUserMode())
               : NavigationScreen.navigate(context, Home());
           // Navigator.pushReplacement(context,
 
@@ -65,7 +65,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         },
         onSkip: () {
           Provider.of<AppStatus>(context, listen: false).isLoggedIn == false
-              ? NavigationScreen.navigate(context, SignIn())
+              ? NavigationScreen.navigate(context, ChoseUserMode())
               : NavigationScreen.navigate(context, Home());
           // Navigator.pushReplacement(context,
           //   MaterialPageRoute(builder: (context) => ChoseUserMode()));

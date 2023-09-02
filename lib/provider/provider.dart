@@ -80,7 +80,7 @@ class AppStatus with ChangeNotifier {
   }
 
   setUserRole(int int) {
-    int == 0 ? role = Role.TEACHER : role = Role.STUDENT;
+    int == 0 ? role = Role.ADMIN : role = Role.RESPONSABLE;
     print(role);
   }
 

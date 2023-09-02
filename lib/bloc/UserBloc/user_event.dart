@@ -9,18 +9,16 @@ abstract class UserEvent extends Equatable {
 
 class AddUsers extends UserEvent {
   final User users;
+  final BuildContext context;
   const AddUsers({
     required this.users,
+    required this.context,
   });
   @override
   List<Object> get props => [users];
 }
 
-class FetchUsersInfo extends UserEvent {
-
-}
-
-
+class FetchUsersInfo extends UserEvent {}
 
 class UpdateUsers extends UserEvent {
   final User users;
@@ -30,8 +28,6 @@ class UpdateUsers extends UserEvent {
   @override
   List<Object> get props => [users];
 }
-
-
 
 class DeleteUsers extends UserEvent {
   final User users;
@@ -54,6 +50,3 @@ class LoginUser extends UserEvent {
   @override
   List<Object> get props => [email, password];
 }
-
-
-

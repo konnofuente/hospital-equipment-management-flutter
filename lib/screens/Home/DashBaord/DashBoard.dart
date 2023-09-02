@@ -21,22 +21,22 @@ class _DashBoardState extends State<DashBoard> {
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
   int selectedIndex = 1;
-  String AppBarTitle = 'evaltech';
+  String AppBarTitle = 'Gestion Hopital';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void AppBarName() {
     switch (selectedIndex) {
       case 0:
-        AppBarTitle = 'Chat Group';
+        AppBarTitle = 'Projet';
         break;
       case 1:
-        AppBarTitle = 'evaltech';
+        AppBarTitle = 'Gestion Hopital';
         break;
       case 2:
         AppBarTitle = TKeys.download.translate(context);
         break;
       default:
-        AppBarTitle = 'evaltech';
+        AppBarTitle = 'Gestion Hopital';
     }
   }
 

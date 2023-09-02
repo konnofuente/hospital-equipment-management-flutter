@@ -134,7 +134,7 @@ class _SignInState extends State<SignIn> {
                                   Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      " ${TKeys.auth_user_info.translate(context)} : ${role == Role.TEACHER ? Role.TEACHER.name : Role.STUDENT.name}",
+                                      " ${TKeys.auth_user_info.translate(context)} : ${role == Role.ADMIN ? Role.ADMIN.name : Role.RESPONSABLE.name}",
                                       style: AppTextTheme.caption,
                                     ),
                                   ),
@@ -225,7 +225,7 @@ class _SignInState extends State<SignIn> {
                                 TKeys.did_not_have_acct.translate(context),
                                 AppTextTheme.body2,
                                 () {}),
-                            role != Role.TEACHER
+                            role == Role.ADMIN
                                 ? WidgetButton.textButton(
                                     TKeys.sign_up.translate(context),
                                     AppTextTheme.link, () {
@@ -237,8 +237,8 @@ class _SignInState extends State<SignIn> {
                                     AppTextTheme.link, () {
                                     AlertBox.awesomeOkBox(
                                         context,
-                                        "Request Teacher Account",
-                                        "Inorder to have a teachar account your going to submit certain document that will confirm your validity",
+                                        "Requette de Compte ",
+                                        "Contacter l'administrateur pour la creation de votre compte",
                                         () {});
                                   }),
                           ],

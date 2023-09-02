@@ -33,7 +33,9 @@ class AuthService {
     );
 
     UserBloc userBloc = BlocProvider.of<UserBloc>(context);
-    userBloc.add(AddUsers(users: newUser));
+    userBloc.add(AddUsers(users: newUser, context: context));
+
+
   }
 
   Future<void> localloginUser({
@@ -90,7 +92,7 @@ class AuthService {
       "system": "FRANCOPHONE",
       "equipment_categoriesId": 1,
       "optionId": 1,
-      "role": "STUDENT"
+      "role": "RESPONSABLE"
     });
     request.headers.addAll(headers);
 
