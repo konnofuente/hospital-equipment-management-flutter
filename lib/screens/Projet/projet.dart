@@ -1,0 +1,27 @@
+import 'package:evaltech_mobile/screens/DocumentViewer/latexScreen.dart';
+import 'package:flutter/material.dart';
+
+class ProjetScreen extends StatefulWidget {
+  const ProjetScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProjetScreen> createState() => _ProjetScreenState();
+}
+
+class _ProjetScreenState extends State<ProjetScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        // body: LatexScreen(),
+        body: Center(
+      child: Text(
+        "Pas de Projet enregistre",
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          // color: AppColors.danger
+        ),
+      ),
+    ));
+  }
+}

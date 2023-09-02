@@ -4,6 +4,7 @@ import 'package:evaltech_mobile/screens/ChatgroupScreen/ChatgroupScreen.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
 import 'package:evaltech_mobile/screens/EquipementCategory/components/add_form_equipment_item.dart';
 import 'package:evaltech_mobile/screens/EquipementCategory/widgets/getBottomItem.dart';
+import 'package:evaltech_mobile/screens/ItemReservation/item_reservation.dart';
 import 'package:evaltech_mobile/screens/ListEquipementItem/list_equipement_item.dart';
 import 'package:evaltech_mobile/screens/PastQuestions.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,6 @@ import '../../provider/provider.dart';
 import '../../services/localisationService/t_key.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import '../QuizScreen/MainQuizScreen.dart';
-import '../StatisticScreen/StatisticScreen.dart';
 
 class EquipementCategoryScreen extends StatefulWidget {
   // final Item item;
@@ -32,7 +32,7 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
 
-  int selectedIndex = 2;
+  int selectedIndex =0;
 
   String AppBarTitle = 'evaltech';
 
@@ -53,6 +53,9 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
         return ListEquipementItem(globalItem);
       } else if (selectedIndex == 1) {
         return AddFormEquipementItem(equipmentCategory:globalItem ,);
+      }
+       else if (selectedIndex == 2) {
+        return ItemReservation();
       }
       return ListEquipementItem(globalItem);
     }

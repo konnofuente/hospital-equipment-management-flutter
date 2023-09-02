@@ -72,6 +72,7 @@ Widget build(BuildContext context) {
     child: Scaffold(
       appBar: AppBar(
         title: Text("Add New Equipment Item"),
+        automaticallyImplyLeading: false,
       ),
       body: Form(
         key: _formKey,

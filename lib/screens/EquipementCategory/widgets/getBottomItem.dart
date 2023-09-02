@@ -26,7 +26,7 @@ List<BottomNavigationBarItem> getBottomItem(BuildContext context) {
         ),
         label: "Ajoutez",
         activeIcon: Icon(
-          Icons.home,
+          Icons.add,
           color: AppColors.primarydark,
           size: 24.66,
         ),

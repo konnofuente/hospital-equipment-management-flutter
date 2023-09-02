@@ -53,6 +53,7 @@ enum TKeys {
   category,
   add_category,
   create_cat,
+  project,
 }
 
 //TKeys.hello

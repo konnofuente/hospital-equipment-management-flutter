@@ -125,6 +125,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Add Equipment Category"),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
