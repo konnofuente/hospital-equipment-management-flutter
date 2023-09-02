@@ -1,5 +1,6 @@
 import 'package:gestion_hopital/Theme/theme_export.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_hopital/screens/MakeReservation/make_reservation.dart';
 
 import '../../../models/EquipementCategories.dart';
 import '../../../models/EquipementItem.dart';
@@ -38,12 +39,8 @@ class GetItemList extends StatelessWidget {
                 return Card(
                   child: ListTile(
                     onTap: () async {
-                      // NavigationScreen.navigate(
-                      //     context,
-                      //     PDFViewerScreen(
-                      //       pdfUrl: itemsList[index].url,
-                      //       // pdfFile: pdfFile,
-                      //     ));
+                      NavigationScreen.navigate(
+                          context, MakeReservation(Item: itemsList[index]));
                     },
                     title: Text(
                       itemsList[index].name,

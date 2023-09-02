@@ -16,6 +16,9 @@ import '../Theme/app_theme.dart';
   static Widget description(bool onclick) {
     return Icon(Icons.description,color: onclick? AppColors.primaryblue:AppColors.icon);
   }
+  static Widget number(bool onclick) {
+    return Icon(Icons.numbers,color: onclick? AppColors.primaryblue:AppColors.icon);
+  }
   static Widget alert(bool onclick) {
     return Icon(Icons.expand_circle_down_rounded,color: onclick? AppColors.primaryblue:AppColors.icon);
   }

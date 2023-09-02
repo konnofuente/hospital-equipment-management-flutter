@@ -83,7 +83,10 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
   }
 
   void SaveEquipementCategory(BuildContext context) {
-    if (nameController.text.isNotEmpty && directorsController.text.isNotEmpty && bannerUrl!.isNotEmpty && imageUrl!.isNotEmpty){
+    if (nameController.text.isNotEmpty &&
+        directorsController.text.isNotEmpty &&
+        bannerUrl!.isNotEmpty &&
+        imageUrl!.isNotEmpty) {
       EquipmentCategories newEquipmentCategory = EquipmentCategories(
         id: 1, // Generate ID here
         name: nameController.text,
@@ -101,7 +104,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
 
       equipmentCategoriesBloc
           .add(AddEquipmentCategories(EquipmentCategory: newEquipmentCategory));
-          
+
       AlertBox.awesomeOkBox(
           context,
           "Equipement",
@@ -159,25 +162,8 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
               SizedBox(
                 height: 15,
               ),
-              // Date Picker
-              TextFormField(
-                controller: releaseDateController,
-                readOnly: true,
-                onTap: () async {
-                  final DateTime? pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2101));
-                  if (pickedDate != null && pickedDate != DateTime.now())
-                    releaseDateController.text =
-                        "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
-                },
-                decoration: InputDecoration(
-                  labelText: "Release Date",
-                  hintText: "Pick a Date",
-                ),
-              ),
+              WidgetTextForm.getDatePicker(
+                  context, "Release Date", releaseDateController, null),
               // Image upload placeholders
               SizedBox(
                 height: 15,

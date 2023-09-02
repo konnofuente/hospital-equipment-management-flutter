@@ -44,14 +44,38 @@ class WidgetTextForm {
       String? errorText,
       Widget? icon) {
     return TextField(
-       keyboardType: keytype,
-        obscureText: keytype == TextInputType.visiblePassword ? true : false,
+      keyboardType: keytype,
+      obscureText: keytype == TextInputType.visiblePassword ? true : false,
       decoration: InputDecoration(
         labelText: text,
       ),
-      onChanged: (value) {
-      },
+      onChanged: (value) {},
       controller: controller,
+    );
+  }
+
+  static TextFormField getDatePicker(
+      BuildContext context,
+      String text,
+      TextEditingController controller,
+      Widget? icon) {
+    return TextFormField(
+      controller: controller,
+      readOnly: true,
+      onTap: () async {
+        final DateTime? pickedDate = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2000),
+            lastDate: DateTime(2101));
+        if (pickedDate != null && pickedDate != DateTime.now())
+          controller.text =
+              "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      },
+      decoration: InputDecoration(
+        labelText: text,
+        hintText: "Pick a Date",
+      ),
     );
   }
 }

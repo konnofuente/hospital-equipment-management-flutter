@@ -17,16 +17,14 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      final userBloc = BlocProvider.of<UserBloc>(context);
+      Provider.of<UserManagement>(context, listen: false).changeUser(userBloc.state.appUser!);
+    });
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
-        UserBloc userBloc = BlocProvider.of<UserBloc>(context);
-          Provider.of<UserManagement>(context, listen: false)
-        .changeUser(userBloc.state.appUser!);
-
     return Scaffold(
       body: GetStartedBody(),
     );

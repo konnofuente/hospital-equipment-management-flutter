@@ -1,7 +1,6 @@
 import 'package:gestion_hopital/models/Role.dart';
 import 'package:gestion_hopital/models/enum.dart';
 import 'package:gestion_hopital/screens/AllEquipementCategories/all_equipement_categoryScreen.dart';
-import 'package:gestion_hopital/screens/Home/ResponsibleDashBaord/responsible_dashBoard.dart';
 import 'package:gestion_hopital/screens/Projet/projet.dart';
 import 'package:gestion_hopital/screens/SettingScreen/Settings.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../models/User.dart';
 import '../provider/provider.dart';
 import '../screens/Home/AdminDashBaord/admin_dashBoard.dart';
+import '../screens/ResponsibleDashBaord/responsible_dashBoard.dart';
 import '../screens/StatisticAdmin/statistics_admin.dart';
 import '../screens/StatisticsResponsible/statistics_responsible.dart';
 
@@ -38,6 +38,7 @@ Widget getResponsipleDashboardFragment(int selectedIndex) {
 Widget getHomeFragment(BuildContext context, AppDrawerTitle val) {
   User? actaulUser =
       Provider.of<UserManagement>(context, listen: false).actaulUser;
+      
 
   if (val == AppDrawerTitle.Setting) {
     return SettingScreen();

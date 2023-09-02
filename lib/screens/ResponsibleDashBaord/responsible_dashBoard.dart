@@ -19,7 +19,7 @@ class ResponsibleDashBoardState extends State<ResponsibleDashBoard> {
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
   int selectedIndex = 0;
-  String AppBarTitle = 'Gestion Hopital';
+  String AppBarTitle = 'Responsable';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   _changeSelectedIndex(index) {
