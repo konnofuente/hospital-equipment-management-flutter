@@ -1,7 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
-import 'package:gestion_hopital/models/MCQ.dart';
 import 'package:gestion_hopital/models/Role.dart';
 import 'package:flutter/material.dart';
 
@@ -14,21 +11,7 @@ class UserCreation with ChangeNotifier {
     this.userCreation,
   });
 
-  // ChargeUserDate(String fName, String lName, String pNumber, String email,
-  //     String password, String role) {
-  //   userCreation = User(
-  //       id: 1,
-  //       token: "",
-  //       firstName: fName,
-  //       lastName: lName,
-  //       phoneNumber: pNumber,
-  //       email: email,
-  //       password: password,
-  //       role: role);
-
-  //   print("Successfully created a half user $userCreation");
-  // }
-
+ 
   UserCreation copyWith({
     User? userCreation,
   }) {
@@ -107,16 +90,3 @@ class EquipmentCategoriesState with ChangeNotifier {
     notifyListeners();
   }
 }
-
-// class MCQState with ChangeNotifier {
-//   MCQState({
-//     required this.allmcq,
-//   });
-
-//   List<MCQ>? allmcq;
-
-//   setGlobalEquipmentCategories(List<MCQ> val) {
-//     allmcq = val;
-//     notifyListeners();
-//   }
-// }

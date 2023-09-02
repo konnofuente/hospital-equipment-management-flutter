@@ -1,19 +1,13 @@
-import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
-import 'package:gestion_hopital/screens/Home/HomeScreen.dart';
-import 'package:gestion_hopital/screens/Home/home.dart';
-import 'package:gestion_hopital/screens/TestQuestions/Tmain.dart';
+
 import 'package:gestion_hopital/services/localisationService/t_key.dart';
 import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-
 import '../../Theme/text_theme.dart';
-import '../../bloc/MCQBloc/mcq_state.dart';
-import '../../bloc/bloc_export.dart';
 import '../../services/localisationService/localization_service.dart';
 import '../../provider/provider.dart';
+import '../Home/home.dart';
 import 'OnBoardingScreen.dart';
 
 class ChoseLangaugeScreen extends StatefulWidget {
@@ -30,9 +24,7 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
   @override
   Widget build(BuildContext context) {
     String LangCode = Provider.of<AppLang>(context).appLang;
-    return BlocBuilder<MCQBloc, MCQState>(
-      builder: (context, state) {
-        return SafeArea(
+    return  SafeArea(
           child: Scaffold(
             body: Container(
               child: _inProgress
@@ -150,7 +142,6 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
             ),
           ),
         );
-      },
-    );
+      }
+    
   }
-}

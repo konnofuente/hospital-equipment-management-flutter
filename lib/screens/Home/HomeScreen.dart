@@ -1,12 +1,6 @@
-import 'package:gestion_hopital/db/db.dart';
 import 'package:gestion_hopital/models/EquipementCategories.dart';
 import 'package:gestion_hopital/screens/AllEquipementCategories/components/all_equipement_categoriesList.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../Constant/constants.dart';
-import '../../models/Item.dart';
-import '../../provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -19,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    classList = DB().EquipmentCategoriesList;
   }
 
   @override

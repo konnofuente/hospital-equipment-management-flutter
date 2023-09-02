@@ -13,6 +13,9 @@ import '../Theme/app_theme.dart';
   static Widget passwordKey(bool onclick) {
     return Icon(Icons.vpn_key,color: onclick? AppColors.primaryblue:AppColors.icon);
   }
+  static Widget description(bool onclick) {
+    return Icon(Icons.description,color: onclick? AppColors.primaryblue:AppColors.icon);
+  }
   static Widget alert(bool onclick) {
     return Icon(Icons.expand_circle_down_rounded,color: onclick? AppColors.primaryblue:AppColors.icon);
   }

@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
-import 'bloc/MCQBloc/mcq_bloc.dart';
-import 'bloc/OptionBloc/option_bloc.dart';
 import 'bloc/UserBloc/user_bloc.dart';
 import 'gestion_hospital.dart';
 
@@ -43,13 +41,7 @@ class MyApp extends StatelessWidget {
           create: (context) => UserBloc(),
         ),
         BlocProvider(
-          create: (context) => MCQBloc(),
-        ),
-        BlocProvider(
           create: (context) => EquipmentCategoriesBloc(),
-        ),
-        BlocProvider(
-          create: (context) => OptionBloc(),
         ),
       ],
       child: GetMaterialApp(

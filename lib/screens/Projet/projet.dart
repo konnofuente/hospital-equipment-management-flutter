@@ -1,4 +1,3 @@
-import 'package:gestion_hopital/screens/DocumentViewer/latexScreen.dart';
 import 'package:flutter/material.dart';
 
 class ProjetScreen extends StatefulWidget {

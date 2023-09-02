@@ -9,7 +9,6 @@ import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
 import '../../../bloc/bloc_export.dart';
 import '../../../models/Role.dart';
-import '../../../services/auth.dart';
 import '../../../services/internet_connection.dart';
 import '../../../services/localisationService/t_key.dart';
 import '../../../provider/provider.dart';
@@ -84,7 +83,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
   }
 
   void SaveEquipementCategory(BuildContext context) {
-    if (nameController.text.isNotEmpty || directorsController.text.isNotEmpty || bannerUrl!.isNotEmpty || imageUrl!.isNotEmpty){
+    if (nameController.text.isNotEmpty && directorsController.text.isNotEmpty && bannerUrl!.isNotEmpty && imageUrl!.isNotEmpty){
       EquipmentCategories newEquipmentCategory = EquipmentCategories(
         id: 1, // Generate ID here
         name: nameController.text,
@@ -102,6 +101,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
 
       equipmentCategoriesBloc
           .add(AddEquipmentCategories(EquipmentCategory: newEquipmentCategory));
+          
       AlertBox.awesomeOkBox(
           context,
           "Equipement",
@@ -142,7 +142,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
                 height: 15,
               ),
               WidgetTextForm.getTextField(
-                  "Directors",
+                  "Responsable",
                   directorsController,
                   TextInputType.text,
                   "Enter directors",
@@ -155,7 +155,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
                   descController,
                   TextInputType.text,
                   "Enter description",
-                  WidgetIcon.userAccount(false)),
+                  WidgetIcon.description(false)),
               SizedBox(
                 height: 15,
               ),

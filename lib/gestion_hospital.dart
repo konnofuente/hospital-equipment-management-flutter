@@ -5,21 +5,12 @@ import 'package:gestion_hopital/screens/Launching/ChoseLangaugeScreen.dart';
 import 'package:gestion_hopital/services/internet_connection.dart';
 import 'package:gestion_hopital/services/localisationService/localization_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'Theme/app_theme.dart';
 import 'Theme/theme_export.dart';
-import 'bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import 'bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
-import 'bloc/MCQBloc/mcq_bloc.dart';
-import 'bloc/MCQBloc/mcq_event.dart';
-import 'bloc/OptionBloc/option_event.dart';
 import 'bloc/bloc_export.dart';
-import 'models/MCQ.dart';
 
 void main() {
   runApp(const GestionHopital());
@@ -34,7 +25,6 @@ class GestionHopital extends StatefulWidget {
 
 class _GestionHopitalState extends State<GestionHopital> {
   // This widget is the root of your application.
-  late List<MCQ> allMCQs;
   final _storage = const FlutterSecureStorage();
   @override
   void initState() {
@@ -52,8 +42,6 @@ class _GestionHopitalState extends State<GestionHopital> {
 
   Future<void> _FetchGestionHopitalData() async {
     context.read<EquipmentCategoriesBloc>().add(FetchEquipmentCategoriess());
-    context.read<OptionBloc>().add(FetchOptions());
-    context.read<MCQBloc>().add(FetchMCQs());
     InternetConnection().CheckInternetConnectivity(context);
   }
 

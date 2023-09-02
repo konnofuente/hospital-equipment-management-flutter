@@ -1,6 +1,5 @@
 import 'package:gestion_hopital/models/enum.dart';
 import 'package:gestion_hopital/screens/AllEquipementCategories/all_equipement_categoryScreen.dart';
-import 'package:gestion_hopital/screens/ChatgroupScreen/Components/GroupList/group_list.dart';
 import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
 import 'package:gestion_hopital/screens/Projet/projet.dart';
 import 'package:gestion_hopital/screens/SettingScreen/Settings.dart';

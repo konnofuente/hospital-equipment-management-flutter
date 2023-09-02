@@ -42,24 +42,18 @@ class AlertBox {
       ),
       dismissOnTouchOutside: true,
       dismissOnBackKeyPress: false,
-      onDismissCallback: (type) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Dismissed by $type'),
-          ),
-        );
-      },
+      onDismissCallback: (type) {},
       headerAnimationLoop: true,
       animType: AnimType.bottomSlide,
       title: title,
       desc: message,
       showCloseIcon: true,
       btnCancelOnPress: () {},
-      btnOkOnPress: () {},
+      btnOkOnPress: () {
+        onpressedOK();
+      },
     )..show();
-
   }
-
 
   static AwesomeDialog awesomeOkBox(BuildContext context, String title,
       String message, void Function() onpressedOK) {
@@ -76,63 +70,56 @@ class AlertBox {
       ),
       dismissOnTouchOutside: true,
       dismissOnBackKeyPress: false,
-      onDismissCallback: (type) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Dismissed by $type'),
-          ),
-        );
-      },
+      onDismissCallback: (type) {},
       headerAnimationLoop: true,
       animType: AnimType.bottomSlide,
       title: title,
       desc: message,
       showCloseIcon: true,
       btnOkColor: AppColors.primaryblue,
-      btnOkOnPress: () {},
+      btnOkOnPress: () {
+        onpressedOK();
+      },
     )..show();
   }
 
-
   void _showMenu(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    builder: (BuildContext context) {
-      return SafeArea(
-        child: Container(
-          child: Wrap(
-            children: [
-              ListTile(
-                leading: Icon(Icons.download),
-                title: Text('Download'),
-                onTap: () {
-                  // implement download functionality
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.open_in_browser),
-                title: Text('Open'),
-                onTap: () {
-                  // implement open functionality
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.more_horiz),
-                title: Text('Other'),
-                onTap: () {
-                  // implement other functionality
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Container(
+            child: Wrap(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.download),
+                  title: Text('Download'),
+                  onTap: () {
+                    // implement download functionality
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.open_in_browser),
+                  title: Text('Open'),
+                  onTap: () {
+                    // implement open functionality
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.more_horiz),
+                  title: Text('Other'),
+                  onTap: () {
+                    // implement other functionality
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
-      );
-    },
-  );
-}
-
-
+        );
+      },
+    );
+  }
 }

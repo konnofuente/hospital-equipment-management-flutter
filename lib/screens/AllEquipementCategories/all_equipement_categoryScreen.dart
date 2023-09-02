@@ -6,7 +6,6 @@ import '../../Theme/theme_export.dart';
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
 import '../../bloc/bloc_export.dart';
-import '../../db/db.dart';
 import '../../models/EquipementCategories.dart';
 import '../../services/localisationService/t_key.dart';
 import '../../widget/widget_button.dart';
@@ -31,8 +30,7 @@ class _AllEquipementCategoryScreenState
   @override
   void initState() {
     super.initState();
-    equipementCategoriesList =
-        DB().EquipmentCategoriesList; // Initialize your list
+   // Initialize your list
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,

@@ -1,21 +1,14 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:gestion_hopital/models/function.dart';
-import 'package:gestion_hopital/screens/ChatgroupScreen/ChatgroupScreen.dart';
-import 'package:gestion_hopital/screens/ChatgroupScreen/Components/chat_screen.dart';
 import 'package:gestion_hopital/screens/EquipementCategory/components/add_form_equipment_item.dart';
 import 'package:gestion_hopital/screens/EquipementCategory/widgets/getBottomItem.dart';
 import 'package:gestion_hopital/screens/ItemReservation/item_reservation.dart';
 import 'package:gestion_hopital/screens/ListEquipementItem/list_equipement_item.dart';
-import 'package:gestion_hopital/screens/PastQuestions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Theme/app_theme.dart';
 import '../../models/EquipementCategories.dart';
-import '../../models/Item.dart';
 import '../../provider/provider.dart';
-import '../../services/localisationService/t_key.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-import '../QuizScreen/MainQuizScreen.dart';
 
 class EquipementCategoryScreen extends StatefulWidget {
   // final Item item;

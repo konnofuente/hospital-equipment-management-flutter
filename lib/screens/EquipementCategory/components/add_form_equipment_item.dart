@@ -7,6 +7,7 @@ import '../../../bloc/EquipementItemBloc/equipement_Item_event.dart';
 import '../../../bloc/EquipementItemBloc/equipement_item_bloc.dart';
 import '../../../bloc/bloc_export.dart';
 import '../../../models/EquipementItem.dart';
+import '../../../widget/widget_alertbox.dart';
 import '../../../widget/widget_button.dart';
 import '../../../widget/widget_icon.dart';
 import '../../../widget/widget_textformfield.dart';
@@ -42,23 +43,30 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
 
     if (_formKey.currentState!.validate()) {
       // Create a new EquipmentItem based on the user input
-      EquipmentItem newEquipmentItem = EquipmentItem(
-        id: 1, // Generate ID here
-        EquipementCategoryID: widget.equipmentCategory.id!,
-        name: nameController.text,
-        description: descriptionController.text,
-        quantity: int.parse(quantityController.text),
-      );
+      if (quantityController.text.isEmpty) {
+        AlertBox.awesomeAlertBox(context, "Equipement Item",
+            "Entre la quantite s'il vous plait", () {});
+      } else {
+        EquipmentItem newEquipmentItem = EquipmentItem(
+          id: 1, // Generate ID here
+          EquipementCategoryID: widget.equipmentCategory.id!,
+          name: nameController.text,
+          description: descriptionController.text,
+          quantity: int.parse(quantityController.text),
+        );
 
-      // Fetch the EquipmentItemBloc
+        // Fetch the EquipmentItemBloc
 
-      // Add the new EquipmentItem to the EquipmentItemBloc
-      equipmentItemBloc.add(AddEquipmentItem(Item: newEquipmentItem));
-      equipmentCategoriesBloc.add(AddItemEquipmentCategories(
-          Item: newEquipmentItem, EquipmentCategory: widget.equipmentCategory));
-
-      // Clear the fields
-      emptyField();
+        // Add the new EquipmentItem to the EquipmentItemBloc
+        equipmentItemBloc.add(AddEquipmentItem(Item: newEquipmentItem));
+        equipmentCategoriesBloc.add(AddItemEquipmentCategories(
+            Item: newEquipmentItem,
+            EquipmentCategory: widget.equipmentCategory));
+        // Clear the fields
+        AlertBox.awesomeAlertBox(context, "Equipement Item",
+            "Equipement cree avec sucess!!!", () {});
+        emptyField();
+      }
     }
   }
 
@@ -92,7 +100,7 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
                   descriptionController,
                   TextInputType.text,
                   "Enter description",
-                  WidgetIcon.userAccount(false),
+                  WidgetIcon.description(false),
                 ),
                 SizedBox(
                   height: 15,

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gestion_hopital/models/function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   final loginStatusController = StreamController<bool>.broadcast();
+  final _storage = const FlutterSecureStorage();
 
   Future<FutureOr<void>> _onFetchUserInfo(
       FetchUsersInfo event, Emitter<UserState> emit) async {
@@ -60,9 +62,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
       // Emit the new state
       emit(UserState(appUser: event.users, usersList: updatedUsersList));
+
+      await _storage.write(key: "evaltech_KEY_EMAIL", value: event.users.email);
+      await _storage.write(
+          key: "evaltech_KEY_PASSWORD", value: event.users.password);
+          
       AlertBox.awesomeOkBox(
-          event.context, "Registration", "Successfully saved user", () {});
-      NavigationScreen.navigate(event.context, GetStartedScreen());
+          event.context, "Registration", "Successfully saved user", () {
+        NavigationScreen.navigate(event.context, GetStartedScreen());
+      });
     }
     try {
       print(state.usersList);

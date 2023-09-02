@@ -5,7 +5,6 @@ import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
 import '../../../utils/navigate_screen.dart';
 import '../../../widget/widget_button.dart';
-import '../../Domain/chose_domain.dart';
 
 class CodeVerification extends StatefulWidget {
   const CodeVerification({Key? key}) : super(key: key);

@@ -7,7 +7,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
-import '../../../bloc/OptionBloc/Option_state.dart';
+import '../../../bloc/UserBloc/User_state.dart';
 import '../../../bloc/UserBloc/user_state.dart';
 import '../../../bloc/bloc_export.dart';
 import '../../../models/User.dart';
@@ -87,119 +87,107 @@ class _SignUpState extends State<SignUp> {
     }
 
     return Scaffold(
-      body: BlocBuilder<OptionBloc, OptionState>(
-        builder: (context, state) {
-          return BlocBuilder<UserBloc, UserState>(
-            builder: (context, state) {
-              return SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 40.0),
-                  height: MediaQuery.of(context).size.height,
-                  width: double.infinity,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 50,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              TKeys.creat_acct.translate(context),
-                              style: AppTextTheme.bigtitle,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              WidgetTextForm.getTextField(
-                                  TKeys.f_name.translate(context),
-                                  firstNameController,
-                                  textKeytype,
-                                  ' Enter ${TKeys.f_name.translate(context)}',
-                                  WidgetIcon.userAccount(false)),
-                              SizedBox(height: 20),
-                              WidgetTextForm.getTextField(
-                                  TKeys.s_name.translate(context),
-                                  lastNameController,
-                                  textKeytype,
-                                  ' Enter ${TKeys.s_name.translate(context)}',
-                                  WidgetIcon.userAccount(false)),
-                              SizedBox(height: 20),
-                              IntlPhoneField(
-                                decoration: InputDecoration(
-                                  labelText: TKeys.p_num.translate(context),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(),
-                                  ),
-                                ),
-                                initialCountryCode: 'CM',
-                                onChanged: (phone) {
-                                  setState(() => phno = phone.completeNumber);
-                                },
-                              ),
-                              SizedBox(height: 10),
-                              WidgetTextForm.getTextField(
-                                  TKeys.email.translate(context),
-                                  emailController,
-                                  emailKeytype,
-                                  ' Enter ${TKeys.email.translate(context)}',
-                                  WidgetIcon.email(false)),
-                              SizedBox(height: 20),
-                              WidgetTextForm.getTextField(
-                                  TKeys.pwd.translate(context),
-                                  passwordController,
-                                  passwordKeytype,
-                                  ' Enter ${TKeys.pwd.translate(context)}',
-                                  WidgetIcon.passwordKey(false)),
-                              SizedBox(height: 20),
-                              WidgetButton.largeButton(
-                                  'Next',
-                                  AppTextTheme.buttonwhite,
-                                  AppColors.primaryblue,
-                                  null, () {
-                                if (_formKey.currentState!.validate()) {
-                                  AuthService.localregisterUser(
-                                    context: context,
-                                    firstName: firstNameController.text,
-                                    lastName: lastNameController.text,
-                                    phoneNumber: phno,
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                  // NavigationScreen.navigate(
-                                  //     context, CodeVerification());
-                                }
-                              }),
-                              SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        WidgetButton.textButton(
-                            TKeys.already_h_acct.translate(context),
-                            AppTextTheme.link, () {
-                          NavigationScreen.replaceNavigate(context, SignIn());
-                        }),
-                      ],
-                    ),
+        body: SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0),
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                children: [
+                  Text(
+                    TKeys.creat_acct.translate(context),
+                    style: AppTextTheme.bigtitle,
                   ),
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    WidgetTextForm.getTextField(
+                        TKeys.f_name.translate(context),
+                        firstNameController,
+                        textKeytype,
+                        ' Enter ${TKeys.f_name.translate(context)}',
+                        WidgetIcon.userAccount(false)),
+                    SizedBox(height: 20),
+                    WidgetTextForm.getTextField(
+                        TKeys.s_name.translate(context),
+                        lastNameController,
+                        textKeytype,
+                        ' Enter ${TKeys.s_name.translate(context)}',
+                        WidgetIcon.userAccount(false)),
+                    SizedBox(height: 20),
+                    IntlPhoneField(
+                      decoration: InputDecoration(
+                        labelText: TKeys.p_num.translate(context),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
+                      ),
+                      initialCountryCode: 'CM',
+                      onChanged: (phone) {
+                        setState(() => phno = phone.completeNumber);
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    WidgetTextForm.getTextField(
+                        TKeys.email.translate(context),
+                        emailController,
+                        emailKeytype,
+                        ' Enter ${TKeys.email.translate(context)}',
+                        WidgetIcon.email(false)),
+                    SizedBox(height: 20),
+                    WidgetTextForm.getTextField(
+                        TKeys.pwd.translate(context),
+                        passwordController,
+                        passwordKeytype,
+                        ' Enter ${TKeys.pwd.translate(context)}',
+                        WidgetIcon.passwordKey(false)),
+                    SizedBox(height: 20),
+                    WidgetButton.largeButton('Next', AppTextTheme.buttonwhite,
+                        AppColors.primaryblue, null, () {
+                      if (_formKey.currentState!.validate()) {
+                        AuthService.localregisterUser(
+                          context: context,
+                          firstName: firstNameController.text,
+                          lastName: lastNameController.text,
+                          phoneNumber: phno,
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                        // NavigationScreen.navigate(
+                        //     context, CodeVerification());
+                      }
+                    }),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
                 ),
-              );
-            },
-          );
-        },
+              ),
+              SizedBox(height: 20),
+              WidgetButton.textButton(
+                  TKeys.already_h_acct.translate(context), AppTextTheme.link,
+                  () {
+                NavigationScreen.replaceNavigate(context, SignIn());
+              }),
+            ],
+          ),
+        ),
       ),
-    );
+    ));
   }
 }

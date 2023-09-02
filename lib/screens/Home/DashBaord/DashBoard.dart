@@ -6,8 +6,6 @@ import '../../../Theme/app_theme.dart';
 import '../../../components/component_export.dart';
 import '../../../services/localisationService/t_key.dart';
 import '../../../widget/widget_export.dart';
-import '../../DownloadScreen.dart';
-import '../../PastQuestions.dart';
 import 'utils/get_screen_fragment.dart';
 
 class DashBoard extends StatefulWidget {

@@ -1,16 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:gestion_hopital/bloc/EquipementItemBloc/equipement_Item_event.dart';
 import 'package:gestion_hopital/bloc/EquipementItemBloc/equipement_Item_state.dart';
 import 'package:gestion_hopital/models/EquipementItem.dart';
-import 'package:gestion_hopital/models/EquipementItem.dart';
-import 'package:gestion_hopital/models/function.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../models/EquipementItem.dart';
+import '../../models/function.dart';
 import '../../services/callApi.dart';
-import 'package:http/http.dart' as http;
 
 class EquipmentItemBloc extends Bloc<EquipmentItemEvent, EquipmentItemState> {
   EquipmentItemBloc() : super(const EquipmentItemState()) {
