@@ -1,18 +1,27 @@
+
+
+import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
+import 'package:evaltech_mobile/models/EquipementCategories.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../Theme/theme_export.dart';
 import '../../../bloc/EquipementItemBloc/equipement_Item_event.dart';
 import '../../../bloc/EquipementItemBloc/equipement_item_bloc.dart';
+import '../../../bloc/bloc_export.dart';
 import '../../../models/EquipementItem.dart';
 import '../../../widget/widget_button.dart';
 import '../../../widget/widget_icon.dart';
 import '../../../widget/widget_textformfield.dart';
 
 class AddFormEquipementItem extends StatefulWidget {
+  final EquipmentCategories equipmentCategory;
+
+  const AddFormEquipementItem({required this.equipmentCategory});
+
   @override
   _AddFormEquipementItemState createState() => _AddFormEquipementItemState();
 }
+
 
 class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -28,21 +37,28 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
   }
 
   void saveEquipmentItem(BuildContext context) {
+      EquipmentItemBloc equipmentItemBloc =
+          BlocProvider.of<EquipmentItemBloc>(context);
+
+      EquipmentCategoriesBloc equipmentCategoriesBloc =
+          BlocProvider.of<EquipmentCategoriesBloc>(context);
+
     if (_formKey.currentState!.validate()) {
       // Create a new EquipmentItem based on the user input
       EquipmentItem newEquipmentItem = EquipmentItem(
         id: 1, // Generate ID here
+        EquipementCategoryID: widget.equipmentCategory.id!,
         name: nameController.text,
         description: descriptionController.text,
-        quantity: int.parse(quantityController.text),
+        quantity: int.parse(quantityController.text), 
       );
 
       // Fetch the EquipmentItemBloc
-      EquipmentItemBloc equipmentItemBloc =
-          BlocProvider.of<EquipmentItemBloc>(context);
 
       // Add the new EquipmentItem to the EquipmentItemBloc
       equipmentItemBloc.add(AddEquipmentItem(Item: newEquipmentItem));
+      equipmentCategoriesBloc.add(AddItemEquipmentCategories(Item: newEquipmentItem, EquipmentCategory: widget.equipmentCategory));
+
 
       // Clear the fields
       emptyField();
@@ -50,8 +66,10 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+Widget build(BuildContext context) {
+  return BlocProvider<EquipmentItemBloc>(
+    create: (context) => EquipmentItemBloc(),
+    child: Scaffold(
       appBar: AppBar(
         title: Text("Add New Equipment Item"),
       ),
@@ -93,17 +111,23 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
               SizedBox(
                 height: 15,
               ),
-              WidgetButton.largeButton(
-                "Submit",
-                AppTextTheme.buttonwhite,
-                AppColors.primaryblue,
-                null,
-                () => saveEquipmentItem(context),
+              Builder(
+                builder: (context) {
+                  return WidgetButton.largeButton(
+                    "Submit",
+                    AppTextTheme.buttonwhite,
+                    AppColors.primaryblue,
+                    null,
+                    () => saveEquipmentItem(context),
+                  );
+                },
               ),
             ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

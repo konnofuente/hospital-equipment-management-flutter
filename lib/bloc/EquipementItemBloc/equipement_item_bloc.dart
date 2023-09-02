@@ -24,25 +24,25 @@ class EquipmentItemBloc
   Future<FutureOr<void>> _onAddEquipmentItem(AddEquipmentItem event,
       Emitter<EquipmentItemState> emit) async {
     // final state = this.state;
-    final state = EquipmentItemState(); // Initialize or fetch your state
 
     // Generate unique ID for new Item
     int Id = AppFunction().generateUserId(event.Item.name);
 
-    // Create a new EquipmentItem object with generated ID
-    EquipmentItem newItem = event.Item.copyWith(id: Id);
+// Create a new EquipmentItem object with generated ID
+EquipmentItem newItem = event.Item.copyWith(id: Id);
 
-    // Add the new Item to the existing list
-    state.allEquipmentItem.add(newItem);
+// Create a new list of items including the new item
+List<EquipmentItem> updatedList = List.from(state.allEquipmentItem)..add(newItem);
 
-    // Emit the new state
-    emit(EquipmentItemState(
-      allEquipmentItem: state.allEquipmentItem,
-    ));
+// Emit the new state
+emit(EquipmentItemState(
+  allEquipmentItem: updatedList,
+));
+
 
     try {
       print(
-          'Succesfully save of EquipmentItem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+          'Succesfully save of EquipmentItem ${state.allEquipmentItem.length}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     } catch (e) {
       print('OMline EquipmentItem not created: $e !!!!!!!!!!!');
     }

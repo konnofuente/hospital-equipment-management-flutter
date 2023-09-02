@@ -5,6 +5,7 @@ import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categor
 import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
 import 'package:evaltech_mobile/models/EquipementCategories.dart';
 import 'package:evaltech_mobile/models/EquipementCategories.dart';
+import 'package:evaltech_mobile/models/EquipementItem.dart';
 import 'package:evaltech_mobile/models/function.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,37 +17,78 @@ class EquipmentCategoriesBloc
     extends Bloc<EquipmentCategoriesEvent, EquipmentCategoriesState> {
   EquipmentCategoriesBloc() : super(const EquipmentCategoriesState()) {
     on<AddEquipmentCategories>(_onAddEquipmentCategories);
+    on<AddItemEquipmentCategories>(_onAddItemEquipmentCategories);
     on<UpdateEquipmentCategories>(_onUpdateEquipmentCategories);
     on<DeleteEquipmentCategories>(_onDeleteEquipmentCategories);
     // on<FetchEquipmentCategories>(_onFetchEquipmentCategories);
   }
 
-Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
-    Emitter<EquipmentCategoriesState> emit) async {
-  
-  // Use the current state
-  final currentState = this.state; 
+  Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
+      Emitter<EquipmentCategoriesState> emit) async {
+    // Use the current state
+    final currentState = this.state;
 
-  // Generate unique ID for new EquipmentCategory
-  int Id = AppFunction().generateUserId(event.EquipmentCategory.name);
+    // Generate unique ID for new EquipmentCategory
+    int Id = AppFunction().generateUserId(
+        event.EquipmentCategory.name );
 
-  // Create a new EquipmentCategories object with generated ID
-  EquipmentCategories newEquipmentCategory =
-      event.EquipmentCategory.copyWith(id: Id);
+    // Create a new EquipmentCategories object with generated ID
+    EquipmentCategories newEquipmentCategory =
+        event.EquipmentCategory.copyWith(id: Id);
 
-  // Create a new list that includes all previous elements and the new one
-  List<EquipmentCategories> updatedEquipmentCategories =
-      List.from(currentState.allEquipmentCategories)..add(newEquipmentCategory);
+    // Create a new list that includes all previous elements and the new one
+    List<EquipmentCategories> updatedEquipmentCategories =
+        List.from(currentState.allEquipmentCategories)
+          ..add(newEquipmentCategory);
 
-  // Emit the new state
-  emit(EquipmentCategoriesState(
-    allEquipmentCategories: updatedEquipmentCategories,
-  ));
+    // Emit the new state
+    emit(EquipmentCategoriesState(
+      allEquipmentCategories: updatedEquipmentCategories,
+    ));
 
+    try {
+      print(
+          'Successfully saved EquipmentCategories as the ${updatedEquipmentCategories.length}th ');
+    } catch (e) {
+      print('Online EquipmentCategories not created: $e');
+    }
+  }
+
+  Future<FutureOr<void>> _onAddItemEquipmentCategories(
+  AddItemEquipmentCategories event,
+  Emitter<EquipmentCategoriesState> emit,
+) async {
   try {
-    print('Successfully saved EquipmentCategories as the ${updatedEquipmentCategories.length}th ' );
+    // Fetch the current state
+    final currentState = this.state;
+
+    // Find the target EquipmentCategory by ID or some other unique identifier
+    final targetCategory = currentState.allEquipmentCategories.firstWhere(
+      (category) => category.id == event.EquipmentCategory.id,
+    );
+
+    // Add the new item to the target category
+    final List<EquipmentItem> updatedItems = List.from(targetCategory.items)..add(event.Item);
+
+    // Create a new EquipmentCategory object with the updated items list
+    final updatedCategory = targetCategory.copyWith(items: updatedItems);
+
+    // Create a new list of EquipmentCategories including the updated category
+    final updatedEquipmentCategories = currentState.allEquipmentCategories.map((category) {
+      return category.id == updatedCategory.id ? updatedCategory : category;
+    }).toList();
+
+    // Emit the new state
+    emit(EquipmentCategoriesState(
+      allEquipmentCategories: updatedEquipmentCategories,
+    ));
+
+  final newCategory = currentState.allEquipmentCategories.firstWhere(
+      (category) => category.id == event.EquipmentCategory.id,
+    );
+    print('Successfully added item to EquipmentCategory ${newCategory.items} !');
   } catch (e) {
-    print('Online EquipmentCategories not created: $e');
+    print('Failed to add item to EquipmentCategory: $e');
   }
 }
 
@@ -84,4 +126,6 @@ Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
       throw Exception('Failed to load equipment_categoriess');
     }
   }
+
+
 }

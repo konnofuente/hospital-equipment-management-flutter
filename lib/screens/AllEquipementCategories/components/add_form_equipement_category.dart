@@ -9,6 +9,7 @@ import '../../../Theme/app_theme.dart';
 import '../../../Theme/text_theme.dart';
 import '../../../bloc/bloc_export.dart';
 import '../../../models/Role.dart';
+import '../../../services/auth.dart';
 import '../../../services/internet_connection.dart';
 import '../../../services/localisationService/t_key.dart';
 import '../../../provider/provider.dart';

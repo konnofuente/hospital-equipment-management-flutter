@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:evaltech_mobile/models/EquipementItem.dart';
 
 import '../../models/EquipementCategories.dart';
-
-
 
 abstract class EquipmentCategoriesEvent extends Equatable {
   const EquipmentCategoriesEvent();
@@ -14,6 +13,17 @@ abstract class EquipmentCategoriesEvent extends Equatable {
 class AddEquipmentCategories extends EquipmentCategoriesEvent {
   final EquipmentCategories EquipmentCategory;
   const AddEquipmentCategories({
+    required this.EquipmentCategory,
+  });
+  @override
+  List<Object> get props => [EquipmentCategory];
+}
+
+class AddItemEquipmentCategories extends EquipmentCategoriesEvent {
+  final EquipmentCategories EquipmentCategory;
+  final EquipmentItem Item;
+  const AddItemEquipmentCategories( {
+    required this.Item,
     required this.EquipmentCategory,
   });
   @override

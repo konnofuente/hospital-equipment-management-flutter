@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:evaltech_mobile/models/function.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/ChatgroupScreen.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
 import 'package:evaltech_mobile/screens/EquipementCategory/components/add_form_equipment_item.dart';
@@ -51,7 +52,7 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
       if (selectedIndex == 0) {
         return GridItemDetails(globalItem);
       } else if (selectedIndex == 1) {
-        return AddFormEquipementItem();
+        return AddFormEquipementItem(equipmentCategory:globalItem ,);
       }
       return GridItemDetails(globalItem);
     }
