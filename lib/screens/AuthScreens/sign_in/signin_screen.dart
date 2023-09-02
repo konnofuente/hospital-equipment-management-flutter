@@ -41,9 +41,10 @@ class _SignInState extends State<SignIn> {
   final _storage = const FlutterSecureStorage();
 
   Future<void> _readCredentialFromStorage() async {
-    emailController.text = (await _storage.read(key: "evaltech_KEY_EMAIL"))!;
+    emailController.text =
+        (await _storage.read(key: "gestion_hopital_KEY_EMAIL"))!;
     passwordController.text =
-        (await _storage.read(key: "evaltech_KEY_PASSWORD"))!;
+        (await _storage.read(key: "gestion_hopitalhopital_KEY_PASSWORD"))!;
   }
 
   @override

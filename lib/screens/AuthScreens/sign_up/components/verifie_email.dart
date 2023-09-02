@@ -59,7 +59,7 @@ class _ConfirmEmailState extends State<ConfirmEmail> {
                   // ignore: prefer_const_constructors
                   Flexible(
                       child: const Text(
-                    "Give your email so that evaltech can send you a verification code ",
+                    "Give your email so that gestion_hopital can send you a verification code ",
                     style: AppTextTheme.caption,
                   )),
                 ],

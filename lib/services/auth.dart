@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import '../bloc/UserBloc/user_bloc.dart';
+import '../models/Role.dart';
 import '../models/User.dart';
 import '../provider/provider.dart';
 import '../screens/AuthScreens/sign_up/code_verification.dart';
@@ -25,54 +26,53 @@ class AuthService {
     required String phoneNumber,
     required String email,
     required String password,
+    required Role role,
   }) async {
-
     User newUser = User(
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
       email: email,
       password: password,
+      role: role.name,
     );
 
     UserBloc userBloc = BlocProvider.of<UserBloc>(context);
     userBloc.add(AddUsers(users: newUser, context: context));
 
     Provider.of<UserManagement>(context).changeUser(newUser);
- NavigationScreen.navigate(context, GetStartedScreen());
-
+    NavigationScreen.navigate(context, GetStartedScreen());
   }
 
-
   Future<void> localloginUser({
-  required BuildContext context,
-  required String email,
-  required String password,
-}) async {
-  UserBloc userBloc = BlocProvider.of<UserBloc>(context);
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
+    UserBloc userBloc = BlocProvider.of<UserBloc>(context);
 
-  // Dispatch the LoginUser event to the UserBloc
-  userBloc.add(LoginUser(email: email, password: password));
+    // Dispatch the LoginUser event to the UserBloc
+    userBloc.add(LoginUser(email: email, password: password));
 
-  // Listen for the new state changes
-  userBloc.stream.listen((state) {
-    if (state is UserLoggedIn) {
-      // Navigate to the GetStartedScreen if login is successful
+    // Listen for the new state changes
+    userBloc.stream.listen((state) {
+      if (state is UserLoggedIn) {
+        // Navigate to the GetStartedScreen if login is successful
 
-      // Storing the email and password
-      _storage.write(key: "evaltech_KEY_EMAIL", value: email);
-      _storage.write(key: "evaltech_KEY_PASSWORD", value: password);
+        // Storing the email and password
+        _storage.write(key: "gestion_hopital_KEY_EMAIL", value: email);
+        _storage.write(key: "gestion_hopital_KEY_PASSWORD", value: password);
 
-      // Navigate to the next screen
-      NavigationScreen.navigate(context, GetStartedScreen());
-    } else if (state is UserLoginFailed) { // Assume you have a UserLoginFailed state
-      // Show an alert box if login fails
-      AlertBox.alertbox(
-          context, "Registration", "Invalid Password or email", () {});
-    }
-  });
-}
-
+        // Navigate to the next screen
+        NavigationScreen.navigate(context, GetStartedScreen());
+      } else if (state is UserLoginFailed) {
+        // Assume you have a UserLoginFailed state
+        // Show an alert box if login fails
+        AlertBox.alertbox(
+            context, "Registration", "Invalid Password or email", () {});
+      }
+    });
+  }
 
   Future<void> register(
       BuildContext context,
@@ -154,10 +154,12 @@ class AuthService {
 
       NavigationScreen.navigate(context, GetStartedScreen());
 
-      await _storage.write(key: "evaltech_KEY_EMAIL", value: username);
-      await _storage.write(key: "evaltech_KEY_PASSWORD", value: password);
-      await _storage.write(key: "evaltech_KEY_USER_ID", value: 1.toString());
-      await _storage.write(key: "evaltech_KEY_TOKEN", value: response.body);
+      await _storage.write(
+          key: "gestion_hopitalhopital_KEY_EMAIL", value: username);
+      await _storage.write(
+          key: "gestion_hopital_KEY_PASSWORD", value: password);
+      await _storage.write(key: "gestion_hopital_KEY_USER_ID", value: 1.toString());
+      await _storage.write(key: "gestion_hopital_KEY_TOKEN", value: response.body);
     } else {
       AlertBox.alertbox(
           context, "Erro", "Problem with server please try later", () {});

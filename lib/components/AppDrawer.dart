@@ -34,7 +34,7 @@ class _AppDrawerState extends State<AppDrawer> {
             style: AppTextTheme.body1,
           ),
           accountEmail: const Text(
-            'admin@evaltech.com',
+            'admin@gestion_hopital.com',
             style: AppTextTheme.body2,
           ),
           currentAccountPicture: CircleAvatar(
@@ -82,7 +82,7 @@ class _AppDrawerState extends State<AppDrawer> {
             onTap: () {
               // Share app functionality
               final String playStoreLink =
-                  'https://play.google.com/store/apps/details?id=com.africappsdigital.evaltech';
+                  'https://play.google.com/store/apps/details?id=com.africappsdigital.gestion_hopital';
               Share.share('Check out this app: $playStoreLink');
               Navigator.of(context).pop();
             }),

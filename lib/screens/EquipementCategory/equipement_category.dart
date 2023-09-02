@@ -30,7 +30,7 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
 
   int selectedIndex = 0;
 
-  String AppBarTitle = 'evaltech';
+  String AppBarTitle = 'gestion_hopital';
 
   @override
   void initState() {
@@ -46,7 +46,9 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
     User? actaulUser = Provider.of<UserManagement>(context).actaulUser;
 
     return Scaffold(
-      body: actaulUser!.role == Role.RESPONSABLE.name ? responsibleGetFragment(selectedIndex, globalItem) : adminGetFragment(selectedIndex, globalItem),
+      body: actaulUser!.role == Role.RESPONSABLE.name
+          ? responsibleGetFragment(selectedIndex, globalItem)
+          : adminGetFragment(selectedIndex, globalItem),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(0),
         child: BottomNavigationBar(
@@ -54,7 +56,9 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppColors.bottomtap,
-          items:actaulUser.role == Role.RESPONSABLE.name ? responsibleGetBottomItem(context) : adminGetBottomItem(context),
+          items: actaulUser.role == Role.RESPONSABLE.name
+              ? responsibleGetBottomItem(context)
+              : adminGetBottomItem(context),
           onTap: (val) {
             // AppBarName();
             setState(() {

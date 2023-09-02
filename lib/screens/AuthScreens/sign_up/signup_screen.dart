@@ -40,6 +40,7 @@ class _SignUpState extends State<SignUp> {
   late List<String> seriesList;
   late String serie;
   bool serieFocus = false;
+  Role? _selectedRole;
 
   ElevatedButton getbutton(GlobalKey<FormState> formKey, String text,
       TextStyle textStyle, Color backgroundColor, Widget? logo) {
@@ -76,7 +77,6 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-
     void navigate() {
       if (_formKey.currentState!.validate()) {
         NavigationScreen.navigate(context, CodeVerification());
@@ -154,6 +154,22 @@ class _SignUpState extends State<SignUp> {
                         ' Enter ${TKeys.pwd.translate(context)}',
                         WidgetIcon.passwordKey(false)),
                     SizedBox(height: 20),
+                    DropdownButton<Role>(
+                      hint: Text("Select a role"),
+                      value: _selectedRole,
+                      items: Role.values.map((Role role) {
+                        return DropdownMenuItem<Role>(
+                          value: role,
+                          child: Text(role.toString().split('.').last),
+                        );
+                      }).toList(),
+                      onChanged: (Role? role) {
+                        setState(() {
+                          _selectedRole = role;
+                          // print(_selectedRole);
+                        });
+                      },
+                    ),
                     WidgetButton.largeButton('Next', AppTextTheme.buttonwhite,
                         AppColors.primaryblue, null, () {
                       if (_formKey.currentState!.validate()) {
@@ -164,6 +180,7 @@ class _SignUpState extends State<SignUp> {
                           phoneNumber: phno,
                           email: emailController.text,
                           password: passwordController.text,
+                          role: _selectedRole!,
                         );
                         // NavigationScreen.navigate(
                         //     context, CodeVerification());

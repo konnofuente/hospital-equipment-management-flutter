@@ -64,9 +64,9 @@ class DefaultData {
         directors: categoryData['directors'],
         desc: categoryData['desc'],
         imageUrl:
-            '/data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg',
+            null,
         bannerUrl:
-            '/data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg',
+            null,
         items: [], // Initialize empty
       );
       print(category.id);

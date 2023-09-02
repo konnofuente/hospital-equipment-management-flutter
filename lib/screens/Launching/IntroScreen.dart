@@ -33,7 +33,7 @@ class _IntroScreenState extends State<IntroScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/Images/Logoevaltech1.png',
+              'assets/Images/Logogestion_hopital1.png',
               height: 200,
             ),
           ],

@@ -19,7 +19,7 @@ class HeaderBanner extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              HeaderImage(this.equipment_categories.bannerUrl!),
+              HeaderImage(this.equipment_categories.bannerUrl),
               HeaderContent(this.equipment_categories),
             ],
           ),

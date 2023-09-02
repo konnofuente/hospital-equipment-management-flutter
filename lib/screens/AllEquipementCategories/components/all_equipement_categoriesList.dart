@@ -45,11 +45,12 @@ class _AllEquipmentCategoriesListState
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18.0 / 12.0,
-              child: widget.equipment_categories.imageUrl != null
+              child: widget.equipment_categories.imageUrl != null && widget.equipment_categories.imageUrl!.isNotEmpty
                   ? Image.file(File(widget.equipment_categories.imageUrl!),
                       fit: BoxFit.cover)
-                  : SizedBox
-                      .shrink(), // Replace with a placeholder widget if you like
+                  : Image.asset('assets/LogoCategories/Logo microbiologie et biologie moléculaire .JPG',
+                      fit: BoxFit.cover),
+              // Replace with a placeholder widget if you like
             ),
             // ignore: unnecessary_new
             new Padding(

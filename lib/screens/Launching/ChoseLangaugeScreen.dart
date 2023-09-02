@@ -106,10 +106,10 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                         .toggleLanguage('en');
                                     print(_inProgress);
                                     NavigationScreen.navigate(
-                                        // context, OnBoardingScreen());
+                                        context, OnBoardingScreen());
                                         // context, Home());
-                                        context,
-                                        SignIn());
+                                        // context,
+                                        // SignIn());
                                   },
                                   icon: Image.asset('assets/Images/enflag.png'),
                                 )),
@@ -136,8 +136,8 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
 
                                       NavigationScreen.navigate(
                                           context,
-                                          //  OnBoardingScreen());
-                                          SignIn());
+                                           OnBoardingScreen());
+                                          // SignIn());
                                     },
                                     icon:
                                         Image.asset('assets/Images/frflag.png'),

@@ -23,40 +23,40 @@
         "releaseDateDesc": "Lab equipment",
         "directors": "Dr. Smith",
         "desc": "Chemical apparatus",
-        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
-        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+        "imageUrl": "",
+        "bannerUrl": ""
       },
       {
         "name": "Physics",
         "releaseDateDesc": "Measurement tools",
         "directors": "Dr. Johnson",
         "desc": "Physics lab",
-        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
-        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+        "imageUrl": "",
+        "bannerUrl": ""
       },
       {
         "name": "Biology",
         "releaseDateDesc": "Organic study",
         "directors": "Dr. Lee",
         "desc": "Microscopes and more",
-        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
-        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+        "imageUrl": "",
+        "bannerUrl": ""
       },
       {
         "name": "Geology",
         "releaseDateDesc": "Rock studies",
         "directors": "Dr. Stone",
         "desc": "Minerals and rocks",
-        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
-        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+        "imageUrl": "",
+        "bannerUrl": ""
       },
       {
         "name": "Mathematics",
         "releaseDateDesc": "Calculative tools",
         "directors": "Dr. Euler",
         "desc": "Abacus, calculators",
-        "imageUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg",
-        "bannerUrl": " /data/user/0/com.example.gestion_hopital/cache/2bc600ca-edb3-4652-b189-01d566eedd32/Génétique .jpg"
+        "imageUrl": "",
+        "bannerUrl": ""
       }
     ],
     "items": [

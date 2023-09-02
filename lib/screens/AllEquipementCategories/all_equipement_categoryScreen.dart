@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Theme/theme_export.dart';
-import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
 import '../../bloc/bloc_export.dart';
 import '../../models/EquipementCategories.dart';
 import '../../models/Role.dart';
 import '../../models/User.dart';
 import '../../provider/provider.dart' hide EquipmentCategoriesState;
-import '../../services/localisationService/t_key.dart';
 import '../../widget/widget_button.dart';
 import 'components/all_equipement_categoriesList.dart';
-import 'package:flutter/material.dart';
 
 class AllEquipementCategoryScreen extends StatefulWidget {
   const AllEquipementCategoryScreen({Key? key}) : super(key: key);
