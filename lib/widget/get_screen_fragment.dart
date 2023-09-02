@@ -26,11 +26,13 @@ Widget getAdminDashboardFragment(int selectedIndex) {
   return AllEquipementCategoryScreen();
 }
 
-Widget getResponsipleDashboardFragment(int selectedIndex) {
+Widget getResponsipleDashboardFragment(
+    BuildContext context, int selectedIndex) {
+  User actaulUser = Provider.of<UserManagement>(context).actaulUser!;
   if (selectedIndex == 0) {
     return AllEquipementCategoryScreen();
   } else if (selectedIndex == 1) {
-    return StatisticResponsibleScreen();
+    return StatisticResponsibleScreen(UserId: actaulUser.id!);
   }
   return AllEquipementCategoryScreen();
 }
@@ -38,7 +40,6 @@ Widget getResponsipleDashboardFragment(int selectedIndex) {
 Widget getHomeFragment(BuildContext context, AppDrawerTitle val) {
   User? actaulUser =
       Provider.of<UserManagement>(context, listen: false).actaulUser;
-      
 
   if (val == AppDrawerTitle.Setting) {
     return SettingScreen();

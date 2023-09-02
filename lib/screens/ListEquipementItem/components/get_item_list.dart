@@ -28,33 +28,37 @@ class GetItemList extends StatelessWidget {
       );
     }
 
-    return Expanded(
-        flex: 1,
-        child: Container(
-            margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
-            height: 800.0,
-            child: ListView.builder(
-              itemCount: itemsList.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    onTap: () async {
-                      NavigationScreen.navigate(
-                          context, MakeReservation(Item: itemsList[index]));
-                    },
-                    title: Text(
-                      itemsList[index].name,
-                      style: AppTextTheme.listtitle,
-                    ),
-                    subtitle: Text(itemsList[index].quantity.toString()),
-                    leading: Icon(
-                      Icons.inventory,
-                      // size: 40.0,
-                      color: Colors.blue,
-                    ),
-                  ),
-                );
-              },
-            )));
+    return Column(
+      children: [
+        Expanded(
+            flex: 1,
+            child: Container(
+                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+                height: 800.0,
+                child: ListView.builder(
+                  itemCount: itemsList.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: ListTile(
+                        onTap: () async {
+                          NavigationScreen.navigate(
+                              context, MakeReservation(Item: itemsList[index]));
+                        },
+                        title: Text(
+                          itemsList[index].name,
+                          style: AppTextTheme.listtitle,
+                        ),
+                        subtitle: Text(itemsList[index].quantity.toString()),
+                        leading: Icon(
+                          Icons.inventory,
+                          // size: 40.0,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    );
+                  },
+                ))),
+      ],
+    );
   }
 }

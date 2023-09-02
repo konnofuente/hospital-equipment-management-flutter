@@ -31,38 +31,6 @@ class _MakeReservationState extends State<MakeReservation> {
   final TextEditingController reserveDateController = TextEditingController();
   final TextEditingController returnDateController = TextEditingController();
 
-  void formInformation(User actaulUser) {
-    try {
-      int reservedQuantity = int.parse(quantityController.text);
-      DateTime reserveDate = DateTime.parse(reserveDateController.text);
-      DateTime returnDate = DateTime.parse(returnDateController.text);
-
-      // Assuming generateReservationId() and generateReservationDetailsId()
-      // are methods that generate unique IDs.
-      int newReservationId = AppFunction().generateUserId(actaulUser!.email!);
-
-      ReservationDetails newReservationDetail = ReservationDetails(
-          id: AppFunction().generateUserId(actaulUser.id.toString()),
-          reservationId: newReservationId,
-          equipmentItemId: widget.Item.id,
-          reservedQuantity: reservedQuantity,
-          reserveDate: reserveDate,
-          returnDate: returnDate);
-
-      Reservation newReservation = Reservation(
-          id: newReservationId,
-          userId: actaulUser.id!,
-          reservationDetails: [newReservationDetail]);
-
-      ReservationServices.SaveRegistration(context, newReservation);
-
-      // print(newReservation);
-    } catch (e) {
-      // Handle your error here
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     User? actaulUser = Provider.of<UserManagement>(context).actaulUser;
@@ -121,7 +89,7 @@ class _MakeReservationState extends State<MakeReservation> {
               WidgetTextForm.getTextField(
                   "Quantite",
                   quantityController,
-                  TextInputType.text,
+                  TextInputType.number,
                   "Entre une quantite",
                   WidgetIcon.number(false)),
 
@@ -134,7 +102,7 @@ class _MakeReservationState extends State<MakeReservation> {
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 onPressed: () {
-                  formInformation(actaulUser!);
+                  makeReservation(actaulUser!);
                 },
                 child: Text('Loan', style: TextStyle(fontSize: 16)),
               ),
@@ -143,5 +111,72 @@ class _MakeReservationState extends State<MakeReservation> {
         ),
       ),
     );
+  }
+
+  void formInformation(User actaulUser) {
+    try {
+      int reservedQuantity = int.parse(quantityController.text);
+      DateTime reserveDate = DateTime.parse(reserveDateController.text);
+      DateTime returnDate = DateTime.parse(returnDateController.text);
+
+      // Assuming generateReservationId() and generateReservationDetailsId()
+      // are methods that generate unique IDs.
+      int newReservationId = AppFunction().generateUserId(actaulUser.email!);
+
+      ReservationDetails newReservationDetail = ReservationDetails(
+          id: AppFunction().generateUserId(actaulUser.id.toString()),
+          reservationId: newReservationId,
+          equipmentItemId: widget.Item.id,
+          reservedQuantity: reservedQuantity,
+          reserveDate: reserveDate,
+          returnDate: returnDate);
+
+      Reservation newReservation = Reservation(
+          id: newReservationId,
+          userId: actaulUser.id!,
+          reservationDetails: [newReservationDetail]);
+
+      ReservationServices.SaveRegistration(context, newReservation);
+
+      // print(newReservation);
+    } catch (e) {
+      // Handle your error here
+      print(e);
+    }
+  }
+
+  void makeReservation(User actaulUser) {
+    // Validate that all fields are not empty
+    if (reserveDateController.text.isEmpty ||
+        returnDateController.text.isEmpty ||
+        quantityController.text.isEmpty) {
+      AlertBox.alertbox(
+          context, "Reservation", "All fields must be filled", () {});
+      return;
+    }
+
+    // Validate that reservation date is before return date
+    DateTime reserveDate = DateTime.parse(reserveDateController.text);
+    DateTime returnDate = DateTime.parse(returnDateController.text);
+    if (reserveDate.isAfter(returnDate) ||
+        reserveDate.isAtSameMomentAs(returnDate)) {
+      AlertBox.alertbox(context, "Reservation",
+          "Reservation date must be before return date", () {});
+      return;
+    }
+
+    // Validate that reserved quantity is less than or equal to available quantity
+    int reservedQuantity = int.parse(quantityController.text);
+    if (reservedQuantity > widget.Item.quantity) {
+      AlertBox.alertbox(context, "Reservation",
+          "Reserved quantity cannot exceed available quantity", () {});
+      return;
+    }
+
+    formInformation(actaulUser);
+
+    // Show success message
+    AlertBox.alertbox(
+        context, "Reservation", "Equipement Reserve avec sucess!!", () {});
   }
 }

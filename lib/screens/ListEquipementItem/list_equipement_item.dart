@@ -12,22 +12,27 @@ class ListEquipementItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      primary: true,
-      backgroundColor: Color.fromRGBO(245, 244, 244, 1),
-      body: Column(
-        children: <Widget>[
-          Expanded(flex: 1, child: HeaderBanner(this.equipment_categories)),
-          // Container(child: ListViewHome()),
-          Expanded(
-              flex: 2,
-              child: GetItemList(
-                equipmentCategory: this.equipment_categories,
-              )),
-        ],
-        // ),
-        //],
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color.fromRGBO(245, 244, 244, 1),
+        body: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 1, 
+                child: HeaderBanner(this.equipment_categories)
+              ),
+              Expanded(
+                  flex: 2,
+                  child: GetItemList(
+                    equipmentCategory: this.equipment_categories,
+                  )
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
+

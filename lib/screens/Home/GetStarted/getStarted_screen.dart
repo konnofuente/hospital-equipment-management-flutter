@@ -17,7 +17,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       final userBloc = BlocProvider.of<UserBloc>(context);
       Provider.of<UserManagement>(context, listen: false).changeUser(userBloc.state.appUser!);
     });

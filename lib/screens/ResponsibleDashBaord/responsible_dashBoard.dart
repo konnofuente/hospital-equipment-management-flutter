@@ -37,7 +37,7 @@ class ResponsibleDashBoardState extends State<ResponsibleDashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        body: getResponsipleDashboardFragment(selectedIndex),
+        body: getResponsipleDashboardFragment(context,selectedIndex),
         bottomNavigationBar: DashBoardBottomNavigation(
           selectedIndex: selectedIndex,
           // ignore: void_checks
