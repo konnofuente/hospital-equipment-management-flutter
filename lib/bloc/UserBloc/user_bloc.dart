@@ -5,7 +5,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gestion_hopital/models/function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import '../../../models/User.dart';
+import '../../provider/provider.dart';
 import '../../screens/Home/GetStarted/getStarted_screen.dart';
 import '../../services/callApi.dart';
 import '../../utils/navigate_screen.dart';
@@ -66,11 +68,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       await _storage.write(key: "evaltech_KEY_EMAIL", value: event.users.email);
       await _storage.write(
           key: "evaltech_KEY_PASSWORD", value: event.users.password);
-          
+
       AlertBox.awesomeOkBox(
-          event.context, "Registration", "Successfully saved user", () {
-        NavigationScreen.navigate(event.context, GetStartedScreen());
-      });
+          event.context, "Registration", "Successfully saved user", () {});
     }
     try {
       print(state.usersList);
@@ -98,6 +98,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       // Emit new state with logged-in user
       emit(UserState(appUser: matchedUser));
       loginStatusController.sink.add(true);
+      //update the actaulle user 
+      Provider.of<UserManagement>(event.context,listen:false).changeUser(matchedUser);
     } else {
       print("Invalid email or password");
       // Emit error state or handle accordingly

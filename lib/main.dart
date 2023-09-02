@@ -12,7 +12,7 @@ void main() {
   BlocOverrides.runZoned(
     () => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => AppLang(appLang: 'fr')),
-      ChangeNotifierProvider(create: (_) => UserCreation()),
+      ChangeNotifierProvider(create: (_) => UserManagement()),
       ChangeNotifierProvider(
           create: (_) => EquipmentCategoriesState(equipment_categories: null)),
       ChangeNotifierProvider(

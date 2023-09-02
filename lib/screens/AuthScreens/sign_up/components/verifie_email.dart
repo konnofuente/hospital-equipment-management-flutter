@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
-import '../../Theme/app_theme.dart';
-import '../../Theme/text_theme.dart';
-import '../../utils/navigate_screen.dart';
-import '../../widget/widget_button.dart';
-import '../../widget/widget_icon.dart';
-import '../../widget/widget_textformfield.dart';
+import '../../../../Theme/theme_export.dart';
+import '../../../../utils/navigate_screen.dart';
+import '../../../../widget/widget_export.dart';
 import 'otp_verification.dart';
 
 class ConfirmEmail extends StatefulWidget {

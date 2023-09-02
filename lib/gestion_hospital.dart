@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:gestion_hopital/models/User.dart';
 import 'package:gestion_hopital/provider/provider.dart';
 import 'package:gestion_hopital/screens/Launching/ChoseLangaugeScreen.dart';
 import 'package:gestion_hopital/services/internet_connection.dart';
@@ -62,6 +63,7 @@ class _GestionHopitalState extends State<GestionHopital> {
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<LocalizationController>(
         init: localizationController,
         builder: (LocalizationController controller) {

@@ -6,16 +6,16 @@ import '../../../Theme/app_theme.dart';
 import '../../../components/component_export.dart';
 import '../../../services/localisationService/t_key.dart';
 import '../../../widget/widget_export.dart';
-import 'utils/get_screen_fragment.dart';
+import '../../../widget/get_screen_fragment.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key}) : super(key: key);
+class AdminDashBoard extends StatefulWidget {
+  const AdminDashBoard({Key? key}) : super(key: key);
 
   @override
-  State<DashBoard> createState() => _DashBoardState();
+  State<AdminDashBoard> createState() => _AdminDashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _AdminDashBoardState extends State<AdminDashBoard> {
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
   int selectedIndex = 1;
@@ -53,7 +53,7 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        body: getDashboardFragment(selectedIndex),
+        body: getAdminDashboardFragment(selectedIndex),
         bottomNavigationBar: DashBoardBottomNavigation(
           selectedIndex: selectedIndex,
           // ignore: void_checks

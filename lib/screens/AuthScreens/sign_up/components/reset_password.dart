@@ -1,11 +1,10 @@
 import 'package:gestion_hopital/screens/AuthScreens/sign_in/signin_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../Theme/app_theme.dart';
-import '../../Theme/text_theme.dart';
-import '../../utils/navigate_screen.dart';
-import '../../widget/widget_button.dart';
-import '../../widget/widget_icon.dart';
+import '../../../../Theme/theme_export.dart';
+import '../../../../utils/navigate_screen.dart';
+import '../../../../widget/widget_export.dart';
+
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({Key? key}) : super(key: key);

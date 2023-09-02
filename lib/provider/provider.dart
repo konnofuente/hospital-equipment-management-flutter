@@ -5,20 +5,19 @@ import 'package:flutter/material.dart';
 import '../models/EquipementCategories.dart';
 import '../models/User.dart';
 
-class UserCreation with ChangeNotifier {
-  User? userCreation;
-  UserCreation({
-    this.userCreation,
+class UserManagement with ChangeNotifier {
+  UserManagement({
+    this.actaulUser,
   });
 
- 
-  UserCreation copyWith({
-    User? userCreation,
-  }) {
-    return UserCreation(
-      userCreation: userCreation ?? this.userCreation,
-    );
+  User? actaulUser;
+
+  changeUser(User actUser) {
+    actaulUser = actUser;
+    print('provided user is $actaulUser');
+    notifyListeners();
   }
+
 }
 
 class AppLang with ChangeNotifier {

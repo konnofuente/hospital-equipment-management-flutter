@@ -41,8 +41,10 @@ class DeleteUsers extends UserEvent {
 class LoginUser extends UserEvent {
   final String email;
   final String password;
+  final BuildContext context;
 
   const LoginUser({
+    required this.context, 
     required this.email,
     required this.password,
   });

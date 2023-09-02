@@ -1,8 +1,5 @@
-import 'package:gestion_hopital/screens/AuthScreens/verifie_email.dart';
-import 'package:gestion_hopital/screens/Home/GetStarted/getStarted_screen.dart';
 import 'package:gestion_hopital/utils/is_loading_indicator.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../Theme/app_theme.dart';
@@ -17,8 +14,8 @@ import '../../../widget/widget_alertbox.dart';
 import '../../../widget/widget_button.dart';
 import '../../../widget/widget_icon.dart';
 import '../../../widget/widget_textformfield.dart';
+import '../sign_up/components/verifie_email.dart';
 import '../sign_up/signup_screen.dart';
-import '../verifie_email.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);

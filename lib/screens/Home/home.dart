@@ -1,6 +1,5 @@
 import 'package:gestion_hopital/models/enum.dart';
-import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
-import 'package:gestion_hopital/screens/Home/DashBaord/utils/get_screen_fragment.dart';
+import 'package:gestion_hopital/widget/get_screen_fragment.dart';
 import 'package:gestion_hopital/widget/widget_export.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,7 @@ class _HomeState extends State<Home> {
       drawer: AppDrawer(
         onTapCallBackFunction: _changeScreenName,
       ),
-      body: getHomeFragment(ScreenName),
+      body: getHomeFragment(context,ScreenName),
     );
   }
 }

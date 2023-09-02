@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import '../bloc/UserBloc/user_bloc.dart';
 import '../models/User.dart';
+import '../provider/provider.dart';
 import '../screens/AuthScreens/sign_up/code_verification.dart';
 import '../screens/Home/GetStarted/getStarted_screen.dart';
 import '../utils/navigate_screen.dart';
@@ -24,6 +26,7 @@ class AuthService {
     required String email,
     required String password,
   }) async {
+
     User newUser = User(
       firstName: firstName,
       lastName: lastName,
@@ -35,6 +38,8 @@ class AuthService {
     UserBloc userBloc = BlocProvider.of<UserBloc>(context);
     userBloc.add(AddUsers(users: newUser, context: context));
 
+    Provider.of<UserManagement>(context).changeUser(newUser);
+ NavigationScreen.navigate(context, GetStartedScreen());
 
   }
 
@@ -46,7 +51,7 @@ class AuthService {
     UserBloc userBloc = BlocProvider.of<UserBloc>(context);
 
     // Dispatch the LoginUser event to the UserBloc
-    userBloc.add(LoginUser(email: email, password: password));
+    userBloc.add(LoginUser(email: email, password: password,context:context ));
 
     // Listen for login status
     await for (bool status
