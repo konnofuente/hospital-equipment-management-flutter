@@ -174,9 +174,5 @@ class _MakeReservationState extends State<MakeReservation> {
     }
 
     formInformation(actaulUser);
-
-    // Show success message
-    AlertBox.alertbox(
-        context, "Reservation", "Equipement Reserve avec sucess!!", () {});
   }
 }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_hopital/bloc/ReservationBloc/reservation_bloc.dart';
-
 import '../../Theme/theme_export.dart';
-import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
 import '../../bloc/bloc_export.dart';
 import '../../models/Reservation.dart';
 import '../../models/ReservationDetails.dart';
+import 'package:intl/intl.dart';
 
 class StatisticResponsibleScreen extends StatefulWidget {
   final int UserId; // Add this
@@ -17,31 +16,32 @@ class StatisticResponsibleScreen extends StatefulWidget {
       _StatisticResponsibleScreenState();
 }
 
-class _StatisticResponsibleScreenState
-    extends State<StatisticResponsibleScreen> {
-
+class _StatisticResponsibleScreenState extends State<StatisticResponsibleScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _getStatistics(context);
-    });
-  }
+  bool get wantKeepAlive => true;
 
-  late int totalCategories = 0;
-  // Replace with your own data
+  late int totalreservation = 0;
   int totalItems = 0;
   List<ReservationDetails> reservedItems = [];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _getStatistics(context);
+  }
 
   void _getStatistics(BuildContext context) {
     EquipmentCategoriesBloc equipmentCategoriesBloc =
         BlocProvider.of<EquipmentCategoriesBloc>(context);
-    totalCategories =
-        equipmentCategoriesBloc.state.allEquipmentCategories.length;
     reservedItems = getReservationsForClient(context, widget.UserId)!;
-    
-    print(totalCategories);
+    totalreservation = reservedItems.length;
+
+    print(totalreservation);
+    print(reservedItems);
   }
+
+  // rest of your code...
 
   // Function to fetch reservations for a specific client
   List<ReservationDetails>? getReservationsForClient(
@@ -66,64 +66,100 @@ class _StatisticResponsibleScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Total Number of Categories
-            _buildStatCard(
-              'Total Loan',
-              '$totalCategories',
-              Colors.blue,
-            ),
-            SizedBox(height: 20),
-
-            // Total Number of Items
-            _buildStatCard(
-              'Total Loan',
-              '$totalItems',
-              Colors.green,
-            ),
-            SizedBox(height: 20),
-
-            Text(
-              'Reserved Items',
-              style: AppTextTheme.title,
-            ),
-            SizedBox(height: 10),
-            reservedItems.isEmpty
-                ? Center(
-                    child: Text(
-                      'No reservation made',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  )
-                : Expanded(
-                    child: ListView.builder(
-                      itemCount: reservedItems.length,
-                      itemBuilder: (context, index) {
-                        final item = reservedItems[index];
-                        return ListTile(
-                          leading: Icon(Icons.check_box_outline_blank),
-                          title: Text(item.equipmentItemId.toString()),
-                          subtitle: Text('Quantity: ${item.reservedQuantity}'),
-                          trailing: Text(
-                            'Return Date: ${item.returnDate}',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        );
-                      },
-                    ),
+        body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Total Number of Categories
+                  _buildStatCard(
+                    'Total Loan',
+                    '$totalreservation',
+                    Colors.blue,
                   ),
-          ],
-        ),
-      ),
-    );
+                  SizedBox(height: 20),
+
+                  // Total Number of Items
+                  _buildStatCard(
+                    'Total Loan',
+                    '$totalItems',
+                    Colors.green,
+                  ),
+                  SizedBox(height: 20),
+
+                  Text(
+                    'Reserved Items',
+                    style: AppTextTheme.title,
+                  ),
+                  SizedBox(height: 10),
+                  reservedItems.isEmpty
+                      ? Center(
+                          child: Text(
+                            'No reservation made',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        )
+                      : Expanded(
+                          child: ListView.builder(
+                            itemCount: reservedItems.length,
+                            itemBuilder: (context, index) {
+                              final item = reservedItems[index];
+                              return Container(
+                                margin: EdgeInsets.symmetric(vertical: 8.0),
+                                padding: EdgeInsets.all(16.0),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.check_box_outline_blank,
+                                        size: 24.0, color: Colors.blue),
+                                    SizedBox(width: 16.0),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            item.equipmentItemId.toString(),
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Quantity: ${item.reservedQuantity}',
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 8, horizontal: 12),
+                                      decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Text(
+                                        'Return Date: ${DateFormat('dd-MM-yyyy').format(item.returnDate)}',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                ])));
   }
 
   Widget _buildStatCard(String title, String value, Color color) {
@@ -131,7 +167,7 @@ class _StatisticResponsibleScreenState
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Container(
-        height: 150,
+        height: 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: color.withOpacity(0.1),
