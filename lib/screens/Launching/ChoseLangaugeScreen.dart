@@ -1,9 +1,9 @@
-import 'package:evaltech_mobile/screens/Home/DashBaord/DashBoard.dart';
-import 'package:evaltech_mobile/screens/Home/HomeScreen.dart';
-import 'package:evaltech_mobile/screens/Home/home.dart';
-import 'package:evaltech_mobile/screens/TestQuestions/Tmain.dart';
-import 'package:evaltech_mobile/services/localisationService/t_key.dart';
-import 'package:evaltech_mobile/utils/navigate_screen.dart';
+import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
+import 'package:gestion_hopital/screens/Home/HomeScreen.dart';
+import 'package:gestion_hopital/screens/Home/home.dart';
+import 'package:gestion_hopital/screens/TestQuestions/Tmain.dart';
+import 'package:gestion_hopital/services/localisationService/t_key.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -94,7 +94,7 @@ class _ChoseLangaugeScreenState extends State<ChoseLangaugeScreen> {
                                         print(_inProgress);
                                         NavigationScreen.navigate(
                                             context, OnBoardingScreen());
-                                            // context, Home());
+                                        // context, Home());
                                       },
                                       icon: Image.asset(
                                           'assets/Images/enflag.png'),

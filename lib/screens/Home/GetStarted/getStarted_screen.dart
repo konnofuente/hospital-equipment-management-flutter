@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:evaltech_mobile/bloc/bloc_export.dart';
-import 'package:evaltech_mobile/screens/Home/DashBaord/DashBoard.dart';
-import 'package:evaltech_mobile/screens/Home/GetStarted/components/body.dart';
-import 'package:evaltech_mobile/screens/Home/home.dart';
-import 'package:evaltech_mobile/services/localisationService/t_key.dart';
+import 'package:gestion_hopital/bloc/bloc_export.dart';
+import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
+import 'package:gestion_hopital/screens/Home/GetStarted/components/body.dart';
+import 'package:gestion_hopital/screens/Home/home.dart';
+import 'package:gestion_hopital/services/localisationService/t_key.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Theme/app_theme.dart';

@@ -1,5 +1,5 @@
-import 'package:evaltech_mobile/screens/Home/home.dart';
-import 'package:evaltech_mobile/utils/utils_export.dart';
+import 'package:gestion_hopital/screens/Home/home.dart';
+import 'package:gestion_hopital/utils/utils_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Theme/theme_export.dart';

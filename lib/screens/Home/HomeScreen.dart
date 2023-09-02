@@ -1,6 +1,6 @@
-import 'package:evaltech_mobile/db/db.dart';
-import 'package:evaltech_mobile/models/EquipementCategories.dart';
-import 'package:evaltech_mobile/screens/AllEquipementCategories/components/all_equipement_categoriesList.dart';
+import 'package:gestion_hopital/db/db.dart';
+import 'package:gestion_hopital/models/EquipementCategories.dart';
+import 'package:gestion_hopital/screens/AllEquipementCategories/components/all_equipement_categoriesList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

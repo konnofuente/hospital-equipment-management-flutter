@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/screens/AuthScreens/reset_password.dart';
+import 'package:gestion_hopital/screens/AuthScreens/reset_password.dart';
 import 'package:flutter/material.dart';
 import '../../Theme/app_theme.dart';
 import '../../Theme/text_theme.dart';

@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:evaltech_mobile/models/function.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/ChatgroupScreen.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
-import 'package:evaltech_mobile/screens/EquipementCategory/components/add_form_equipment_item.dart';
-import 'package:evaltech_mobile/screens/EquipementCategory/widgets/getBottomItem.dart';
-import 'package:evaltech_mobile/screens/ItemReservation/item_reservation.dart';
-import 'package:evaltech_mobile/screens/ListEquipementItem/list_equipement_item.dart';
-import 'package:evaltech_mobile/screens/PastQuestions.dart';
+import 'package:gestion_hopital/models/function.dart';
+import 'package:gestion_hopital/screens/ChatgroupScreen/ChatgroupScreen.dart';
+import 'package:gestion_hopital/screens/ChatgroupScreen/Components/chat_screen.dart';
+import 'package:gestion_hopital/screens/EquipementCategory/components/add_form_equipment_item.dart';
+import 'package:gestion_hopital/screens/EquipementCategory/widgets/getBottomItem.dart';
+import 'package:gestion_hopital/screens/ItemReservation/item_reservation.dart';
+import 'package:gestion_hopital/screens/ListEquipementItem/list_equipement_item.dart';
+import 'package:gestion_hopital/screens/PastQuestions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Theme/app_theme.dart';
@@ -32,7 +32,7 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
 
-  int selectedIndex =0;
+  int selectedIndex = 0;
 
   String AppBarTitle = 'evaltech';
 
@@ -52,9 +52,10 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
       if (selectedIndex == 0) {
         return ListEquipementItem(globalItem);
       } else if (selectedIndex == 1) {
-        return AddFormEquipementItem(equipmentCategory:globalItem ,);
-      }
-       else if (selectedIndex == 2) {
+        return AddFormEquipementItem(
+          equipmentCategory: globalItem,
+        );
+      } else if (selectedIndex == 2) {
         return ItemReservation();
       }
       return ListEquipementItem(globalItem);
@@ -82,6 +83,4 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
       ),
     );
   }
-
-
 }

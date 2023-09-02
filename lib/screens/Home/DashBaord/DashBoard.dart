@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/components/AppBottomNavigation.dart/DashBaordBottomNavigation.dart';
+import 'package:gestion_hopital/components/AppBottomNavigation.dart/DashBaordBottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 

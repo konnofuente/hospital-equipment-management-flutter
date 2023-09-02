@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/Theme/text_theme.dart';
+import 'package:gestion_hopital/Theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 

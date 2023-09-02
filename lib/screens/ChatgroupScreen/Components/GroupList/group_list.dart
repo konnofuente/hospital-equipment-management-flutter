@@ -1,6 +1,6 @@
-import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/GroupList/components/top_bar.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
+import 'package:gestion_hopital/Theme/text_theme.dart';
+import 'package:gestion_hopital/screens/ChatgroupScreen/Components/GroupList/components/top_bar.dart';
+import 'package:gestion_hopital/screens/ChatgroupScreen/Components/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Theme/app_theme.dart';

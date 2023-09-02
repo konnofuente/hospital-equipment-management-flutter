@@ -1,6 +1,6 @@
-import 'package:evaltech_mobile/Theme/app_theme.dart';
-import 'package:evaltech_mobile/models/Role.dart';
-import 'package:evaltech_mobile/screens/AuthScreens/sign_in/signin_screen.dart';
+import 'package:gestion_hopital/Theme/app_theme.dart';
+import 'package:gestion_hopital/models/Role.dart';
+import 'package:gestion_hopital/screens/AuthScreens/sign_in/signin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,9 @@ class ChoseUserMode extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Image.asset(
               'assets/Images/logo.png',
               height: 150,
@@ -85,9 +87,7 @@ class ChoseUserMode extends StatelessWidget {
               height: 26,
             ),
             Text(
-              GridInfo.name == "Admin"
-                  ? "Admin"
-                  : "Responsable de laboratoire",
+              GridInfo.name == "Admin" ? "Admin" : "Responsable de laboratoire",
               style: TextStyle(fontSize: 18),
             ),
             // SizedBox(height: 10,)

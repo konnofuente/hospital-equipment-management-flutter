@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:evaltech_mobile/models/EquipementItem.dart';
+import 'package:gestion_hopital/models/EquipementItem.dart';
 
 import '../../models/EquipementCategories.dart';
 
@@ -22,7 +22,7 @@ class AddEquipmentCategories extends EquipmentCategoriesEvent {
 class AddItemEquipmentCategories extends EquipmentCategoriesEvent {
   final EquipmentCategories EquipmentCategory;
   final EquipmentItem Item;
-  const AddItemEquipmentCategories( {
+  const AddItemEquipmentCategories({
     required this.Item,
     required this.EquipmentCategory,
   });

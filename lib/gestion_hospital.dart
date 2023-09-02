@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:evaltech_mobile/provider/provider.dart';
-import 'package:evaltech_mobile/screens/Launching/ChoseLangaugeScreen.dart';
-import 'package:evaltech_mobile/services/internet_connection.dart';
-import 'package:evaltech_mobile/services/localisationService/localization_service.dart';
+import 'package:gestion_hopital/provider/provider.dart';
+import 'package:gestion_hopital/screens/Launching/ChoseLangaugeScreen.dart';
+import 'package:gestion_hopital/services/internet_connection.dart';
+import 'package:gestion_hopital/services/localisationService/localization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';

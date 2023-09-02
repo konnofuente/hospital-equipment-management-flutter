@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/components/AppBottomNavigation.dart/ListBottomNavigationItem.dart';
+import 'package:gestion_hopital/components/AppBottomNavigation.dart/ListBottomNavigationItem.dart';
 import 'package:flutter/material.dart';
 import '../../Theme/theme_export.dart';
 
@@ -28,7 +28,6 @@ class _DashBoardBottomNavigationState extends State<DashBoardBottomNavigation> {
       items: ListBottomNavigationItem().dashboardListItem(context),
       onTap: (val) {
         widget.OnTapCallbackfunction(val);
-        
       },
       currentIndex: widget.selectedIndex,
     );

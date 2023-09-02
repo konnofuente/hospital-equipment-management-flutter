@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/screens/AllEquipementCategories/widgets/movieDesc.dart';
+import 'package:gestion_hopital/screens/AllEquipementCategories/widgets/movieDesc.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Theme/theme_export.dart';

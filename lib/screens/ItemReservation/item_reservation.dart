@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/screens/DocumentViewer/latexScreen.dart';
+import 'package:gestion_hopital/screens/DocumentViewer/latexScreen.dart';
 import 'package:flutter/material.dart';
 
 class ItemReservation extends StatefulWidget {

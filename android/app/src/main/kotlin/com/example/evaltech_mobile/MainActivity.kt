@@ -1,4 +1,4 @@
-package com.example.evaltech_mobile
+package com.example.gestion_hopital
 
 import io.flutter.embedding.android.FlutterActivity
 

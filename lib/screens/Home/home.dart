@@ -1,7 +1,7 @@
-import 'package:evaltech_mobile/models/enum.dart';
-import 'package:evaltech_mobile/screens/Home/DashBaord/DashBoard.dart';
-import 'package:evaltech_mobile/screens/Home/DashBaord/utils/get_screen_fragment.dart';
-import 'package:evaltech_mobile/widget/widget_export.dart';
+import 'package:gestion_hopital/models/enum.dart';
+import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
+import 'package:gestion_hopital/screens/Home/DashBaord/utils/get_screen_fragment.dart';
+import 'package:gestion_hopital/widget/widget_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/component_export.dart';

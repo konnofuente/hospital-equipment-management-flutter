@@ -1,7 +1,7 @@
-import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/bloc/bloc_export.dart';
-import 'package:evaltech_mobile/screens/QuizScreen/score/score_screen.dart';
-import 'package:evaltech_mobile/utils/navigate_screen.dart';
+import 'package:gestion_hopital/Theme/text_theme.dart';
+import 'package:gestion_hopital/bloc/bloc_export.dart';
+import 'package:gestion_hopital/screens/QuizScreen/score/score_screen.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constant/constants.dart';

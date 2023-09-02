@@ -1,9 +1,9 @@
-import 'package:evaltech_mobile/models/enum.dart';
-import 'package:evaltech_mobile/screens/AllEquipementCategories/all_equipement_categoryScreen.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/GroupList/group_list.dart';
-import 'package:evaltech_mobile/screens/Home/DashBaord/DashBoard.dart';
-import 'package:evaltech_mobile/screens/Projet/projet.dart';
-import 'package:evaltech_mobile/screens/SettingScreen/Settings.dart';
+import 'package:gestion_hopital/models/enum.dart';
+import 'package:gestion_hopital/screens/AllEquipementCategories/all_equipement_categoryScreen.dart';
+import 'package:gestion_hopital/screens/ChatgroupScreen/Components/GroupList/group_list.dart';
+import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
+import 'package:gestion_hopital/screens/Projet/projet.dart';
+import 'package:gestion_hopital/screens/SettingScreen/Settings.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Statistics/statistics.dart';
@@ -17,7 +17,7 @@ Widget getDashboardFragment(int selectedIndex) {
   } else if (selectedIndex == 2) {
     return StatisticScreen();
   }
-    return AllEquipementCategoryScreen();
+  return AllEquipementCategoryScreen();
 }
 
 Widget getHomeFragment(AppDrawerTitle val) {

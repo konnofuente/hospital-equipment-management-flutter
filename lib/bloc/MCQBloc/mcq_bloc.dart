@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:evaltech_mobile/models/MCQ.dart';
-import 'package:evaltech_mobile/services/callApi.dart';
+import 'package:gestion_hopital/models/MCQ.dart';
+import 'package:gestion_hopital/services/callApi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 

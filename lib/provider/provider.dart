@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:evaltech_mobile/models/MCQ.dart';
-import 'package:evaltech_mobile/models/Role.dart';
+import 'package:gestion_hopital/models/MCQ.dart';
+import 'package:gestion_hopital/models/Role.dart';
 import 'package:flutter/material.dart';
 
 import '../models/EquipementCategories.dart';

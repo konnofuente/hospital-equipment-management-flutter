@@ -1,6 +1,6 @@
 {
-    "name": "evaltech_mobile",
-    "short_name": "evaltech_mobile",
+    "name": "gestion_hopital",
+    "short_name": "gestion_hopital",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

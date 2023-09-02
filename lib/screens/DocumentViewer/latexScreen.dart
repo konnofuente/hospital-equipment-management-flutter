@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:evaltech_mobile/Constant/constants.dart';
+import 'package:gestion_hopital/Constant/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 

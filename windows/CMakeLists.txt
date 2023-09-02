@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(evaltech_mobile LANGUAGES CXX)
+project(gestion_hopital LANGUAGES CXX)
 
-set(BINARY_NAME "evaltech_mobile")
+set(BINARY_NAME "gestion_hopital")
 
 cmake_policy(SET CMP0063 NEW)
 

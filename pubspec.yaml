@@ -1,4 +1,4 @@
-name: evaltech_mobile
+name: gestion_hopital
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -72,7 +72,7 @@ dependencies:
   
 flutter_icons:
   android: true
-  image_path: "assets/Images/logoevaltech.png"
+  image_path: "assets/Images/ic_launcher.png"
   resize_to: "512x512"
   adaptive_icon_background: "#FFFFFF"
 

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:evaltech_mobile/services/resourceService.dart';
+import 'package:gestion_hopital/services/resourceService.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:http/http.dart' as http;

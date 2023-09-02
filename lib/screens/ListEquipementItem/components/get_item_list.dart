@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/Theme/theme_export.dart';
+import 'package:gestion_hopital/Theme/theme_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/EquipementCategories.dart';

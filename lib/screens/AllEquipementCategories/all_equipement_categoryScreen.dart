@@ -1,5 +1,5 @@
-import 'package:evaltech_mobile/screens/AllEquipementCategories/components/add_form_equipement_category.dart';
-import 'package:evaltech_mobile/utils/navigate_screen.dart';
+import 'package:gestion_hopital/screens/AllEquipementCategories/components/add_form_equipement_category.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../Theme/theme_export.dart';
@@ -50,7 +50,7 @@ class _AllEquipementCategoryScreenState
     super.dispose();
   }
 
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return BlocBuilder<EquipmentCategoriesBloc, EquipmentCategoriesState>(
       builder: (context, state) {
         return Scaffold(
@@ -60,15 +60,16 @@ class _AllEquipementCategoryScreenState
                 SizedBox(height: 10),
                 // Flexible(
                 //   flex: 1,
-                  // child:
-                   WidgetButton.largeButton(
-                      "Ajoutez une Categorie d'equipement",
-                      AppTextTheme.buttonwhite,
-                      AppColors.primaryblue,
-                      null, () async {
-              NavigationScreen.navigate(context, AddFormEquipementCategory());
-                    // Implement your action here
-                  }),
+                // child:
+                WidgetButton.largeButton(
+                    "Ajoutez une Categorie d'equipement",
+                    AppTextTheme.buttonwhite,
+                    AppColors.primaryblue,
+                    null, () async {
+                  NavigationScreen.navigate(
+                      context, AddFormEquipementCategory());
+                  // Implement your action here
+                }),
                 // ),
                 SizedBox(height: 10),
                 Expanded(

@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/bloc/bloc_export.dart';
+import 'package:gestion_hopital/bloc/bloc_export.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:evaltech_mobile/models/Role.dart';
-import 'package:evaltech_mobile/screens/AuthScreens/sign_up/academic_information.dart';
-import 'package:evaltech_mobile/provider/provider.dart';
+import 'package:gestion_hopital/models/Role.dart';
+import 'package:gestion_hopital/screens/AuthScreens/sign_up/academic_information.dart';
+import 'package:gestion_hopital/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,5 @@
-import 'package:evaltech_mobile/screens/AuthScreens/sign_in/signin_screen.dart';
-import 'package:evaltech_mobile/screens/Launching/ChoseUserMode.dart';
+import 'package:gestion_hopital/screens/AuthScreens/sign_in/signin_screen.dart';
+import 'package:gestion_hopital/screens/Launching/ChoseUserMode.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';

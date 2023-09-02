@@ -1,6 +1,6 @@
-import 'package:evaltech_mobile/screens/AuthScreens/verifie_email.dart';
-import 'package:evaltech_mobile/screens/Home/GetStarted/getStarted_screen.dart';
-import 'package:evaltech_mobile/utils/is_loading_indicator.dart';
+import 'package:gestion_hopital/screens/AuthScreens/verifie_email.dart';
+import 'package:gestion_hopital/screens/Home/GetStarted/getStarted_screen.dart';
+import 'package:gestion_hopital/utils/is_loading_indicator.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -65,18 +65,16 @@ class _SignInState extends State<SignIn> {
     if (_formKey.currentState!.validate()) {
       // await AuthService()
       //     .login(context, emailController.text, passwordController.text);
-      
-    AuthService authService = AuthService();
-    
-    // your other code here...
-    
-    await authService.localloginUser(
-      context: context,
-      email: emailController.text, password: passwordController.text,
-    );
-    
 
-    
+      AuthService authService = AuthService();
+
+      // your other code here...
+
+      await authService.localloginUser(
+        context: context,
+        email: emailController.text,
+        password: passwordController.text,
+      );
     }
   }
 

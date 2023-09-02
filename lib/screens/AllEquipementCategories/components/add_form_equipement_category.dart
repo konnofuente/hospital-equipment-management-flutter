@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
-import 'package:evaltech_mobile/models/EquipementCategories.dart';
-import 'package:evaltech_mobile/widget/widget_alertbox.dart';
+import 'package:gestion_hopital/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
+import 'package:gestion_hopital/models/EquipementCategories.dart';
+import 'package:gestion_hopital/widget/widget_alertbox.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../Theme/app_theme.dart';
@@ -84,7 +84,7 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
   }
 
   void SaveEquipementCategory(BuildContext context) {
-    if (nameController.text.isNotEmpty || directorsController.text.isNotEmpty) {
+    if (nameController.text.isNotEmpty || directorsController.text.isNotEmpty || bannerUrl!.isNotEmpty || imageUrl!.isNotEmpty){
       EquipmentCategories newEquipmentCategory = EquipmentCategories(
         id: 1, // Generate ID here
         name: nameController.text,
@@ -107,13 +107,13 @@ class _AddFormEquipementCategoryState extends State<AddFormEquipementCategory> {
           "Equipement",
           "La Categorie ${nameController.text} a ete cree avec success!!!",
           () {});
-          
+
       emptyField();
     } else {
       AlertBox.awesomeAlertBox(
           context,
           "Equipement",
-          "Assure vous que vous avec entre le nom et directeur dans le champ d'information",
+          "Assure vous que vous avec entre tous les information dans  champ d'information",
           () {});
     }
   }

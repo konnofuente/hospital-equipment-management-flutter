@@ -1,7 +1,5 @@
-
-
-import 'package:evaltech_mobile/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
-import 'package:evaltech_mobile/models/EquipementCategories.dart';
+import 'package:gestion_hopital/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
+import 'package:gestion_hopital/models/EquipementCategories.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Theme/theme_export.dart';
@@ -22,7 +20,6 @@ class AddFormEquipementItem extends StatefulWidget {
   _AddFormEquipementItemState createState() => _AddFormEquipementItemState();
 }
 
-
 class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -37,11 +34,11 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
   }
 
   void saveEquipmentItem(BuildContext context) {
-      EquipmentItemBloc equipmentItemBloc =
-          BlocProvider.of<EquipmentItemBloc>(context);
+    EquipmentItemBloc equipmentItemBloc =
+        BlocProvider.of<EquipmentItemBloc>(context);
 
-      EquipmentCategoriesBloc equipmentCategoriesBloc =
-          BlocProvider.of<EquipmentCategoriesBloc>(context);
+    EquipmentCategoriesBloc equipmentCategoriesBloc =
+        BlocProvider.of<EquipmentCategoriesBloc>(context);
 
     if (_formKey.currentState!.validate()) {
       // Create a new EquipmentItem based on the user input
@@ -50,15 +47,15 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
         EquipementCategoryID: widget.equipmentCategory.id!,
         name: nameController.text,
         description: descriptionController.text,
-        quantity: int.parse(quantityController.text), 
+        quantity: int.parse(quantityController.text),
       );
 
       // Fetch the EquipmentItemBloc
 
       // Add the new EquipmentItem to the EquipmentItemBloc
       equipmentItemBloc.add(AddEquipmentItem(Item: newEquipmentItem));
-      equipmentCategoriesBloc.add(AddItemEquipmentCategories(Item: newEquipmentItem, EquipmentCategory: widget.equipmentCategory));
-
+      equipmentCategoriesBloc.add(AddItemEquipmentCategories(
+          Item: newEquipmentItem, EquipmentCategory: widget.equipmentCategory));
 
       // Clear the fields
       emptyField();
@@ -66,69 +63,68 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return BlocProvider<EquipmentItemBloc>(
-    create: (context) => EquipmentItemBloc(),
-    child: Scaffold(
-      appBar: AppBar(
-        title: Text("Add New Equipment Item"),
-        automaticallyImplyLeading: false,
-      ),
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              WidgetTextForm.getTextField(
-                "Name",
-                nameController,
-                TextInputType.text,
-                "Enter name",
-                WidgetIcon.userAccount(false),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              WidgetTextForm.getTextField(
-                "Description",
-                descriptionController,
-                TextInputType.text,
-                "Enter description",
-                WidgetIcon.userAccount(false),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextField(
-                controller: quantityController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Quantity',
-                  hintText: 'Enter quantity',
-                  prefixIcon: Icon(Icons.add_box),
+  Widget build(BuildContext context) {
+    return BlocProvider<EquipmentItemBloc>(
+      create: (context) => EquipmentItemBloc(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Add New Equipment Item"),
+          automaticallyImplyLeading: false,
+        ),
+        body: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                WidgetTextForm.getTextField(
+                  "Name",
+                  nameController,
+                  TextInputType.text,
+                  "Enter name",
+                  WidgetIcon.userAccount(false),
                 ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Builder(
-                builder: (context) {
-                  return WidgetButton.largeButton(
-                    "Submit",
-                    AppTextTheme.buttonwhite,
-                    AppColors.primaryblue,
-                    null,
-                    () => saveEquipmentItem(context),
-                  );
-                },
-              ),
-            ],
+                SizedBox(
+                  height: 15,
+                ),
+                WidgetTextForm.getTextField(
+                  "Description",
+                  descriptionController,
+                  TextInputType.text,
+                  "Enter description",
+                  WidgetIcon.userAccount(false),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                TextField(
+                  controller: quantityController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Quantity',
+                    hintText: 'Enter quantity',
+                    prefixIcon: Icon(Icons.add_box),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Builder(
+                  builder: (context) {
+                    return WidgetButton.largeButton(
+                      "Submit",
+                      AppTextTheme.buttonwhite,
+                      AppColors.primaryblue,
+                      null,
+                      () => saveEquipmentItem(context),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 }

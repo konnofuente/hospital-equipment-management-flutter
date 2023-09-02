@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:equatable/equatable.dart';
-import 'package:evaltech_mobile/models/function.dart';
+import 'package:gestion_hopital/models/function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/User.dart';

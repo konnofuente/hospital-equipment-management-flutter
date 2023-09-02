@@ -1,5 +1,5 @@
-import 'package:evaltech_mobile/screens/PastQuestions.dart';
-import 'package:evaltech_mobile/utils/navigate_screen.dart';
+import 'package:gestion_hopital/screens/PastQuestions.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';

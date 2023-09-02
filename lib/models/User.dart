@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:evaltech_mobile/models/Role.dart';
+import 'package:gestion_hopital/models/Role.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -55,7 +55,8 @@ class User {
       id: map['id'] != null ? map['id'] as int : null,
       firstName: map['firstName'] != null ? map['firstName'] as String : null,
       lastName: map['lastName'] != null ? map['lastName'] as String : null,
-      phoneNumber: map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
+      phoneNumber:
+          map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
       email: map['email'] != null ? map['email'] as String : null,
       password: map['password'] != null ? map['password'] as String : null,
     );
@@ -63,7 +64,8 @@ class User {
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory User.fromJson(String source) =>
+      User.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -73,23 +75,22 @@ class User {
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.firstName == firstName &&
-      other.lastName == lastName &&
-      other.phoneNumber == phoneNumber &&
-      other.email == email &&
-      other.password == password;
+
+    return other.id == id &&
+        other.firstName == firstName &&
+        other.lastName == lastName &&
+        other.phoneNumber == phoneNumber &&
+        other.email == email &&
+        other.password == password;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      firstName.hashCode ^
-      lastName.hashCode ^
-      phoneNumber.hashCode ^
-      email.hashCode ^
-      password.hashCode;
+        firstName.hashCode ^
+        lastName.hashCode ^
+        phoneNumber.hashCode ^
+        email.hashCode ^
+        password.hashCode;
   }
 }

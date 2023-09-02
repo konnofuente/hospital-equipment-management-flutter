@@ -1,7 +1,7 @@
-import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/Theme/theme_export.dart';
-import 'package:evaltech_mobile/services/userServices.dart';
-import 'package:evaltech_mobile/widget/widget_export.dart';
+import 'package:gestion_hopital/Theme/text_theme.dart';
+import 'package:gestion_hopital/Theme/theme_export.dart';
+import 'package:gestion_hopital/services/userServices.dart';
+import 'package:gestion_hopital/widget/widget_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../bloc/UserBloc/user_state.dart';

@@ -1,6 +1,6 @@
-import 'package:evaltech_mobile/Theme/app_theme.dart';
-import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
-import 'package:evaltech_mobile/utils/navigate_screen.dart';
+import 'package:gestion_hopital/Theme/app_theme.dart';
+import 'package:gestion_hopital/screens/ChatgroupScreen/Components/chat_screen.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 
 Widget ChatItems(

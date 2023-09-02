@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/screens/EquipementCategory/equipement_category.dart';
-import 'package:evaltech_mobile/screens/Home/GetRatings.dart';
+import 'package:gestion_hopital/Theme/text_theme.dart';
+import 'package:gestion_hopital/screens/EquipementCategory/equipement_category.dart';
+import 'package:gestion_hopital/screens/Home/GetRatings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../models/EquipementCategories.dart';
@@ -19,7 +19,8 @@ class AllEquipmentCategoriesList extends StatefulWidget {
       _AllEquipmentCategoriesListState();
 }
 
-class _AllEquipmentCategoriesListState extends State<AllEquipmentCategoriesList> {
+class _AllEquipmentCategoriesListState
+    extends State<AllEquipmentCategoriesList> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -44,11 +45,11 @@ class _AllEquipmentCategoriesListState extends State<AllEquipmentCategoriesList>
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18.0 / 12.0,
-              child:widget.equipment_categories.imageUrl != null
-    ? Image.file(File(widget.equipment_categories.imageUrl!),
-        fit: BoxFit.cover)
-    : SizedBox.shrink(),  // Replace with a placeholder widget if you like
-
+              child: widget.equipment_categories.imageUrl != null
+                  ? Image.file(File(widget.equipment_categories.imageUrl!),
+                      fit: BoxFit.cover)
+                  : SizedBox
+                      .shrink(), // Replace with a placeholder widget if you like
             ),
             // ignore: unnecessary_new
             new Padding(
@@ -82,4 +83,3 @@ class _AllEquipmentCategoriesListState extends State<AllEquipmentCategoriesList>
     );
   }
 }
-

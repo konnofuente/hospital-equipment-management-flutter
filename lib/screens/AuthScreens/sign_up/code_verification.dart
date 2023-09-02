@@ -1,4 +1,4 @@
-import 'package:evaltech_mobile/screens/Home/GetStarted/getStarted_screen.dart';
+import 'package:gestion_hopital/screens/Home/GetStarted/getStarted_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Theme/app_theme.dart';

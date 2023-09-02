@@ -1,6 +1,6 @@
-import 'package:evaltech_mobile/screens/Home/DashBaord/DashBoard.dart';
-import 'package:evaltech_mobile/screens/QuizScreen/MainQuizScreen.dart';
-import 'package:evaltech_mobile/screens/QuizScreen/welcome/welcome_screen.dart';
+import 'package:gestion_hopital/screens/Home/DashBaord/DashBoard.dart';
+import 'package:gestion_hopital/screens/QuizScreen/MainQuizScreen.dart';
+import 'package:gestion_hopital/screens/QuizScreen/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';

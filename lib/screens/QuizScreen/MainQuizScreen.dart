@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:evaltech_mobile/Theme/app_theme.dart';
-import 'package:evaltech_mobile/Theme/text_theme.dart';
-import 'package:evaltech_mobile/screens/Home/GetRatings.dart';
-import 'package:evaltech_mobile/screens/QuizScreen/quiz/quiz_body.dart';
-import 'package:evaltech_mobile/screens/QuizScreen/welcome/welcome_screen.dart';
-import 'package:evaltech_mobile/utils/navigate_screen.dart';
-import 'package:evaltech_mobile/widget/equipement_categories/header_banner.dart';
+import 'package:gestion_hopital/Theme/app_theme.dart';
+import 'package:gestion_hopital/Theme/text_theme.dart';
+import 'package:gestion_hopital/screens/Home/GetRatings.dart';
+import 'package:gestion_hopital/screens/QuizScreen/quiz/quiz_body.dart';
+import 'package:gestion_hopital/screens/QuizScreen/welcome/welcome_screen.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
+import 'package:gestion_hopital/widget/equipement_categories/header_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +32,6 @@ class _MainQuizScreenState extends State<MainQuizScreen> {
   bool isMCQAvailable = false; // Set this to true if MCQ is available
   @override
   Widget build(BuildContext context) {
-
     EquipmentCategories globalItem =
         Provider.of<EquipmentCategoriesState>(context).equipment_categories!
             as EquipmentCategories;
@@ -137,5 +136,3 @@ class GetDocumentList extends StatelessWidget {
     );
   }
 }
-
-
