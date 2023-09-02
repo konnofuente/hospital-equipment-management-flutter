@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class HeaderImage extends StatelessWidget {
@@ -7,11 +9,7 @@ class HeaderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      bannerUrl,
-      width: 600.0,
-      height: 380.0,
-      fit: BoxFit.cover,
-    );
+    return Image.file(File(bannerUrl,
+    ));
   }
 }

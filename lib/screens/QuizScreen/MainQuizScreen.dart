@@ -16,6 +16,7 @@ import '../../models/Document.dart';
 import '../../provider/provider.dart';
 import '../../widget/equipement_categories/header_content.dart';
 import '../../widget/equipement_categories/header_image.dart';
+import '../EquipementCategory/components/header_banner.dart';
 
 class MainQuizScreen extends StatefulWidget {
   // final Item equipment_categories;
@@ -31,6 +32,7 @@ class _MainQuizScreenState extends State<MainQuizScreen> {
   bool isMCQAvailable = false; // Set this to true if MCQ is available
   @override
   Widget build(BuildContext context) {
+
     EquipmentCategories globalItem =
         Provider.of<EquipmentCategoriesState>(context).equipment_categories!
             as EquipmentCategories;
@@ -136,27 +138,4 @@ class GetDocumentList extends StatelessWidget {
   }
 }
 
-class HeaderBanner extends StatelessWidget {
-  final EquipmentCategories equipment_categories;
 
-  HeaderBanner(this.equipment_categories);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      elevation: 0.0,
-      child: Container(
-        height: 300.0,
-        child: Container(
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              HeaderImage(this.equipment_categories.secondImg!),
-              HeaderContent(this.equipment_categories),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

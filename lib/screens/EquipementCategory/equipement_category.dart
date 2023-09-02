@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:evaltech_mobile/screens/ChatgroupScreen/ChatgroupScreen.dart';
 import 'package:evaltech_mobile/screens/ChatgroupScreen/Components/chat_screen.dart';
+import 'package:evaltech_mobile/screens/EquipementCategory/components/add_form_equipment_item.dart';
+import 'package:evaltech_mobile/screens/EquipementCategory/widgets/getBottomItem.dart';
 import 'package:evaltech_mobile/screens/PastQuestions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,16 +49,9 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
 
     Widget getFragment() {
       if (selectedIndex == 0) {
-        return MainQuizScreen();
-      } else if (selectedIndex == 1) {
-        return ChatScreen();
-      } else if (selectedIndex == 2) {
         return GridItemDetails(globalItem);
-      } else if (selectedIndex == 3) {
-        // return GridItemDetails(this.widget.item);
-        return PastQuestionsScreen();
-      } else if (selectedIndex == 4) {
-        return const StatisticScreen();
+      } else if (selectedIndex == 1) {
+        return AddFormEquipementItem();
       }
       return GridItemDetails(globalItem);
     }
@@ -84,94 +79,5 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
     );
   }
 
-  List<BottomNavigationBarItem> getBottomItem(BuildContext context) {
-    return [
-      BottomNavigationBarItem(
-          icon: Image.asset('assets/Icons/icon_quiz.png',
-              height: 24.66,
-              width: 24.66,
-              fit: BoxFit.cover,
-              color: Color.fromRGBO(78, 86, 107, 1)),
-          // .paddingTop(12),
-          label: TKeys.quiz.translate(context),
-          activeIcon: Image.asset('assets/Icons/icon_quiz.png',
-              height: 24.66,
-              width: 24.66,
-              fit: BoxFit.cover,
-              color: AppColors.primarydark)
-          // .paddingTop(12),
-          ),
-      BottomNavigationBarItem(
-          icon: Image.asset('assets/Icons/icon_group.png',
-              height: 24.66,
-              width: 24.66,
-              fit: BoxFit.cover,
-              color: Color.fromRGBO(78, 86, 107, 1)),
-          // .paddingTop(12),
-          label: TKeys.group.translate(context),
-          activeIcon: Image.asset(
-            'assets/Icons/icon_group.png',
-            height: 24.66,
-            width: 24.66,
-            fit: BoxFit.cover,
-            // color: AppColors.primarydark
-          )
-          // .paddingTop(12),
-          ),
-      BottomNavigationBarItem(
-          icon: Image.asset('assets/Icons/icon_document.png',
-              height: 24.66,
-              width: 24.66,
-              fit: BoxFit.cover,
-              color: Color.fromRGBO(78, 86, 107, 1)),
-          // .paddingTop(12),
-          // label: TKeys.doc.translate(context),
-          label: TKeys.doc.translate(context),
-          activeIcon: Image.asset(
-            'assets/Icons/icon_document.png',
-            height: 23.00,
-            width: 23.00,
-            fit: BoxFit.cover,
-            // color: AppColors.primarydark
-          )
-          // .paddingTop(12),
-          ),
-      BottomNavigationBarItem(
-          icon: Image.asset('assets/Icons/icon_facilities.png',
-              height: 24.66,
-              width: 24.66,
-              fit: BoxFit.cover,
-              color: Color.fromRGBO(78, 86, 107, 1)),
-          // .paddingTop(12),
-          // label: TKeys.facilities.translate(context),
-          label: TKeys.facilities.translate(context),
-          activeIcon: Image.asset(
-            'assets/Icons/icon_facilities.png',
-            height: 23.00,
-            width: 23.00,
-            fit: BoxFit.cover,
-            // color: AppColors.primarydark
-          )
-          // .paddingTop(12),
-          ),
-      BottomNavigationBarItem(
-          icon: Image.asset('assets/Icons/icon_statistics.png',
-              height: 24.66,
-              width: 24.66,
-              fit: BoxFit.cover,
-              color: Color.fromRGBO(78, 86, 107, 1)),
-          // .paddingTop(12),
-          // label: TKeys.stat.translate(context),
-          label: TKeys.stat.translate(context),
-          activeIcon: Image.asset(
-            'assets/Icons/icon_statistics.png',
-            height: 23.00,
-            width: 23.00,
-            fit: BoxFit.cover,
-            // color: AppColors.primarydark
-          )
-          // .paddingTop(12),
-          ),
-    ];
-  }
+
 }

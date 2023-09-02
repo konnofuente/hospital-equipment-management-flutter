@@ -14,7 +14,7 @@ abstract class EquipmentItemEvent extends Equatable {
 class AddEquipmentItem extends EquipmentItemEvent {
   final EquipmentItem Item;
   const AddEquipmentItem({
-    required this.Item,
+    required this.Item, 
   });
   @override
   List<Object> get props => [Item];

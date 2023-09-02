@@ -50,29 +50,6 @@ class _AllEquipementCategoryScreenState
     super.dispose();
   }
 
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: Center(
-  //       child: Column(
-  //         children: [
-  //           SizedBox(
-  //             height: 10,
-  //           ),
-  //           WidgetButton.largeButton(TKeys.add_category.translate(context),
-  //               AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
-  //             NavigationScreen.navigate(context, AddFormEquipementCategory());
-  //           }),
-  //           SizedBox(
-  //             height: 10,
-  //           ),
-  //           Expanded(
-  //             child: _gridView(),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
  Widget build(BuildContext context) {
     return BlocBuilder<EquipmentCategoriesBloc, EquipmentCategoriesState>(
       builder: (context, state) {
