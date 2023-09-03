@@ -2,5 +2,7 @@ enum Status{
   PENDINGRESERVE,
   PENDINGRETURN,
   RESERVE,
-  RETURN
+  RETURN,
+  REJECTED,
+  
 }

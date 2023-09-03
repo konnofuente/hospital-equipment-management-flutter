@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_hopital/components/reservation_detail_list.dart';
+import 'package:gestion_hopital/models/ReservationDetails.dart';
+import 'package:gestion_hopital/services/reservationService.dart';
+import 'package:gestion_hopital/utils/navigate_screen.dart';
+import 'package:gestion_hopital/widget/widget_export.dart';
 
 import '../../bloc/EquipementCategoriesBloc/equipement_categories_bloc.dart';
+import '../../bloc/ReservationBloc/reservation_bloc.dart';
 import '../../bloc/bloc_export.dart';
+import '../../models/Reservation.dart';
+import '../ReservationListScreen/reservation_list_screen.dart';
 
 class StatisticAdminScreen extends StatefulWidget {
   StatisticAdminScreen();
@@ -12,21 +20,36 @@ class StatisticAdminScreen extends StatefulWidget {
 
 class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
   @override
-  void dispose() {
+  void initState() {
     _getStatistics(context);
-    super.dispose();
+    super.initState();
   }
 
   late int totalCategories = 0;
   // Replace with your own data
   int totalItems = 0;
+  List<ReservationDetails> getPendingReserveDetails = [];
+  List<ReservationDetails> getPendingReturnDetails = [];
+  List<ReservationDetails> getReserveDetails = [];
+  List<ReservationDetails> getReturnDetails = [];
 
   void _getStatistics(BuildContext context) {
     EquipmentCategoriesBloc equipmentCategoriesBloc =
         BlocProvider.of<EquipmentCategoriesBloc>(context);
-    totalCategories =
-        equipmentCategoriesBloc.state.allEquipmentCategories.length;
-    print(totalCategories);
+
+    ReservationBloc reservationBloc = BlocProvider.of<ReservationBloc>(context);
+
+    List<Reservation> reservationsList = reservationBloc.state.reservationsList;
+
+    getPendingReserveDetails =
+        ReservationServices().getPendingReserveDetails(reservationsList);
+    getPendingReturnDetails =
+        ReservationServices().getPendingReturnDetails(reservationsList);
+    getReserveDetails =
+        ReservationServices().getReserveDetails(reservationsList);
+    getReturnDetails = ReservationServices().getReturnDetails(reservationsList);
+
+    print("initialise of all reservation by status complete !!!!!!!!!!");
   }
 
   @override
@@ -39,57 +62,58 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Total Number of Categories
-            _buildStatCard(
-              'Total Categories',
-              '$totalCategories',
-              Colors.blue,
+            Expanded(
+              child: StatCard.NumberCard(
+                'Equipement Reserve',
+                '${getReserveDetails.length}',
+                Colors.blue,
+                () {
+                  _getStatistics(context);
+                  NavigationScreen.navigate(
+                      context,
+                      ReservationListScreen(
+                          reservationDetailsList: getReserveDetails));
+                },
+              ),
             ),
             SizedBox(height: 20),
 
             // Total Number of Items
-            _buildStatCard(
-              'Total Items',
-              '$totalItems',
-              Colors.green,
+            Expanded(
+              child: StatCard.NumberCard(
+                'Demande de reservation',
+                '${getPendingReserveDetails.length}',
+                Colors.green,
+                () {
+                  _getStatistics(context);
+
+                  // print(getPendingReserveDetails);
+                  NavigationScreen.navigate(
+                      context,
+                      ReservationListScreen(
+                          reservationDetailsList: getPendingReserveDetails));
+                },
+              ),
             ),
             SizedBox(height: 20),
 
-            // Other Stats here...
-          ],
-        ),
-      ),
-    );
-  }
+            Expanded(
+              child: StatCard.NumberCard(
+                'Equipement Retourner',
+                '${getPendingReturnDetails.length}',
+                Colors.green,
+                () {
+                  _getStatistics(context);
 
-  Widget _buildStatCard(String title, String value, Color color) {
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Container(
-        height: 150,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: color.withOpacity(0.1),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
+                  NavigationScreen.navigate(
+                      context,
+                      ReservationListScreen(
+                          reservationDetailsList: getPendingReturnDetails));
+                },
               ),
             ),
-            SizedBox(height: 10),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: color,
-              ),
-            )
+            SizedBox(height: 20),
+            // Other Stats here...
           ],
         ),
       ),

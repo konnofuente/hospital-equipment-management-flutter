@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../Theme/theme_export.dart';
 
 class StatCard {
-  static Widget NumberCard(String title, String value, Color color) {
-    return Card(
+static Widget NumberCard(String title, String value, Color color,void Function()? onpressed) {
+  return InkWell(
+    onTap: onpressed,
+    child: Card(
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Container(
@@ -35,8 +37,10 @@ class StatCard {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   static Card EquipementCatInfoCard3(
       String name, String Details, String quantity) {

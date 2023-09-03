@@ -48,9 +48,7 @@ class _GestionHopitalState extends State<GestionHopital> {
 
   Future<void> checkUserLoggedIn() async {
     final email = (await _storage.read(key: "GestionHopital_KEY_EMAIL"));
-    // Check if email exists in storage to determine login state
-    // print(email.runtimeType);
-    print(email);
+   
     email == null
         ? Provider.of<AppStatus>(context, listen: false)
             .changeLoginStatus(false)

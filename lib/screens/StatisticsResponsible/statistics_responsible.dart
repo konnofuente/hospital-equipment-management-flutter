@@ -70,18 +70,15 @@ class _StatisticResponsibleScreenState extends State<StatisticResponsibleScreen>
                 children: [
                   // Total Number of Categories
                   StatCard.NumberCard(
-                    'Total Loan',
+                    'Nombre Total de reservation',
                     '$totalreservation',
                     Colors.blue,
+                    null,
                   ),
                   SizedBox(height: 20),
 
                   // Total Number of Items
-                  StatCard.NumberCard(
-                    'Total Loan',
-                    '$totalItems',
-                    Colors.green,
-                  ),
+               
                   SizedBox(height: 20),
 
                   Text(

@@ -4,14 +4,12 @@ import 'dart:convert';
 import 'package:gestion_hopital/bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
 import 'package:gestion_hopital/bloc/EquipementCategoriesBloc/equipement_categories_state.dart';
 import 'package:gestion_hopital/models/EquipementCategories.dart';
-import 'package:gestion_hopital/models/EquipementCategories.dart';
 import 'package:gestion_hopital/models/EquipementItem.dart';
 import 'package:gestion_hopital/models/function.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/EquipementCategories.dart';
 import '../../services/callApi.dart';
-import 'package:http/http.dart' as http;
 
 class EquipmentCategoriesBloc
     extends Bloc<EquipmentCategoriesEvent, EquipmentCategoriesState> {
@@ -26,6 +24,7 @@ class EquipmentCategoriesBloc
   Future<FutureOr<void>> _onAddEquipmentCategories(AddEquipmentCategories event,
       Emitter<EquipmentCategoriesState> emit) async {
     // Use the current state
+    try {
     final currentState = this.state;
 
     // Generate unique ID for new EquipmentCategory
@@ -45,9 +44,7 @@ class EquipmentCategoriesBloc
       allEquipmentCategories: updatedEquipmentCategories,
     ));
 
-    try {
-      print(
-          'Successfully saved EquipmentCategories as the ${updatedEquipmentCategories.length}th ');
+    
     } catch (e) {
       print('Online EquipmentCategories not created: $e');
     }
@@ -122,7 +119,6 @@ class EquipmentCategoriesBloc
           allEquipmentCategories: equipment_categoriessJson
               .map((json) => EquipmentCategories.fromJson(jsonEncode(json)))
               .toList()));
-      print("successfull fetch of all EquipmentCategories!!!!!!");
     } else {
       throw Exception('Failed to load equipment_categoriess');
     }
