@@ -1,19 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'Status.dart';
+
 class ReservationDetails {
   final int id;
   final int reservationId;
   final int equipmentItemId;
   final int reservedQuantity;
+  late final Status status;
   final DateTime reserveDate;
   final DateTime returnDate;
-
   ReservationDetails({
     required this.id,
     required this.reservationId,
     required this.equipmentItemId,
     required this.reservedQuantity,
+    required this.status,
     required this.reserveDate,
     required this.returnDate,
   });
@@ -23,6 +26,7 @@ class ReservationDetails {
     int? reservationId,
     int? equipmentItemId,
     int? reservedQuantity,
+    Status? status,
     DateTime? reserveDate,
     DateTime? returnDate,
   }) {
@@ -31,6 +35,7 @@ class ReservationDetails {
       reservationId: reservationId ?? this.reservationId,
       equipmentItemId: equipmentItemId ?? this.equipmentItemId,
       reservedQuantity: reservedQuantity ?? this.reservedQuantity,
+      status: status ?? this.status,
       reserveDate: reserveDate ?? this.reserveDate,
       returnDate: returnDate ?? this.returnDate,
     );
@@ -42,6 +47,7 @@ class ReservationDetails {
       'reservationId': reservationId,
       'equipmentItemId': equipmentItemId,
       'reservedQuantity': reservedQuantity,
+      'status': status.toString(),
       'reserveDate': reserveDate.millisecondsSinceEpoch,
       'returnDate': returnDate.millisecondsSinceEpoch,
     };
@@ -53,6 +59,7 @@ class ReservationDetails {
       reservationId: map['reservationId'] as int,
       equipmentItemId: map['equipmentItemId'] as int,
       reservedQuantity: map['reservedQuantity'] as int,
+      status: map['status'] as Status,
       reserveDate: DateTime.fromMillisecondsSinceEpoch(map['reserveDate'] as int),
       returnDate: DateTime.fromMillisecondsSinceEpoch(map['returnDate'] as int),
     );
@@ -64,7 +71,7 @@ class ReservationDetails {
 
   @override
   String toString() {
-    return 'ReservationDetails(id: $id, reservationId: $reservationId, equipmentItemId: $equipmentItemId, reservedQuantity: $reservedQuantity, reserveDate: $reserveDate, returnDate: $returnDate)';
+    return 'ReservationDetails(id: $id, reservationId: $reservationId, equipmentItemId: $equipmentItemId, reservedQuantity: $reservedQuantity, status: $status, reserveDate: $reserveDate, returnDate: $returnDate)';
   }
 
   @override
@@ -76,6 +83,7 @@ class ReservationDetails {
       other.reservationId == reservationId &&
       other.equipmentItemId == equipmentItemId &&
       other.reservedQuantity == reservedQuantity &&
+      other.status == status &&
       other.reserveDate == reserveDate &&
       other.returnDate == returnDate;
   }
@@ -86,6 +94,7 @@ class ReservationDetails {
       reservationId.hashCode ^
       equipmentItemId.hashCode ^
       reservedQuantity.hashCode ^
+      status.hashCode ^
       reserveDate.hashCode ^
       returnDate.hashCode;
   }

@@ -61,18 +61,18 @@ List<BottomNavigationBarItem> responsibleGetBottomItem(BuildContext context) {
           size: 24.66,
         ),
       ),  
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.manage_accounts,
-          color: Color.fromRGBO(78, 86, 107, 1),
-          size: 24.66,
-        ),
-        label: "Peronne",
-        activeIcon: Icon(
-          Icons.manage_accounts,
-          color: AppColors.primarydark,
-          size: 24.66,
-        ),
-      ),    
+      // BottomNavigationBarItem(
+      //   icon: Icon(
+      //     Icons.manage_accounts,
+      //     color: Color.fromRGBO(78, 86, 107, 1),
+      //     size: 24.66,
+      //   ),
+      //   label: "Peronne",
+      //   activeIcon: Icon(
+      //     Icons.manage_accounts,
+      //     color: AppColors.primarydark,
+      //     size: 24.66,
+      //   ),
+      // ),    
       ];
   }

@@ -14,8 +14,6 @@ import '../../provider/provider.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 class EquipementCategoryScreen extends StatefulWidget {
-  // final Item item;
-  // EquipementCategoryScreen(this.item);
   EquipementCategoryScreen();
 
   @override
@@ -24,7 +22,6 @@ class EquipementCategoryScreen extends StatefulWidget {
 }
 
 class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
-  //  EquipementCategoryScreen({Key? key, required this.item}) : super(key: key);
   final GlobalKey<SliderDrawerState> _sliderDrawerKey =
       GlobalKey<SliderDrawerState>();
 
@@ -34,7 +31,6 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
 
   @override
   void initState() {
-    // setStatusBarColor(Colors.transparent);
     super.initState();
   }
 
@@ -49,26 +45,30 @@ class _EquipementCategoryScreenState extends State<EquipementCategoryScreen> {
       body: actaulUser!.role == Role.RESPONSABLE.name
           ? responsibleGetFragment(selectedIndex, globalItem)
           : adminGetFragment(selectedIndex, globalItem),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(0),
-        child: BottomNavigationBar(
-          showSelectedLabels: false,
-          elevation: 0,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.bottomtap,
-          items: actaulUser.role == Role.RESPONSABLE.name
-              ? responsibleGetBottomItem(context)
-              : adminGetBottomItem(context),
-          onTap: (val) {
-            // AppBarName();
-            setState(() {
-              selectedIndex = val;
-            });
-            print(selectedIndex);
-          },
-          currentIndex: selectedIndex,
-        ),
-      ),
+      bottomNavigationBar: 
+      // if the cuer role is responsible we dont display a bottom tap 
+      actaulUser.role == Role.RESPONSABLE.name
+          ? null
+          : Container(
+              padding: const EdgeInsets.all(0),
+              child: BottomNavigationBar(
+                showSelectedLabels: false,
+                elevation: 0,
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: AppColors.bottomtap,
+                items: actaulUser.role == Role.RESPONSABLE.name
+                    ? responsibleGetBottomItem(context)
+                    : adminGetBottomItem(context),
+                onTap: (val) {
+                  // AppBarName();
+                  setState(() {
+                    selectedIndex = val;
+                  });
+                  print(selectedIndex);
+                },
+                currentIndex: selectedIndex,
+              ),
+            ),
     );
   }
 }

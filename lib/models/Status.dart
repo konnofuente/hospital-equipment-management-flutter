@@ -1,0 +1,6 @@
+enum Status{
+  PENDINGRESERVE,
+  PENDINGRETURN,
+  RESERVE,
+  RETURN
+}

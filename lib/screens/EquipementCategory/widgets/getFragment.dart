@@ -21,10 +21,11 @@ Widget adminGetFragment(int selectedIndex , EquipmentCategories globalItem) {
     }
 
 Widget responsibleGetFragment(int selectedIndex , EquipmentCategories globalItem) {
-      if (selectedIndex == 0) {
+      // if (selectedIndex == 0) {
+      //   return ListEquipementItem(globalItem);
+      // } else if (selectedIndex == 1) {
+      //   return Container();
+      // }
+      // return ListEquipementItem(globalItem);
         return ListEquipementItem(globalItem);
-      } else if (selectedIndex == 1) {
-        return Container();
-      }
-      return ListEquipementItem(globalItem);
     }

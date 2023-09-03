@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gestion_hopital/Theme/app_theme.dart';
 import 'package:gestion_hopital/Theme/theme_export.dart';
 import 'package:gestion_hopital/models/ReservationDetails.dart';
+import 'package:gestion_hopital/models/Status.dart';
 import 'package:gestion_hopital/models/function.dart';
 import 'package:gestion_hopital/provider/provider.dart';
 import 'package:gestion_hopital/services/reservationService.dart';
@@ -48,29 +49,8 @@ class _MakeReservationState extends State<MakeReservation> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Display item information with Card
-              Card(
-                elevation: 5,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Item Information',
-                        style: AppTextTheme.title,
-                      ),
-                      SizedBox(height: 12),
-                      Text('Item Name: ${widget.Item.name}',
-                          style: AppTextTheme.body1),
-                      Text('Item Description: ${widget.Item.itemDetails}',
-                          style: AppTextTheme.body1),
-                      Text('Available Quantity: ${widget.Item.quantity}',
-                          style: TextStyle(
-                              fontSize: 16, color: AppColors.success)),
-                    ],
-                  ),
-                ),
-              ),
+              StatCard.EquipementCatInfoCard3(widget.Item.name,
+                  widget.Item.description, widget.Item.quantity.toString()),
 
               SizedBox(height: 20),
 
@@ -96,16 +76,10 @@ class _MakeReservationState extends State<MakeReservation> {
               SizedBox(height: 20),
 
               // Loan Button
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: AppColors.primaryblue, // background color
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                ),
-                onPressed: () {
-                  makeReservation(actaulUser!);
-                },
-                child: Text('Loan', style: TextStyle(fontSize: 16)),
-              ),
+              WidgetButton.largeButton("Reserve", AppTextTheme.buttonwhite,
+                  AppColors.primaryblue, null, () {
+                makeReservation(actaulUser!);
+              })
             ],
           ),
         ),
@@ -128,6 +102,7 @@ class _MakeReservationState extends State<MakeReservation> {
           reservationId: newReservationId,
           equipmentItemId: widget.Item.id,
           reservedQuantity: reservedQuantity,
+          status: Status.PENDINGRESERVE,
           reserveDate: reserveDate,
           returnDate: returnDate);
 
