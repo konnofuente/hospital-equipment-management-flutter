@@ -37,6 +37,7 @@ class _ReservationDetailsScreenState extends State<ReservationDetailsScreen> {
   TextEditingController quantityController = TextEditingController();
   final TextEditingController reserveDateController = TextEditingController();
   final TextEditingController returnDateController = TextEditingController();
+    TextEditingController commentairecontroller = TextEditingController();
   late User actualUser;
 
   void returnItem(BuildContext context, Status state, String alertMessage) {
@@ -92,6 +93,10 @@ class _ReservationDetailsScreenState extends State<ReservationDetailsScreen> {
             //         // :
             //     // spacer(),
 
+            actualUser.role == Role.RESPONSABLE.name ? 
+            WidgetTextForm.getTextField("Commentaire", commentairecontroller, TextInputType.text , "entre commentaire", WidgetIcon.description(false) ): Container(),
+
+            SizedBox(height: 10,),
             actualUser.role == Role.RESPONSABLE.name
                 ? WidgetButton.largeButton("Retourne l'equipement",
                     AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
