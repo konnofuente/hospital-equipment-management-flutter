@@ -1,18 +1,12 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gestion_hopital/db/defaultData.dart';
-import 'package:gestion_hopital/models/Role.dart';
-import 'package:gestion_hopital/screens/AuthScreens/sign_in/signin_screen.dart';
 import 'package:gestion_hopital/services/localisationService/t_key.dart';
 import 'package:gestion_hopital/utils/navigate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../../Theme/text_theme.dart';
-import '../../bloc/bloc_export.dart';
-import '../../models/User.dart';
 import '../../services/localisationService/localization_service.dart';
 import '../../provider/provider.dart';
-import '../Home/home.dart';
 import 'OnBoardingScreen.dart';
 
 class ChoseLangaugeScreen extends StatefulWidget {

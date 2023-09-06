@@ -31,6 +31,8 @@ class _MakeReservationState extends State<MakeReservation> {
   TextEditingController quantityController = TextEditingController();
   final TextEditingController reserveDateController = TextEditingController();
   final TextEditingController returnDateController = TextEditingController();
+  TextEditingController motifReservationController = TextEditingController();
+  Status? selectedStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class _MakeReservationState extends State<MakeReservation> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Loan Item'),
+        title: const Text('Loan Item'),
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.primaryblue,
       ),
@@ -49,32 +51,48 @@ class _MakeReservationState extends State<MakeReservation> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Display item information with Card
-              StatCard.EquipementCatInfoCard3(widget.Item.name,
-                  widget.Item.description, widget.Item.quantity.toString()),
+              StatCard.EquipementCatInfoCard3(
+                  widget.Item.name, widget.Item.description),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Loan Date Picker
               WidgetTextForm.getDatePicker(
                   context, "Date de reservation", reserveDateController, null),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               // Return Date Picker
               WidgetTextForm.getDatePicker(
                   context, "Date de retour", returnDateController, null),
-
               // Quantity TextField
-              SizedBox(height: 10),
-
+              const SizedBox(height: 10),
               WidgetTextForm.getTextField(
-                  "Quantite",
-                  quantityController,
-                  TextInputType.number,
-                  "Entre une quantite",
-                  WidgetIcon.number(false)),
+                  "Motif de reservation",
+                  motifReservationController,
+                  TextInputType.text,
+                  "Entre le motif",
+                  WidgetIcon.description(false)),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
+              DropdownButton<Status>(
+                hint: Text("Volez vous reservez ou emprunter"),
+                value: selectedStatus,
+                onChanged: (Status? newValue) {
+                  setState(() {
+                    selectedStatus = newValue;
+                  });
+                },
+                items: [Status.RESERVE, Status.BORROW]
+                    .map<DropdownMenuItem<Status>>((Status value) {
+                  return DropdownMenuItem<Status>(
+                    value: value,
+                    child: Text(value.toString().split('.').last),
+                  );
+                }).toList(),
+              ),
+
+              const SizedBox(height: 20),
               // Loan Button
               WidgetButton.largeButton("Reserve", AppTextTheme.buttonwhite,
                   AppColors.primaryblue, null, () {
@@ -89,7 +107,7 @@ class _MakeReservationState extends State<MakeReservation> {
 
   void formInformation(User actaulUser) {
     try {
-      int reservedQuantity = int.parse(quantityController.text);
+      // int reservedQuantity = int.parse(quantityController.text);
       DateTime reserveDate = DateTime.parse(reserveDateController.text);
       DateTime returnDate = DateTime.parse(returnDateController.text);
 
@@ -101,8 +119,8 @@ class _MakeReservationState extends State<MakeReservation> {
           id: AppFunction().generateUserId(actaulUser.id.toString()),
           reservationId: newReservationId,
           equipmentItemId: widget.Item.id,
-          reservedQuantity: reservedQuantity,
-          status: Status.PENDINGRESERVE,
+          status: selectedStatus ?? Status.PENDINGRESERVE,
+          reservationReason: motifReservationController.text,
           reserveDate: reserveDate,
           returnDate: returnDate);
 
@@ -111,7 +129,7 @@ class _MakeReservationState extends State<MakeReservation> {
           userId: actaulUser.id!,
           reservationDetails: [newReservationDetail]);
 
-      ReservationServices.SaveRegistration(context, newReservation);
+      ReservationServices.SaveReservation(context, newReservation);
 
       // print(newReservation);
     } catch (e) {
@@ -123,8 +141,7 @@ class _MakeReservationState extends State<MakeReservation> {
   void makeReservation(User actaulUser) {
     // Validate that all fields are not empty
     if (reserveDateController.text.isEmpty ||
-        returnDateController.text.isEmpty ||
-        quantityController.text.isEmpty) {
+        returnDateController.text.isEmpty) {
       AlertBox.alertbox(
           context, "Reservation", "All fields must be filled", () {});
       return;
@@ -141,12 +158,12 @@ class _MakeReservationState extends State<MakeReservation> {
     }
 
     // Validate that reserved quantity is less than or equal to available quantity
-    int reservedQuantity = int.parse(quantityController.text);
-    if (reservedQuantity > widget.Item.quantity) {
-      AlertBox.alertbox(context, "Reservation",
-          "Reserved quantity cannot exceed available quantity", () {});
-      return;
-    }
+    // int reservedQuantity = int.parse(quantityController.text);
+    // if (reservedQuantity > widget.Item.quantity) {
+    //   AlertBox.alertbox(context, "Reservation",
+    //       "Reserved quantity cannot exceed available quantity", () {});
+    //   return;
+    // }
 
     formInformation(actaulUser);
   }

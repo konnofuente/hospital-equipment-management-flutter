@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'package:gestion_hopital/models/User.dart';
 import 'package:gestion_hopital/provider/provider.dart';
 import 'package:gestion_hopital/screens/Launching/ChoseLangaugeScreen.dart';
 import 'package:gestion_hopital/services/internet_connection.dart';
@@ -10,8 +8,6 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'Theme/theme_export.dart';
-import 'bloc/EquipementCategoriesBloc/equipement_categories_event.dart';
-import 'bloc/bloc_export.dart';
 
 void main() {
   runApp(const GestionHopital());
@@ -83,7 +79,7 @@ class _GestionHopitalState extends State<GestionHopital> {
                       color: Colors.white,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             CircularProgressIndicator(),
                             Text(
                               "check your internet connection",

@@ -40,10 +40,7 @@ class _ReservationDetailsScreenState extends State<ReservationDetailsScreen> {
   late User actualUser;
 
   void returnItem(BuildContext context, Status state, String alertMessage) {
-
-    AlertBox.awesomeOkBox(context, "Reservation",
-        alertMessage,
-        () {
+    AlertBox.awesomeOkBox(context, "Reservation", alertMessage, () {
       // widget.Item.
 
       ReservationBloc reservationBloc =
@@ -83,17 +80,33 @@ class _ReservationDetailsScreenState extends State<ReservationDetailsScreen> {
             StatCard.ReservationInfoCard(
                 widget.Item.id.toString(),
                 widget.Item.equipmentItemId.toString(),
-                widget.Item.reservedQuantity.toString(),
+                // widget.Item.reservedQuantity.toString(),
                 widget.Item.returnDate.toString(),
                 widget.Item.returnDate.toString()),
 
             SizedBox(height: 20),
 
-            if (actualUser.role == Role.RESPONSABLE.name) ...[
-              buildButton("Retourne l'equipement", AppColors.primaryblue,
-                  Status.PENDINGRETURN),
-              spacer(),
-            ],
+            // // actualUser.role == Role.RESPONSABLE.name ?
+            //     WidgetButton.largeButton("Retourne l'equipement", AppTextTheme.buttonwhite, AppColors.primaryblue,
+            //         Status.PENDINGRETURN , null ),
+            //         // :
+            //     // spacer(),
+
+            actualUser.role == Role.RESPONSABLE.name
+                ? WidgetButton.largeButton("Retourne l'equipement",
+                    AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
+                    AlertBox.awesomeOkBox(context, "Reservation",
+                        "Vous aller retourner cette equipement", () {});
+                    // widget.Item.
+
+                    ReservationBloc reservationBloc =
+                        BlocProvider.of<ReservationBloc>(context);
+                    reservationBloc.add(UpdateReservationDetailStatus(
+                        userId: actualUser.id!,
+                        reservationDetailId: widget.Item.id,
+                        status: Status.RETURN));
+                  })
+                : Container(),
 
             if (actualUser.role == Role.ADMIN.name) ...[
               buildButton(
@@ -104,7 +117,7 @@ class _ReservationDetailsScreenState extends State<ReservationDetailsScreen> {
               spacer(),
               buildButton(
                   "Rejeter la reservation", AppColors.danger, Status.RETURN),
-            ],
+            ]
           ]),
         ),
       ),

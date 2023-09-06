@@ -43,16 +43,12 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
 
     if (_formKey.currentState!.validate()) {
       // Create a new EquipmentItem based on the user input
-      if (quantityController.text.isEmpty) {
-        AlertBox.awesomeAlertBox(context, "Equipement Item",
-            "Entre la quantite s'il vous plait", () {});
-      } else {
+  
         EquipmentItem newEquipmentItem = EquipmentItem(
           id: 1, // Generate ID here
           EquipementCategoryID: widget.equipmentCategory.id!,
           name: nameController.text,
           description: descriptionController.text,
-          quantity: int.parse(quantityController.text), 
           itemDetails: [],
         );
 
@@ -68,7 +64,7 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
         AlertBox.awesomeAlertBox(context, "Equipement Item",
             "Equipement cree avec sucess!!!", () {});
         emptyField();
-      }
+      
     }
   }
 
@@ -107,15 +103,15 @@ class _AddFormEquipementItemState extends State<AddFormEquipementItem> {
                 SizedBox(
                   height: 15,
                 ),
-                TextField(
-                  controller: quantityController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Quantity',
-                    hintText: 'Enter quantity',
-                    prefixIcon: Icon(Icons.add_box),
-                  ),
-                ),
+                // TextField(
+                //   controller: quantityController,
+                //   keyboardType: TextInputType.number,
+                //   decoration: InputDecoration(
+                //     labelText: 'Quantity',
+                //     hintText: 'Enter quantity',
+                //     prefixIcon: Icon(Icons.add_box),
+                //   ),
+                // ),
                 SizedBox(
                   height: 15,
                 ),

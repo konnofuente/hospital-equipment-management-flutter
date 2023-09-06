@@ -48,7 +48,7 @@ class GetItemList extends StatelessWidget {
                           itemsList[index].name,
                           style: AppTextTheme.listtitle,
                         ),
-                        subtitle: Text(itemsList[index].quantity.toString()),
+                        // subtitle: Text(itemsList[index].quantity.toString()),
                         leading: Icon(
                           Icons.inventory,
                           // size: 40.0,

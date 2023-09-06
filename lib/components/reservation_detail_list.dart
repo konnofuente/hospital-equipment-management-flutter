@@ -111,10 +111,10 @@ class _ReservationDetailListState extends State<ReservationDetailList> {
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              'Quantity: ${item.reservedQuantity}',
-                              style: TextStyle(fontSize: 14, color: AppColors.black),
-                            ),
+                            // Text(
+                            //   'Quantity: ${item.reservedQuantity}',
+                            //   style: TextStyle(fontSize: 14, color: AppColors.black),
+                            // ),
               
                           ],
                         ),

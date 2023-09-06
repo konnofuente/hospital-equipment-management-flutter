@@ -10,14 +10,12 @@ class EquipmentItem {
   final int EquipementCategoryID;
   final String name;
   final String description;
-  final int quantity;
   final List<ItemDetails> itemDetails;
   EquipmentItem({
     required this.id,
     required this.EquipementCategoryID,
     required this.name,
     required this.description,
-    required this.quantity,
     required this.itemDetails,
   });
   
@@ -27,7 +25,6 @@ class EquipmentItem {
     int? EquipementCategoryID,
     String? name,
     String? description,
-    int? quantity,
     List<ItemDetails>? itemDetails,
   }) {
     return EquipmentItem(
@@ -35,7 +32,6 @@ class EquipmentItem {
       EquipementCategoryID: EquipementCategoryID ?? this.EquipementCategoryID,
       name: name ?? this.name,
       description: description ?? this.description,
-      quantity: quantity ?? this.quantity,
       itemDetails: itemDetails ?? this.itemDetails,
     );
   }
@@ -46,7 +42,6 @@ class EquipmentItem {
       'EquipementCategoryID': EquipementCategoryID,
       'name': name,
       'description': description,
-      'quantity': quantity,
       'itemDetails': itemDetails.map((x) => x.toMap()).toList(),
     };
   }
@@ -57,7 +52,6 @@ class EquipmentItem {
       EquipementCategoryID: map['EquipementCategoryID'] as int,
       name: map['name'] as String,
       description: map['description'] as String,
-      quantity: map['quantity'] as int,
       itemDetails: List<ItemDetails>.from((map['itemDetails'] as List<int>).map<ItemDetails>((x) => ItemDetails.fromMap(x as Map<String,dynamic>),),),
     );
   }
@@ -68,7 +62,7 @@ class EquipmentItem {
 
   @override
   String toString() {
-    return 'EquipmentItem(id: $id, EquipementCategoryID: $EquipementCategoryID, name: $name, description: $description, quantity: $quantity, itemDetails: $itemDetails)';
+    return 'EquipmentItem(id: $id, EquipementCategoryID: $EquipementCategoryID, name: $name, description: $description, itemDetails: $itemDetails)';
   }
 
   @override
@@ -80,7 +74,6 @@ class EquipmentItem {
       other.EquipementCategoryID == EquipementCategoryID &&
       other.name == name &&
       other.description == description &&
-      other.quantity == quantity &&
       listEquals(other.itemDetails, itemDetails);
   }
 
@@ -90,7 +83,6 @@ class EquipmentItem {
       EquipementCategoryID.hashCode ^
       name.hashCode ^
       description.hashCode ^
-      quantity.hashCode ^
       itemDetails.hashCode;
   }
 }

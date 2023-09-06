@@ -12,7 +12,7 @@ import '../provider/provider.dart';
 import '../widget/widget_alertbox.dart';
 
 class ReservationServices {
-  static Future<void> SaveRegistration(
+  static Future<void> SaveReservation(
       BuildContext context, Reservation reservation) async {
     ReservationBloc reservationBloc = BlocProvider.of<ReservationBloc>(context);
     reservationBloc.add(AddReservations(reservation: reservation));
@@ -21,7 +21,8 @@ class ReservationServices {
         context, "Reservation", "Equipement Reserve avec sucess!!", () {});
   }
 
-    static Future<void> changeReservationStatus(BuildContext context,int reservationDetailId  ,Status state) async {
+  static Future<void> changeReservationStatus(
+      BuildContext context, int reservationDetailId, Status state) async {
     AlertBox.awesomeOkBox(context, "Reservation",
         "Votre retour de cette equipement serais en attende de valisation  par l'administrateur",
         () {
@@ -36,8 +37,6 @@ class ReservationServices {
           reservationDetailId: reservationDetailId,
           status: state));
     });
-
-    
   }
 
   // To get all reservation details with the status PENDINGRESERVE

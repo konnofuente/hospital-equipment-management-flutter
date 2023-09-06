@@ -219,8 +219,14 @@ class _SignInState extends State<SignIn> {
                                 ? WidgetButton.textButton(
                                     TKeys.sign_up.translate(context),
                                     AppTextTheme.link, () {
-                                    NavigationScreen.navigate(
-                                        context, const SignUp());
+
+                                    AlertBox.awesomeOkBox(
+                                        context,
+                                        "Requette de Compte ",
+                                        "En tantque administrateur vous devez vous login pour cree un compte",
+                                        () {});
+                                    // NavigationScreen.navigate(
+                                    //     context, const SignUp());
                                   })
                                 : WidgetButton.textButton(
                                     TKeys.request_acct.translate(context),

@@ -101,7 +101,7 @@ class _SignUpState extends State<SignUp> {
               Row(
                 children: [
                   Text(
-                    TKeys.creat_acct.translate(context),
+                    "Cree un utilisateur",
                     style: AppTextTheme.bigtitle,
                   ),
                 ],
@@ -170,7 +170,7 @@ class _SignUpState extends State<SignUp> {
                         });
                       },
                     ),
-                    WidgetButton.largeButton('Next', AppTextTheme.buttonwhite,
+                    WidgetButton.largeButton('Cree le compte', AppTextTheme.buttonwhite,
                         AppColors.primaryblue, null, () {
                       if (_formKey.currentState!.validate()) {
                         AuthService.localregisterUser(
@@ -193,11 +193,11 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               SizedBox(height: 20),
-              WidgetButton.textButton(
-                  TKeys.already_h_acct.translate(context), AppTextTheme.link,
-                  () {
-                NavigationScreen.replaceNavigate(context, SignIn());
-              }),
+              // WidgetButton.textButton(
+              //     TKeys.already_h_acct.translate(context), AppTextTheme.link,
+              //     () {
+              //   NavigationScreen.replaceNavigate(context, SignIn());
+              // }),
             ],
           ),
         ),

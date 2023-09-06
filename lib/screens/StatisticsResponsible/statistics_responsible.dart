@@ -70,7 +70,7 @@ class _StatisticResponsibleScreenState extends State<StatisticResponsibleScreen>
                 children: [
                   // Total Number of Categories
                   StatCard.NumberCard(
-                    'Nombre Total de reservation',
+                    'Nombre Total de demande d Equipement',
                     '$totalreservation',
                     Colors.blue,
                     null,

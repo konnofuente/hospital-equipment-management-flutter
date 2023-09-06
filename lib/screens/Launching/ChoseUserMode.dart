@@ -20,51 +20,49 @@ class ChoseUserMode extends StatelessWidget {
     Role? role = Provider.of<AppStatus>(context).role;
 
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          Image.asset(
+            'assets/Images/logo.png',
+            height: 150,
+          ),
+          Expanded(
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 0, horizontal: 70),
+              child: AnimationLimiter(
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1),
+                      itemCount: _list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AnimationConfiguration.staggeredGrid(
+                            columnCount: 1,
+                            position: index,
+                            duration: const Duration(milliseconds: 1000),
+                            child: ScaleAnimation(
+                                child: FadeInAnimation(
+                                    delay: const Duration(milliseconds: 100),
+                                    child: InkWell(
+                                        onTap: () {
+                                          // print(index);
+                                          Provider.of<AppStatus>(context,
+                                                  listen: false)
+                                              .setUserRole(index);
+                                          NavigationScreen.navigate(
+                                              context, SignIn());
+                                          // print(Role.STUDENT.name);
+                                        },
+                                        child: listItem(
+                                            _list[index], context)))));
+                      })),
             ),
-            Image.asset(
-              'assets/Images/logo.png',
-              height: 150,
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 70),
-                child: AnimationLimiter(
-                    child: GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1),
-                        itemCount: _list.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return AnimationConfiguration.staggeredGrid(
-                              columnCount: 1,
-                              position: index,
-                              duration: Duration(milliseconds: 1000),
-                              child: ScaleAnimation(
-                                  child: FadeInAnimation(
-                                      delay: Duration(milliseconds: 100),
-                                      child: InkWell(
-                                          onTap: () {
-                                            // print(index);
-                                            Provider.of<AppStatus>(context,
-                                                    listen: false)
-                                                .setUserRole(index);
-                                            NavigationScreen.navigate(
-                                                context, SignIn());
-                                            // print(Role.STUDENT.name);
-                                          },
-                                          child: listItem(
-                                              _list[index], context)))));
-                        })),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -80,15 +78,15 @@ class ChoseUserMode extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               child: Image.asset(GridInfo.image),
             ),
-            SizedBox(
+            const SizedBox(
               height: 26,
             ),
             Text(
-              GridInfo.name == "Admin" ? "Admin" : "Responsable de laboratoire",
-              style: TextStyle(fontSize: 18),
+              GridInfo.name == "l’Administrateur" ? "l’Administrateur" : "Laboratine",
+              style: const TextStyle(fontSize: 18),
             ),
             // SizedBox(height: 10,)
           ],

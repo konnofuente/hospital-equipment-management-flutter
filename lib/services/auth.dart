@@ -41,7 +41,7 @@ class AuthService {
     userBloc.add(AddUsers(users: newUser, context: context));
 
     Provider.of<UserManagement>(context).changeUser(newUser);
-    NavigationScreen.navigate(context, GetStartedScreen());
+    // NavigationScreen.navigate(context, GetStartedScreen());
   }
 
   Future<void> localloginUser({

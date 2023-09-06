@@ -7,7 +7,8 @@ class ReservationDetails {
   final int id;
   final int reservationId;
   final int equipmentItemId;
-  final int reservedQuantity;
+  final String? reservationReason;
+  final String? comment;
   late final Status status;
   final DateTime reserveDate;
   final DateTime returnDate;
@@ -15,17 +16,20 @@ class ReservationDetails {
     required this.id,
     required this.reservationId,
     required this.equipmentItemId,
-    required this.reservedQuantity,
+    this.reservationReason,
+    this.comment,
     required this.status,
     required this.reserveDate,
     required this.returnDate,
   });
+ 
 
   ReservationDetails copyWith({
     int? id,
     int? reservationId,
     int? equipmentItemId,
-    int? reservedQuantity,
+    String? reservationReason,
+    String? comment,
     Status? status,
     DateTime? reserveDate,
     DateTime? returnDate,
@@ -34,10 +38,11 @@ class ReservationDetails {
       id: id ?? this.id,
       reservationId: reservationId ?? this.reservationId,
       equipmentItemId: equipmentItemId ?? this.equipmentItemId,
-      reservedQuantity: reservedQuantity ?? this.reservedQuantity,
+      reservationReason: reservationReason ?? this.reservationReason,
+      comment: comment ?? this.comment,
       status: status ?? this.status,
       reserveDate: reserveDate ?? this.reserveDate,
-      returnDate: returnDate ?? this.returnDate,
+      returnDate: returnDate ?? this.returnDate, // TODO rename this 
     );
   }
 
@@ -46,7 +51,8 @@ class ReservationDetails {
       'id': id,
       'reservationId': reservationId,
       'equipmentItemId': equipmentItemId,
-      'reservedQuantity': reservedQuantity,
+      'reservationReason': reservationReason,
+      'comment': comment,
       'status': status.toString(),
       'reserveDate': reserveDate.millisecondsSinceEpoch,
       'returnDate': returnDate.millisecondsSinceEpoch,
@@ -58,7 +64,8 @@ class ReservationDetails {
       id: map['id'] as int,
       reservationId: map['reservationId'] as int,
       equipmentItemId: map['equipmentItemId'] as int,
-      reservedQuantity: map['reservedQuantity'] as int,
+      reservationReason: map['reservationReason'] as String,
+      comment: map['comment'] as String,
       status: map['status'] as Status,
       reserveDate: DateTime.fromMillisecondsSinceEpoch(map['reserveDate'] as int),
       returnDate: DateTime.fromMillisecondsSinceEpoch(map['returnDate'] as int),
@@ -71,7 +78,7 @@ class ReservationDetails {
 
   @override
   String toString() {
-    return 'ReservationDetails(id: $id, reservationId: $reservationId, equipmentItemId: $equipmentItemId, reservedQuantity: $reservedQuantity, status: $status, reserveDate: $reserveDate, returnDate: $returnDate)';
+    return 'ReservationDetails(id: $id, reservationId: $reservationId, equipmentItemId: $equipmentItemId, reservationReason: $reservationReason, comment: $comment, status: $status, reserveDate: $reserveDate, returnDate: $returnDate)';
   }
 
   @override
@@ -82,7 +89,8 @@ class ReservationDetails {
       other.id == id &&
       other.reservationId == reservationId &&
       other.equipmentItemId == equipmentItemId &&
-      other.reservedQuantity == reservedQuantity &&
+      other.reservationReason == reservationReason &&
+      other.comment == comment &&
       other.status == status &&
       other.reserveDate == reserveDate &&
       other.returnDate == returnDate;
@@ -93,7 +101,8 @@ class ReservationDetails {
     return id.hashCode ^
       reservationId.hashCode ^
       equipmentItemId.hashCode ^
-      reservedQuantity.hashCode ^
+      reservationReason.hashCode ^
+      comment.hashCode ^
       status.hashCode ^
       reserveDate.hashCode ^
       returnDate.hashCode;

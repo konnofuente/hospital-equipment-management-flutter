@@ -83,7 +83,6 @@ class DefaultData {
             AppFunction().generateUserId(itemData['EquipementCategoryID']),
         name: itemData['name'],
         description: itemData['description'],
-        quantity: itemData['quantity'],
         itemDetails: [], // Initialize empty
       );
       equipmentItemBloc.add(AddEquipmentItem(Item: item));

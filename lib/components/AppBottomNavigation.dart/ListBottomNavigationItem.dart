@@ -8,13 +8,13 @@ class ListBottomNavigationItem {
     return [
       BottomNavigationBarItem(
         icon: Icon(
-          Icons.info,
+          Icons.manage_accounts_outlined,
           color: Color.fromRGBO(78, 86, 107, 1),
           size: 24.66,
         ),
-        label: TKeys.project.translate(context),
+        label: "Utilisateur",
         activeIcon: Icon(
-          Icons.info,
+          Icons.manage_accounts_outlined,
           color: AppColors.primarydark,
           size: 24.66,
         ),
