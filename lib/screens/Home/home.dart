@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String AppBarTitle = 'Gestion Hopital';
+  String AppBarTitle = 'Gestion du matériel';
   AppDrawerTitle ScreenName = AppDrawerTitle.Home;
 
   _changeScreenName(AppDrawerTitle val) {

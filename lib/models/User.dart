@@ -11,6 +11,7 @@ class User {
   final String? email;
   final String? password;
   final String? role;
+  
   User({
     this.id,
     this.firstName,

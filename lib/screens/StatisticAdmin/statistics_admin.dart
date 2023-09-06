@@ -67,7 +67,7 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
             // Total Number of Categories
             Expanded(
               child: StatCard.NumberCard(
-                'Equipement Reserve',
+                'Équipement réservé',
                 '${getReserveDetails.length}',
                 Colors.blue,
                 () {
@@ -83,7 +83,7 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
 
             Expanded(
               child: StatCard.NumberCard(
-                'Nombre Emprunter',
+                'Équipement emprunté',
                 '${getBorrowDetails.length}',
                 Colors.green,
                 () {
@@ -120,7 +120,7 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
 
             Expanded(
               child: StatCard.NumberCard(
-                'Equipement Retourner',
+                'Equipement Retourné',
                 '${getPendingReturnDetails.length}',
                 Colors.green,
                 () {

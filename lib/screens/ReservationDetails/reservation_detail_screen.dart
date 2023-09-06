@@ -98,7 +98,7 @@ class _ReservationDetailsScreenState extends State<ReservationDetailsScreen> {
 
             SizedBox(height: 10,),
             actualUser.role == Role.RESPONSABLE.name
-                ? WidgetButton.largeButton("Retourne l'equipement",
+                ? WidgetButton.largeButton("Retournez l'equipement",
                     AppTextTheme.buttonwhite, AppColors.primaryblue, null, () {
                     AlertBox.awesomeOkBox(context, "Reservation",
                         "Vous aller retourner cette equipement", () {});

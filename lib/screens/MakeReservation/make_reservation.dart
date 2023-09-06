@@ -40,7 +40,7 @@ class _MakeReservationState extends State<MakeReservation> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Loan Item'),
+        title: const Text('Reservation ou Empruntez'),
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.primaryblue,
       ),
@@ -76,7 +76,7 @@ class _MakeReservationState extends State<MakeReservation> {
               const SizedBox(height: 20),
 
               DropdownButton<Status>(
-                hint: Text("Volez vous reservez ou emprunter"),
+                hint: Text("Voulez-vous réserver ou emprunter"),
                 value: selectedStatus,
                 onChanged: (Status? newValue) {
                   setState(() {
@@ -94,7 +94,7 @@ class _MakeReservationState extends State<MakeReservation> {
 
               const SizedBox(height: 20),
               // Loan Button
-              WidgetButton.largeButton("Reserve", AppTextTheme.buttonwhite,
+              WidgetButton.largeButton("Validez", AppTextTheme.buttonwhite,
                   AppColors.primaryblue, null, () {
                 makeReservation(actaulUser!);
               })

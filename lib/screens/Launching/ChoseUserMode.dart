@@ -85,7 +85,7 @@ class ChoseUserMode extends StatelessWidget {
               height: 26,
             ),
             Text(
-              GridInfo.name == "l’Administrateur" ? "l’Administrateur" : "Laboratine",
+              GridInfo.name == "l’Administrateur" ? "l’Administrateur" : "Laborantin",
               style: const TextStyle(fontSize: 18),
             ),
             // SizedBox(height: 10,)
