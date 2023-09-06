@@ -74,6 +74,9 @@ class _ReservationDetailListState extends State<ReservationDetailList> {
                 case Status.PENDINGRESERVE:
                   statusColor = Colors.yellow;
                   break;
+                case Status.BORROW:
+                  statusColor = Color.fromARGB(255, 59, 213, 255);
+                  break;
                 case Status.PENDINGRETURN:
                   statusColor = Colors.orange;
                   break;

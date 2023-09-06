@@ -67,6 +67,19 @@ class ReservationServices {
     return pendingReturnDetails;
   }
 
+  List<ReservationDetails> getBorrowDetails(
+      List<Reservation> reservationsList) {
+    List<ReservationDetails> pendingReturnDetails = [];
+    for (var reservation in reservationsList) {
+      for (var detail in reservation.reservationDetails!) {
+        if (detail.status == Status.BORROW) {
+          pendingReturnDetails.add(detail);
+        }
+      }
+    }
+    return pendingReturnDetails;
+  }
+
 // To get all reservation details with the status RESERVE
   List<ReservationDetails> getReserveDetails(
       List<Reservation> reservationsList) {

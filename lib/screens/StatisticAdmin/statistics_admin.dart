@@ -30,6 +30,7 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
   int totalItems = 0;
   List<ReservationDetails> getPendingReserveDetails = [];
   List<ReservationDetails> getPendingReturnDetails = [];
+  List<ReservationDetails> getBorrowDetails = [];
   List<ReservationDetails> getReserveDetails = [];
   List<ReservationDetails> getReturnDetails = [];
 
@@ -48,6 +49,8 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
     getReserveDetails =
         ReservationServices().getReserveDetails(reservationsList);
     getReturnDetails = ReservationServices().getReturnDetails(reservationsList);
+
+    getBorrowDetails = ReservationServices().getBorrowDetails(reservationsList);
 
     print("initialise of all reservation by status complete !!!!!!!!!!");
   }
@@ -76,6 +79,24 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
                 },
               ),
             ),
+            SizedBox(height: 20),
+
+            Expanded(
+              child: StatCard.NumberCard(
+                'Nombre Emprunter',
+                '${getBorrowDetails.length}',
+                Colors.green,
+                () {
+                  _getStatistics(context);
+
+                  NavigationScreen.navigate(
+                      context,
+                      ReservationListScreen(
+                          reservationDetailsList: getBorrowDetails));
+                },
+              ),
+            ),
+
             SizedBox(height: 20),
 
             // Total Number of Items
@@ -112,6 +133,7 @@ class _StatisticAdminScreenState extends State<StatisticAdminScreen> {
                 },
               ),
             ),
+
             SizedBox(height: 20),
             // Other Stats here...
           ],
