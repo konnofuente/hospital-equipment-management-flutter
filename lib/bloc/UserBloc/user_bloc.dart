@@ -82,29 +82,30 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Future<void> _onLoginUser(LoginUser event, Emitter<UserState> emit) async {
-  final state = this.state;
+    final state = this.state;
 
-  // Find a user that matches the email and password
-  User? matchedUser;
-  for (var user in state.usersList) {
-    if (user.email == event.email && user.password == event.password) {
-      matchedUser = user;
-      break;
+    // Find a user that matches the email and password
+    User? matchedUser;
+    for (var user in state.usersList) {
+      if (user.email == event.email && user.password == event.password) {
+        matchedUser = user;
+        break;
+      }
+    }
+
+    if (matchedUser != null) {
+      print("Successfully logged in!");
+      // print(state.usersList);
+      emit(UserLoggedIn(user: matchedUser));
+      emit(UserState(appUser: matchedUser, usersList: state.usersList));
+      print(state.usersList);
+    } else {
+      print("Invalid email or password");
+      emit(UserLoginFailed(error: 'Invalid email or password'));
+         emit(UserState(appUser: null, usersList: state.usersList));
+      print(state.usersList);
     }
   }
-
- if (matchedUser != null) {
-  print("Successfully logged in!");
-  // print(state.usersList);
-  emit(UserLoggedIn(user: matchedUser));
-   emit(UserState(appUser: matchedUser, usersList: state.usersList));
-} else {
-  print("Invalid email or password");
-  emit(UserLoginFailed(error: 'Invalid email or password'));
-}
-
-}
-
 
   Future<void> _onUpdateUser(UpdateUsers event, Emitter<UserState> emit) async {
     // final state = this.state;

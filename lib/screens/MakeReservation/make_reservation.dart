@@ -83,7 +83,7 @@ class _MakeReservationState extends State<MakeReservation> {
                     selectedStatus = newValue;
                   });
                 },
-                items: [Status.RESERVE, Status.BORROW]
+                items: [Status.PENDINGRESERVE, Status.BORROW]
                     .map<DropdownMenuItem<Status>>((Status value) {
                   return DropdownMenuItem<Status>(
                     value: value,

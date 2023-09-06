@@ -64,12 +64,14 @@ class AuthService {
         _storage.write(key: "gestion_hopital_KEY_PASSWORD", value: password);
 
         // Navigate to the next screen
-        NavigationScreen.navigate(context, GetStartedScreen());
+        NavigationScreen.replaceNavigate(context, GetStartedScreen());
       } else if (state is UserLoginFailed) {
         // Assume you have a UserLoginFailed state
         // Show an alert box if login fails
-        AlertBox.alertbox(
-            context, "Registration", "Invalid Password or email", () {});
+        AlertBox.awesomeAlertBox(
+            context, "Registration", "Invalid Password or email", () {
+          // Navigator.pop(context);
+        });
       }
     });
   }
@@ -158,8 +160,10 @@ class AuthService {
           key: "gestion_hopitalhopital_KEY_EMAIL", value: username);
       await _storage.write(
           key: "gestion_hopital_KEY_PASSWORD", value: password);
-      await _storage.write(key: "gestion_hopital_KEY_USER_ID", value: 1.toString());
-      await _storage.write(key: "gestion_hopital_KEY_TOKEN", value: response.body);
+      await _storage.write(
+          key: "gestion_hopital_KEY_USER_ID", value: 1.toString());
+      await _storage.write(
+          key: "gestion_hopital_KEY_TOKEN", value: response.body);
     } else {
       AlertBox.alertbox(
           context, "Erro", "Problem with server please try later", () {});
