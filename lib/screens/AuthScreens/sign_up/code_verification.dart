@@ -113,7 +113,7 @@ class _CodeVerificationState extends State<CodeVerification> {
   }
 
   Future<void> showalertDialogue() async {
-    Widget okButton = FlatButton(
+    Widget okButton = ElevatedButton(
       child: const Text("OK"),
       onPressed: () {
         Navigator.pop(context);

@@ -107,7 +107,7 @@ class _OTPVerificationState extends State<OTPVerification> {
   }
 
   Future<void> showalertDialogue() async {
-    Widget okButton = FlatButton(
+    Widget okButton = ElevatedButton(
       child: Text("OK"),
       onPressed: () {
         Navigator.pop(context);
